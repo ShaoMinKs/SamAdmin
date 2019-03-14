@@ -1,0 +1,106 @@
+{include file="public/layout" /}
+<style>
+    .system_img_location{text-align: center; width: 120px;position:absolute;top:15px; margin-left:265px;}
+    .layui-input-inline {
+        width: 280px!important;
+    }
+    .select {
+        width: 150px!important;
+    }
+</style>
+<body style="background-color: #FFF; overflow: auto;">
+<div id="append_parent"></div>
+<div id="ajaxwaitid"></div>
+<div class="page">
+    <div class="fixed-bar">
+        <div class="item-title" style="padding-bottom: 5px">
+           
+            <div class="subject" style="height: auto;margin-left: 15px">
+                <h3>{$info.role_id ? '编辑' : '新增'}角色</h3>
+            </div>
+            <a class="layui-btn layui-btn-sm" style="float: right"  href="javascript:history.back();" title="返回列表"> <i class="fa  fa-arrow-left"></i> 返回上一页</a>
+        </div>
+    </div>
+        <div class="layui-row" style="margin-top: 15px">
+            <form class="form-horizontal layui-form" id="adminHandle" method="post" action="{:url('admin/admin/roleSave')}">
+                    <input type="hidden" name="act" id="act" value="{$act}">
+                    <input type="hidden" name="admin_id" value="{$info.role_id|default=''}">
+                    <input type="hidden" name="auth_code" value="{$Think.config.AUTH_CODE}"/>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label" for="user_name">角色名称</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="role_name" maxlength="20"  id="role_name" value="{$info.role_name|default=''}" required  lay-verify="required"  autocomplete="off" class="layui-input"> 
+                            <span class="err" id="err_user_name"></span>    
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label" for="email">角色描述</label>
+                        <div class="layui-input-inline">
+                             <textarea name="role_desc" id="role_desc" cols="30" rows="10" class="layui-textarea">{$info.role_desc|default=''}</textarea>
+                            <span class="err" id="err_email"></span>    
+                        </div>
+                     </div>
+
+                     <div class="layui-form-item">
+                        <label class="layui-form-label" for="email">权限分配</label>
+                        <div class="layui-input-inline" style="width:auto !important;">
+                            <div class="ncap-account-container" style="border-top:none;">
+                                <h4>
+                                    <input id="cls_full" lay-filter="allselect" type="checkbox" lay-skin="primary" title="全选">
+                                    
+                                </h4>
+                            </div>
+                            {foreach name="modules" item="menu" key="kk"}
+                                <div class="ncap-account-container" style="border-top:none;">
+                                    <div style="font-size: 16px;">{$group[$kk]}</div>  
+                                    <input value="1" cka="mod-{$kk}" type="checkbox" lay-filter="pselect" lay-skin="primary" title="全选">
+                                    <ul class="ncap-account-container-list">
+                                        {foreach name="menu" item="vv"}
+                                            <li>
+                                                <input  name="right[]" lay-skin="primary" value="{$vv.id}" ck="mod-{$kk}" type="checkbox" title="{$vv.name}">
+                                            </li>
+                                        {/foreach}
+                                    </ul>
+                                </div>
+                            {/foreach}   
+
+                        </div>
+                     </div>                     
+                     <div class="layui-form-item">
+                        <div class="layui-input-block">
+                          <a class="layui-btn" lay-submit lay-filter="ajaxSubmit">立即提交</a>
+                          <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                        </div>
+                      </div>
+            </form>
+        </div>
+</div>
+<div id="goTop"> <a href="JavaScript:void(0);" id="btntop"><i class="fa fa-angle-up"></i></a><a href="JavaScript:void(0);" id="btnbottom"><i class="fa fa-angle-down"></i></a></div>
+</body>
+<script type="text/javascript">
+
+  var form = layui.form;
+  //监听选择全部
+form.on('checkbox(allselect)', function(data){
+    var all_select = data.elem.checked;
+    if(all_select){
+            $('input[type=checkbox]').prop('checked',all_select);
+        }else{
+            $('input[type=checkbox]').removeAttr('checked');
+        }
+        form.render('checkbox');
+});
+
+  //监听选择
+  form.on('checkbox(pselect)', function(data){
+    var pselect = data.elem.checked;
+    var $cks    = $(":checkbox[ck='"+$(this).attr("cka")+"']");
+    if(pselect){
+                $cks.each(function(){$(this).prop("checked",true);});
+            }else{
+                $cks.each(function(){$(this).removeAttr('checked');});
+            }
+        form.render('checkbox');
+});
+</script>
+</html>

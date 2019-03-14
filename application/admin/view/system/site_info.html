@@ -1,0 +1,177 @@
+{include file="public/layout" /}
+<style>
+    .system_img_location{text-align: center; width: 120px;position:absolute;top:15px; margin-left:265px;}
+    .layui-input-inline {
+        width: 280px!important;
+    }
+    .select {
+        width: 150px!important;
+    }
+</style>
+<body style="background-color: #FFF; overflow: auto;">
+<div id="append_parent"></div>
+<div id="ajaxwaitid"></div>
+<div class="page">
+    <div class="fixed-bar">
+        <div class="item-title">
+            <div class="subject">
+                <h3>站点设置</h3>
+                <h5>网站全局内容基本选项设置</h5>
+            </div>
+            <ul class="tab-base nc-row">
+                {foreach name="group_list" item="v" key="k"}
+                    <li><a href="{:url('System/index',['inc_type'=> $k])}" {if condition="$k==$inc_type"}class="current"{/if}><span>{$v}</span></a></li>
+                {/foreach}
+            </ul>
+        </div>
+    </div>
+        <div class="layui-row">
+                <form action="{:url('System/handle')}" enctype="multipart/form-data" method="post" id="handlepost" class=" layui-anim-up layui-form">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label" for="record_no">网站备案号</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="record_no"  id="record_no" value="{$config.record_no}" required  lay-verify="required" placeholder="请输入网站备案号" autocomplete="off" class="layui-input">     
+                        </div>
+                        <div class="layui-form-mid layui-word-aux">网站备案号，将显示在首页底部等位置</div>
+                    </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label" for="store_name">网站名称</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="store_name"  id="store_name" value="{$config.store_name}" required  lay-verify="required" placeholder="请输入网站名称" autocomplete="off" class="layui-input">
+                            </div>
+                            <div class="layui-form-mid layui-word-aux">网站名称，将显示在首页底部等位置</div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label" for="store_logo">网站LOGO</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="store_logo"  id="store_logo" value="{$config.store_logo|default='/public/static/images/logo/pc_home_logo_default.png'}" onClick="GetUploadify(1,'store_logo','logo','img_call_back')" readonly required  lay-verify="required" placeholder="请上传网站logo" autocomplete="off" class="layui-input">
+                                <span class="show">
+                                    <a id="store_logo_a" target="_blank" class="nyroModal" rel="gal" href="{$config.store_logo|default='/public/static/images/logo/pc_home_logo_default.png'}">
+                                        <img  id="store_logo_i" style="width:150px;height:60px;border:2px solid #e5e5e5;border-radius:5px;margin-top:5px" src="{$config.store_logo|default=\'/public/static/images/logo/pc_home_logo_default.png\'}" alt="LOGO" onmouseover="layer.tips('<img src={$config.store_logo|default=\'/public/static/images/logo/pc_home_logo_default.png\'}>',this,{tips: [1, '#fff']});" onmouseout="layer.closeAll();">
+                                        
+                                    </a>
+                                </span>
+                            </div>
+                            <div class="layui-input-inline">
+                                <input type="button" class="layui-btn layui-btn-normal"  onClick="GetUploadify(1,'store_logo','logo','img_call_back')" value="上传">
+                            </div>
+                            <div class="layui-form-mid layui-word-aux" style="margin-left:-200px">网站LOGO,最佳显示尺寸为230*58像素</div>
+                        </div>
+
+                        <div class="layui-form-item">
+                            <label class="layui-form-label" for="admin_home_logo">后台管理中心LOGO</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="admin_home_logo"  id="admin_home_logo" value="{$config.store_logo|default='/public/static/images/logo/pc_home_logo_default.png'}" onClick="GetUploadify(1,'store_logo','logo','img_call_back')" readonly required  lay-verify="required" placeholder="请上传logo" autocomplete="off" class="layui-input">
+                                <span class="show">
+                                    <a id="admin_home_logo_a" target="_blank" class="nyroModal" rel="gal" href="{$config.admin_home_logo|default='/public/static/images/logo/admin_home_logo_default.png'}">
+                                    <img  id="admin_home_logo_i" style="width:150px;height:60px;border:2px solid #e5e5e5;border-radius:5px;margin-top:5px" src="{$config.admin_home_logo|default='/public/static/images/logo/admin_home_logo_default.png'}" alt="LOGO" onmouseover="layer.tips('<img src={$config.admin_home_logo|default=\'/public/static/images/logo/admin_home_logo_default.png\'}>',this,{tips: [1, '#fff']});" onmouseout="layer.closeAll();">     
+                                    </a>
+                                </span>
+                            </div>
+                            <div class="layui-input-inline">
+                                <input type="button" class="layui-btn layui-btn-normal"  onClick="GetUploadify(1,'admin_home_logo','logo','img_call_back')" value="上传">
+                            </div>
+                            <div class="layui-form-mid layui-word-aux" style="margin-left:-200px">后台管理中心LOGO,显示在后台左上角</div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label" for="contact">联系人</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="contact"  id="contact" value="{$config.contact}" required  lay-verify="required" placeholder="请输入联系人" autocomplete="off" class="layui-input">     
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label" for="store_keyword">网站关键字</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="store_keyword"  id="store_keyword" value="{$config.store_keyword}" required  lay-verify="required" placeholder="请输入网站关键字" autocomplete="off" class="layui-input">     
+                            </div>
+                            <div class="layui-form-mid layui-word-aux">网站关键字，便于SEO</div>
+                        </div>
+                        
+                        <div class="layui-form-item">
+                            <label class="layui-form-label" for="phone">联系电话</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="phone"  id="phone" value="{$config.phone}" required  lay-verify="required" placeholder="请输入联系电话" autocomplete="off" class="layui-input">     
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label" for="mobile">联系手机</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="mobile"  id="mobile" value="{$config.mobile}" required  lay-verify="required" placeholder="请输入联系手机" autocomplete="off" class="layui-input">     
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label" for="address">所在地区</label>
+                            <div class="layui-input-inline select">
+                                <select onchange="get_city(this);" id="province" name="province"  lay-ignore class="layui-select" style="width:150px"> 
+                                    <option  value="0">选择省份</option>
+                                    {volist name="province" id="vo"}
+                                        <option value="{$vo.id}" {if condition="$vo.id == $config.province"}selected{/if} >{$vo.name}</option>
+                                    {/volist}
+                                </select>    
+                            </div>
+                                <div class="layui-input-inline select" style="width:150px">
+                                <select onchange="get_area(this);" id="city" name="city" lay-ignore class="layui-select" style="width:150px">
+                                    <option value="0">选择城市</option>
+                                    {volist name="city" id="vo"}
+                                        <option value="{$vo.id}" {if condition="$vo.id == $config.city"}selected{/if} >{$vo.name}</option>
+                                    {/volist}
+                                </select>  
+                            </div>
+                            <div class="layui-input-inline select" style="width:150px">
+                                <select id="district" name="district" lay-ignore class="layui-select" style="width:150px">
+                                    <option value="0">选择区域</option>
+                                    {volist name="area" id="vo"}
+                                        <option value="{$vo.id}" {if condition="$vo.id == $config.district"}selected{/if} >{$vo.name}</option>
+                                    {/volist}
+                                </select> 
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label" for="address">详细地址</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="address"  id="address" value="{$config.address}" required  lay-verify="required" placeholder="请输入详细地址" autocomplete="off" class="layui-input" >     
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label" for="qq">客服QQ</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="qq"  id="qq" value="{$config.qq}" required  lay-verify="required" placeholder="请输入客服qq" autocomplete="off" class="layui-input" >     
+                            </div>
+                        </div>
+                        <input type="hidden" name="inc_type" value="{$inc_type}">
+                          <div class="layui-form-item">
+                            <div class="layui-input-block">
+                            <a class="layui-btn" lay-submit lay-filter="ajaxSubmit">立即提交</a>
+                            </div>
+                          </div>
+                </form>
+        </div>      
+</div>
+<div id="goTop"> <a href="JavaScript:void(0);" id="btntop"><i class="fa fa-angle-up"></i></a><a href="JavaScript:void(0);" id="btnbottom"><i class="fa fa-angle-down"></i></a></div>
+</body>
+<script type="text/javascript">
+    //网站图标
+    function img_call_back(fileurl_tmp , elementid)
+    {
+        $("#"+elementid).val(fileurl_tmp);
+        $("#"+elementid+'_a').attr('href', fileurl_tmp);
+        $("#"+elementid+'_i').attr('src', fileurl_tmp);
+        $("#"+elementid+'_i').attr('onmouseover', "layer.tips('<img src="+fileurl_tmp+">',this,{tips: [1, '#fff']});");
+    }
+    //网站用户中心logo
+    function user_img_call_back(fileurl_tmp)
+    {
+        $("#store_user_logo").val(fileurl_tmp);
+        $("#userimg_a").attr('href', fileurl_tmp);
+        $("#userimg_i").attr('onmouseover', "layer.tips('<img src="+fileurl_tmp+">',this,{tips: [1, '#fff']});");
+    }
+    //网站图标
+    function store_ico_call_back(fileurl_tmp)
+    {
+        $("#store_ico").val(fileurl_tmp);
+        $("#storeico_a").attr('href', fileurl_tmp);
+        $("#storeico_i").attr('onmouseover', "layer.tips('<img src="+fileurl_tmp+">',this,{tips: [1, '#fff']});");
+    }
+   
+</script>
+</html>

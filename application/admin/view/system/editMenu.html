@@ -1,0 +1,129 @@
+{include file="public/layout" /}
+<style>
+    .system_img_location{text-align: center; width: 120px;position:absolute;top:15px; margin-left:265px;}
+    .layui-input-inline {
+        width: 280px!important;
+    }
+    .select {
+        width: 150px!important;
+    }
+    .err {
+        margin-top: 5px!important;
+        display: inline-block!important;
+    }
+</style>
+<body style="background-color: #FFF; overflow: auto;">
+    <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+            <ul class="layui-tab-title">
+                <li> <a href="{:url('admin/system/admin_menu')}">菜单列表</a> </li>
+                <li class="layui-this"><a  href="{:url('admin/article/article')}">编辑菜单</a></li>
+                <li style="float:right;padding: 0;min-width: 35px;"><div title="刷新数据" class="pReload"><i class="fa fa-refresh"></i></div></li>
+                <li style="float:right;padding: 0;min-width: 35px;"><a  href="javascript:history.back();" title="返回列表"> <i class="fa  fa-arrow-left"></i></a></li>
+            </ul>
+    </div>
+    <div class="layui-tab-content">
+            <div class="layui-row" style="margin-top: 15px">
+                <form class="form-horizontal layui-form" id="adminHandle" method="post" action="{:url('admin/system/menuHandle')}">
+                        <input type="hidden" name="act" id="act" value="edit">
+                        <input type="hidden" name="id" value="{$info.id|default=''}">
+                        <input type="hidden" name="auth_code" value="{$Think.config.AUTH_CODE}"/>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label" for="name">菜单名称</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="name" maxlength="20"  id="name" value="{$info.name|default=''}" required  lay-verify="required"  autocomplete="off" class="layui-input">    
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">上级分类</label>
+                            <div class="layui-input-inline">
+                                <select name="pid" lay-filter="menuselect">
+                                <option value="0">顶级分类</option>
+                                    {volist name="menu_select" id="v"}
+                                        <option value="{$v.id}" title="{$v.level}"  {if condition="!empty($info.id) && $info.id == $v.id"}disabled{/if} {if condition="!empty($info.pid) && $info.pid == $v.id"}selected{/if}>{gt name="$v.level" value="0"}{php}for($i=0;$i<$v['level'];$i++){echo ' &nbsp;&nbsp;&nbsp;&nbsp;';}{/php}{/gt}{$v.name}</option>
+                                    {/volist} 
+                                </select>
+                            </div>
+                       </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label" for="icon">图标</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="icon" maxlength="20"  id="icon" value="{$info.icon|default=''}" autocomplete="off" class="layui-input">    
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label" for="op">控制器</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="op" maxlength="20"  id="op" value="{$info.op|default=''}"   autocomplete="off" class="layui-input">    
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label" for="acts">操作</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="acts" maxlength="20"  id="acts" value="{$info.act|default=''}"   autocomplete="off" class="layui-input">    
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">是否显示</label>
+                            <div class="layui-input-block">
+                              <input type="checkbox" name="status" lay-skin="switch" lay-text="是|否" {$info.status ? 'checked' : ''}>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">是否是系统菜单</label>
+                            <div class="layui-input-block">
+                                <input type="checkbox" name="is_default" lay-skin="switch" lay-text="是|否" {$info.is_default ? 'checked' : ''}>
+                            </div>
+                        </div>  
+                        <div class="layui-form-item">
+                        <div class="layui-input-block">
+                            <button class="layui-btn" lay-submit lay-filter="ajaxSubmit">立即提交</button>
+                            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                        </div>
+                        </div>
+                </form>
+            </div>
+    </div>
+<script type="text/javascript">
+layui.use('form', function(){
+  var form = layui.form;
+  //监听选择全部
+
+form.on('select(menuselect)', function(data){
+    level = data.elem[data.elem.selectedIndex].title;
+    if(level == 3){
+        layer.alert('菜单最多不得超过三级！',function(){
+            location.href = location.href;
+        })
+        
+    }
+});      
+      
+
+//监听提交
+// form.on('submit(*)', function (data) {
+//     $.ajax({
+//         url: data.form.action,
+//         type: data.form.method,
+//         data: data.field,
+//         error:function(){
+//             layer.alert('服务器繁忙，请联系管理员');
+//         },
+//         success: function (info) {
+//             if(!info.code){
+//                 layer.msg(info.msg,{icon: 2,time: 1000})
+//               }else{
+//                 layer.msg(info.msg,{icon: 1,time: 1000},function () {
+//                         window.location.href = info.url;
+//                     })
+//               }
+//         }
+//     });
+
+//     return false;
+// });
+
+});
+
+</script>
+</body>
+</html>

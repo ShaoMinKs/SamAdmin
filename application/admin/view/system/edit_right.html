@@ -1,0 +1,151 @@
+{include file="public/layout" /}
+<style>
+    .system_img_location{text-align: center; width: 120px;position:absolute;top:15px; margin-left:265px;}
+    .layui-input-inline {
+        width: 280px!important;
+    }
+    .select {
+        width: 150px!important;
+    }
+    .err {
+        margin-top: 5px!important;
+        display: inline-block!important;
+    }
+ 
+</style>
+<body style="background-color: #FFF; overflow: auto;">
+<div id="toolTipLayer" style="position: absolute; z-index: 9999; display: none; visibility: visible; left: 95px; top: 573px;"></div>
+<div id="append_parent"></div>
+<div id="ajaxwaitid"></div>
+<div class="page" style="height:100%">
+    <div class="fixed-bar">
+        <div class="item-title" style="padding-bottom: 5px">
+           
+            <div class="subject" style="height: auto;margin-left: 15px">
+                <h3>{$info.id ? '编辑' : '新增'}权限资源</h3>
+            </div>
+            <a class="layui-btn layui-btn-sm" style="float: right"  href="javascript:history.back();" title="返回列表"> <i class="fa  fa-arrow-left"></i> 返回上一页</a>
+        </div>
+    </div>
+        <div class="layui-row" style="margin-top: 15px">
+            <form class="layui-form" action="{:url('admin/system/edit_right')}" method="post" style="height:100%">
+                <input type="hidden" name="act" id="act" value="{$act}">
+                <input type="hidden" name="id" value="{$info.id|default=''}">
+                <input type="hidden" name="auth_code" value="{$Think.config.AUTH_CODE}"/>
+                <div class="layui-form-item">
+                    <label class="layui-form-label" for="name">权限资源名称</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="name" maxlength="20"  id="name" value="{$info.name|default=''}" required  lay-verify="required"  autocomplete="off" class="layui-input"> 
+                        <span class="err" id="err_name"></span>    
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label" for="group">所属分组</label>
+                    <div class="layui-input-inline">
+                        <select name="group" id="group"  class="layui-select" lay-verify="required">
+                            {volist name="group" id="item"}
+                                <option value="{$key}" {if condition="!empty($info.group) && $key == $info.group"}selected{/if}>{$item}</option>
+                            {/volist}
+                        </select>    
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label" for="group">控制器</label>
+                    <div class="layui-input-inline">
+                        <select  id="controller"  lay-verify="required"  lay-filter="right">
+                            {volist name="planList" id="vo"}
+                                <option value="{$vo}">{$vo}</option>
+                            {/volist}
+                        </select>    
+                    </div>
+                    <div class=" method-list">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label" for="group">权限码</label>
+                    <div class="layui-input-inline">
+                        <table class="layui-table" lay-skin="nob"  lay-size="sm">
+                            <tr><th style="width:80%">权限码</th><th style="width: 100px;text-align: center;" >操作</th></tr>
+                            <tbody id="rightList">
+                                {if condition="!empty($info)"}
+                                {foreach name="info.right" item="vo"}
+                                    <tr id="{:str_replace('@','_',$vo)}">
+                                        <td><input name="right[]" type="text" value="{$vo}" class="layui-input" style="width:300px;"></td>
+                                        <td style="text-align: center;"><a class="layui-btn" href="javascript:;" onclick="$(this).parent().parent().remove();">删除</a></td>
+                                    </tr>
+                                {/foreach}
+                                {/if}
+                            </tbody>
+                        </table>    
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-input-block">
+                    <button class="layui-btn" lay-submit lay-filter="ajaxSubmit">立即提交</button>
+                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                    </div>
+                </div>
+
+                
+            </form>
+        </div>
+
+</div>
+
+
+<script>
+    var form = layui.form;
+
+        //监听select
+   form.on('select(right)', function(data){
+            $.ajax({
+                url: "{:url('system/ajax_get_action')}",
+                data:{'controller':data.value},
+                type:'post',
+                dataType:'html',
+                success : function(res){
+                    $('.method-list').empty().append(res);
+                    form.render('checkbox');
+                }
+            });
+
+        })
+    form.on('checkbox()', function(data){
+        var is_check = data.elem.checked;
+        var ncode = $('#controller').val();
+        var row_id = ncode+'_'+ data.value;
+        if(is_check){
+            var a = [];
+            $('#rightList .form-control').each(function(i,o){
+                    if($(o).val() != ''){
+                        a.push($(o).val());
+                    }
+                });
+    
+            if(ncode !== ''){
+                var temp = ncode+'@'+ data.value;
+                if($.inArray(temp,a) != -1){
+                    return ;
+                }
+            }else{
+                layer.alert("请选择控制器" , {icon:2,time:1000});
+                return;
+            }
+            var strtr = "<tr id="+row_id+">";
+            if(ncode!= ''){
+                strtr += '<td><input type="text" name="right[]" value="'+ncode+'@'+ data.value+'" readonly class="layui-input" style="width:300px;"></td>';
+            }else{
+                strtr += '<td><input type="text" name="right[]" value="" readonly class="layui-input" style="width:300px;"></td>';
+            }
+            strtr += '<td style="text-align: center;"><a href="javascript:;" class="layui-btn" onclick="$(this).parent().parent().remove();">删除</a></td>';
+            $('#rightList').append(strtr);
+        }else{
+            $("#"+row_id).remove();
+        }
+
+    })
+
+</script>
+
+</body>
+</html>

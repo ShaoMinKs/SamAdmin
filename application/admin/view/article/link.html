@@ -1,0 +1,97 @@
+{include file="public/layout" /}
+<script src="__PUBLIC__/static/js/layer/laydate/laydate.js"></script>
+<style>
+    .system_img_location{text-align: center; width: 120px;position:absolute;top:15px; margin-left:265px;}
+    .layui-input-inline {
+        width: 280px!important;
+    }
+    .select {
+        width: 150px!important;
+    }
+    .err {
+        margin-top: 5px!important;
+        display: inline-block!important;
+    }
+</style>
+<body style="background-color: #FFF; overflow: auto;">
+    <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+        <ul class="layui-tab-title">
+            <li> <a href="{:url('admin/article/linklist')}">链接列表</a> </li>
+            <li class="layui-this"><a  href="{:url('admin/article/link')}">{$info.link_id ? '编辑' : '新增'}链接</a></li>
+            <li style="float:right;padding: 0;min-width: 35px;"><div title="刷新数据" class="pReload"><i class="fa fa-refresh"></i></div></li>
+            <li style="float:right;padding: 0;min-width: 35px;"><a  href="javascript:history.back();" title="返回列表"> <i class="fa  fa-arrow-left"></i></a></li>
+        </ul>
+    </div>
+    <div class="layui-tab-content">
+                <div class="layui-row">
+                    <form class="layui-form" action="{:url('admin/article/linkHandle')}" method="post">
+                        <input type="hidden" name="act" id="act" value="{$info.link_id ? 'edit' : 'add'}">
+                        <input type="hidden" name="link_id" value="{$info.link_id|default=''}">
+                        <input type="hidden" name="auth_code" value="{$Think.config.AUTH_CODE}"/>
+                        {:token()}
+                        <div class="layui-form-item">
+                            <label class="layui-form-label" for="link_name">链接名称</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="link_name" maxlength="20"  id="link_name" value="{$info.link_name|default=''}" required  lay-verify="required"  autocomplete="off" class="layui-input">   
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                                <label class="layui-form-label" for="link_url">链接地址</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="link_url"   id="link_url" value="{$info.link_url|default=''}"  required  lay-verify="required"  autocomplete="off" class="layui-input"> 
+                                </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">是否显示</label>
+                            <div class="layui-input-block">
+                                <input type="checkbox" name="is_show" lay-skin="switch" lay-text="是|否" {$info.is_show ? 'checked' : ''}>
+                            </div>
+                        </div> 
+                        <div class="layui-form-item">
+                                <label class="layui-form-label" for="link_logo">图片</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="link_logo"  id="link_logo" value="{$info.link_logo|default=''}" onClick="GetUploadify(1,'link_logo','link','img_call_back')" readonly  placeholder="请上传链接图片" autocomplete="off" class="layui-input">
+                                    <span class="show">
+                                        <a id="link_logo_pre" target="_blank" class="nyroModal" rel="gal" href="{$config.link_logo|default=''}">
+                                            <img  id="link_logo_preimg" style="width:150px;height:60px;border:2px solid #e5e5e5;border-radius:5px;margin-top:5px" src="{$info.link_logo|default=''}" alt="图片" onmouseover="layer.tips('<img src={$info.link_logo|default=''}>',this,{tips: [1, '#fff']});" onmouseout="layer.closeAll();">
+                                            
+                                        </a>
+                                    </span>
+                                </div>
+                                <div class="layui-input-inline">
+                                    <input type="button" class="layui-btn layui-btn-normal"  onClick="GetUploadify(1,'link_logo','link','img_call_back')" value="上传">
+                                </div>
+                                <div class="layui-form-mid layui-word-aux" style="margin-left:-200px">链接缩略图</div>
+                            </div>
+                        <div class="layui-form-item">
+                            <div class="layui-input-block">
+                            <button class="layui-btn" lay-submit lay-filter="ajaxSubmit">立即提交</button>
+                            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+    </div>
+<div id="goTop"> <a href="JavaScript:void(0);" id="btntop"><i class="fa fa-angle-up"></i></a><a href="JavaScript:void(0);" id="btnbottom"><i class="fa fa-angle-down"></i></a></div>     
+<script>
+      //Demo
+layui.use('form', function(){
+        var form = layui.form;
+        var laydate = layui.laydate;
+        laydate.render({
+            elem: '#publish_time' //指定元素
+            });
+      });
+
+       
+
+      function img_call_back(fileurl_tmp , elementid)
+    {
+        $("#"+elementid).val(fileurl_tmp);
+        $("#"+elementid+'_pre').attr('href', fileurl_tmp);
+        $("#"+elementid+'_preimg').attr('src', fileurl_tmp);
+        $("#"+elementid+'_preimg').attr('onmouseover', "layer.tips('<img src="+fileurl_tmp+">',this,{tips: [1, '#fff']});");
+    }  
+</script>
+</body>
+</html>

@@ -1,0 +1,131 @@
+{include file="public/layout" /}
+<style>
+    .system_img_location{text-align: center; width: 120px;position:absolute;top:15px; margin-left:265px;}
+    .layui-input-inline {
+        width: 280px!important;
+    }
+    .select {
+        width: 150px!important;
+    }
+    .err {
+        margin-top: 5px!important;
+        display: inline-block!important;
+    }
+    .form-container {
+    max-width: 800px;
+}
+.label-required:after {
+    content: '*';
+    color: red;
+    position: absolute;
+    margin-left: 4px;
+    font-weight: bold;
+    line-height: 1.8em;
+    top: 6px;
+    right: 5px;
+}
+.layui-word-aux {
+    padding-top:5px !important; 
+}
+</style>
+<body style="background-color: #FFF; overflow: auto;">
+    <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+        <ul class="layui-tab-title">
+            <li class="layui-this"> <a href="{:url('admin/wechat/weConfig')}">公众号详情</a> </li>
+            <li style="float:right;padding: 0;min-width: 35px;"><div title="刷新数据" class="pReload"><i class="fa fa-refresh"></i></div></li>
+            <li style="float:right;padding: 0;min-width: 35px;"><a  href="javascript:history.back();" title="返回列表"> <i class="fa  fa-arrow-left"></i></a></li>
+        </ul>
+    </div>
+    <div class="layui-tab-content">
+                <div class="layui-tab-item layui-show">
+                    <form class="layui-form layui-form form-container" action="{:url('admin/wechat/updateConfig')}" method="post">
+                        {:token()}
+                        <input type="hidden" name="id" value="{$info.id}">
+                        <div class="layui-form-item">
+                            <label class="layui-form-label label-required" for="wxname">公众号名称</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="wxname"   id="wxname" value="{$info.wxname|default=''}" required  lay-verify="required"  autocomplete="off" class="layui-input"> 
+                                <p class="layui-word-aux">公众号名称，可在公众平台查看</p>  
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label label-required" for="appid">Appid</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="appid"   id="appid" value="{$info.appid|default=''}"  required  lay-verify="required"  autocomplete="off" class="layui-input">
+                                <p class="layui-word-aux">公众号应用ID是所有接口必要参数，可以在公众号平台 [ 开发 > 基本配置 ] 页面获取。</p>   
+                            </div>      
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label label-required" for="appsecret">Appsecret</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="appsecret"   id="appsecret" value="{$info.appsecret|default=''}"  required  lay-verify="required"  autocomplete="off" class="layui-input"> 
+                                <p class="layui-word-aux">公众号应用密钥是所有接口必要参数，可以在公众号平台 [ 开发 > 基本配置 ] 页面授权后获取。。</p> 
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label label-required" for="token">Token</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="token"   id="token" value="{$info.token|default=''}"  required  lay-verify="required"  autocomplete="off" class="layui-input">
+                                <p class="layui-word-aux">公众号平台与系统对接认证Token，请优先填写此参数并保存，然后再在微信公众号平台操作对接。</p>  
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label" for="aeskey">EncodingAESKey</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="aeskey"   id="aeskey" value="{$info.aeskey|default=''}"  required  lay-verify="required"  autocomplete="off" class="layui-input"> 
+                                <p class="layui-word-aux">公众号平台接口设置为加密模式，消息加密密钥必需填写并保持与公众号平台一致</p> 
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label" for="wxid">公众号原始ID</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="wxid"   id="wxid" value="{$info.wxid|default=''}"    autocomplete="off" class="layui-input"> 
+                                <p class="layui-word-aux">原始ID，可在公众平台基本配置中查看</p>
+                            </div>                   
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label" for="weixin">微信号</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="weixin"   id="weixin" value="{$info.weixin|default=''}"    autocomplete="off" class="layui-input"> 
+                                <p class="layui-word-aux">公众号的微信号，可在公众平台基本配置中查看</p>
+                            </div>
+                        </div> 
+                        <div class="layui-form-item">
+                            <label class="layui-form-label" for="weixin">消息推送接口</label>
+                            <div class="layui-input-block">
+                                <input type="text"  value="http://sam.zhuzhouyike.com/api/push/index"   readonly autocomplete="off" class="layui-input"> 
+                                <p class="layui-word-aux">公众号服务平台接口通知URL, 公众号消息接收与回复等</p>
+                            </div>
+                        </div> 
+                        <div class="layui-form-item">
+                            <div class="layui-input-block">
+                            <button class="layui-btn" lay-submit lay-filter="ajaxSubmit">立即提交</button>
+                            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+    </div>
+<div id="goTop"> <a href="JavaScript:void(0);" id="btntop"><i class="fa fa-angle-up"></i></a><a href="JavaScript:void(0);" id="btnbottom"><i class="fa fa-angle-down"></i></a></div>     
+<script>
+      //Demo
+layui.use('form', function(){
+        var form = layui.form;
+        var laydate = layui.laydate;
+        laydate.render({
+            elem: '#publish_time' //指定元素
+            });
+      });
+
+       
+
+      function img_call_back(fileurl_tmp , elementid)
+    {
+        $("#"+elementid).val(fileurl_tmp);
+        $("#"+elementid+'_pre').attr('href', fileurl_tmp);
+        $("#"+elementid+'_preimg').attr('src', fileurl_tmp);
+        $("#"+elementid+'_preimg').attr('onmouseover', "layer.tips('<img src="+fileurl_tmp+">',this,{tips: [1, '#fff']});");
+    }  
+</script>
+</body>
+</html>

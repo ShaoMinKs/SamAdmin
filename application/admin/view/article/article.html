@@ -1,0 +1,242 @@
+{include file="public/layout" /}
+{load href="__PUBLIC__/plugins/Ueditor/ueditor.config.js"/}
+{load href="__PUBLIC__/plugins/Ueditor/ueditor.all.min.js"/}
+<script type="text/javascript" charset="utf-8" src="__PUBLIC__/plugins/Ueditor/lang/zh-cn/zh-cn.js"></script>
+<script src="__PUBLIC__/static/js/layer/laydate/laydate.js"></script>
+<style>
+    .system_img_location{text-align: center; width: 120px;position:absolute;top:15px; margin-left:265px;}
+    .layui-input-inline {
+        width: 280px!important;
+    }
+    .select {
+        width: 150px!important;
+    }
+    .err {
+        margin-top: 5px!important;
+        display: inline-block!important;
+    }
+</style>
+<body style="background-color: #FFF; overflow: auto;">
+    <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+        <ul class="layui-tab-title">
+            <li> <a href="{:url('admin/article/articlelist')}">文章列表</a> </li>
+            <li class="layui-this"><a  href="{:url('admin/article/article')}">{$info.article_id ? '编辑' : '新增'}文章</a></li>
+            <li style="float:right;padding: 0;min-width: 35px;"><div title="刷新数据" class="pReload"><i class="fa fa-refresh"></i></div></li>
+            <li style="float:right;padding: 0;min-width: 35px;"><a  href="javascript:history.back();" title="返回列表"> <i class="fa  fa-arrow-left"></i></a></li>
+        </ul>
+    </div>
+    <div class="layui-tab-content">
+                <div class="layui-row">
+                    <form class="layui-form" action="{:url('admin/article/articleHandle')}" method="post">
+                        <input type="hidden" name="act" id="act" value="{$info.article_id ? 'edit' : 'add'}">
+                        <input type="hidden" name="id" value="{$info.article_id|default=''}">
+                        <input type="hidden" name="auth_code" value="{$Think.config.AUTH_CODE}"/>
+                        {:token()}
+                        <div class="layui-form-item">
+                            <label class="layui-form-label" for="title">标题</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="title" maxlength="20"  id="title" value="{$info.title|default=''}"   autocomplete="off" class="layui-input">   
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label" for="cat_id">所属分类</label>
+                            <div class="layui-input-inline">
+                                <select name="cat_id" id="cat_id"  class="layui-select" lay-verify="required">
+                                    {volist name="cats" id="item"}
+                                        <option value="{$item.cat_id}" {if condition="!empty($info.group) && $key == $info.group"}selected{/if}> {gt name="$item.level" value="0"}{php}for($i=0;$i<$item['level'];$i++){echo ' &nbsp;&nbsp;&nbsp;&nbsp;';}{/php}{/gt} {$item.cat_name}</option>
+                                    {/volist}
+                                </select>    
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                                <label class="layui-form-label" for="keywords">seo关键字</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="keywords" maxlength="20"  id="keywords" value="{$info.keywords|default=''}" required  lay-verify="required"  autocomplete="off" class="layui-input"> 
+                                </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">是否显示</label>
+                            <div class="layui-input-block">
+                                <input type="checkbox" name="is_open" lay-skin="switch" lay-text="是|否" {$info.is_open ? 'checked' : ''}>
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                                <label class="layui-form-label">内容</label>
+                                <div class="layui-input-block">
+                  
+                                    <textarea class="span12 ckeditor" id="post_content" name="content" title="">
+                                        {if condition="isset($info.content)"} 
+                                            {$info.content|html_entity_decode}  
+                                        {/if}
+                                    </textarea>  
+        
+                                        
+                                </div>
+                        </div>
+                        <div class="layui-form-item">
+                                <label class="layui-form-label" for="publish_time">发布时间</label>
+                                <div class="layui-input-inline">
+                                    {if condition="isset($info.publish_time)"} 
+                                    <input type="text" name="publish_time"  id="publish_time" value="{$info.publish_time|date='Y-m-d'}" required  lay-verify="required"  autocomplete="off" class="layui-input"> 
+                                    {else /}
+                                    <input type="text" name="publish_time"  id="publish_time" value="{:date('Y-m-d')}" required  lay-verify="required"  autocomplete="off" class="layui-input"> 
+                                    {/if}
+                                      
+                                </div>
+                        </div>
+                        <div class="layui-form-item">
+                                <label class="layui-form-label" for="store_logo">缩略图</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="thumb"  id="thumb" value="{$config.thumb|default=''}" onClick="GetUploadify(1,'thumb','article','img_call_back')" readonly  placeholder="请上传文章缩略图" autocomplete="off" class="layui-input">
+                                    <span class="show">
+                                        <a id="thumb_pre" target="_blank" class="nyroModal" rel="gal" href="{$config.thumb|default=''}">
+                                            <img  id="thumb_preimg" style="width:150px;height:60px;border:2px solid #e5e5e5;border-radius:5px;margin-top:5px" src="{$config.thumb|default=''}" alt="图片" onmouseover="layer.tips('<img src={$config.thumb|default=''}>',this,{tips: [1, '#fff']});" onmouseout="layer.closeAll();">
+                                            
+                                        </a>
+                                    </span>
+                                </div>
+                                <div class="layui-input-inline">
+                                    <input type="button" class="layui-btn layui-btn-normal"  onClick="GetUploadify(1,'thumb','article','img_call_back')" value="上传">
+                                </div>
+                                <div class="layui-form-mid layui-word-aux" style="margin-left:-200px">文章缩略图</div>
+                            </div>
+                        <div class="layui-form-item">
+                            <div class="layui-input-block">
+                            <button class="layui-btn" lay-submit lay-filter="ajaxSubmit">立即提交</button>
+                            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+    </div>
+<div id="goTop"> <a href="JavaScript:void(0);" id="btntop"><i class="fa fa-angle-up"></i></a><a href="JavaScript:void(0);" id="btnbottom"><i class="fa fa-angle-down"></i></a></div>     
+<script>
+      //Demo
+layui.use('form', function(){
+        var form = layui.form;
+        var laydate = layui.laydate;
+        laydate.render({
+            elem: '#publish_time' //指定元素
+            });
+        //监听提交
+    form.on('submit(formDemo)', function(data){
+          $.post("{:url('admin/system/edit_right')}",data.field,function(res){
+              if(!res.code){
+                layer.msg(res.msg,{icon: 2,time: 1000})
+              }else{
+                layer.msg(res.msg,{icon: 1,time: 1000},function () {
+                        window.location.href = res.url;
+                    })
+              }
+          })
+          return false;
+        });
+        //监听select
+   form.on('select(right)', function(data){
+            $.ajax({
+                url: "{:url('system/ajax_get_action')}",
+                data:{'controller':data.value},
+                type:'post',
+                dataType:'html',
+                success : function(res){
+                    $('.method-list').empty().append(res);
+                    form.render('checkbox');
+                }
+            });
+
+        })
+    form.on('checkbox()', function(data){
+        var is_check = data.elem.checked;
+        var ncode = $('#controller').val();
+        var row_id = ncode+'_'+ data.value;
+        if(is_check){
+            var a = [];
+            $('#rightList .form-control').each(function(i,o){
+                    if($(o).val() != ''){
+                        a.push($(o).val());
+                    }
+                });
+    
+            if(ncode !== ''){
+                var temp = ncode+'@'+ data.value;
+                if($.inArray(temp,a) != -1){
+                    return ;
+                }
+            }else{
+                layer.alert("请选择控制器" , {icon:2,time:1000});
+                return;
+            }
+            var strtr = "<tr id="+row_id+">";
+            if(ncode!= ''){
+                strtr += '<td><input type="text" name="right[]" value="'+ncode+'@'+ data.value+'" readonly class="layui-input" style="width:300px;"></td>';
+            }else{
+                strtr += '<td><input type="text" name="right[]" value="" readonly class="layui-input" style="width:300px;"></td>';
+            }
+            strtr += '<td style="text-align: center;"><a href="javascript:;" class="layui-btn" onclick="$(this).parent().parent().remove();">删除</a></td>';
+            $('#rightList').append(strtr);
+        }else{
+            $("#"+row_id).remove();
+        }
+
+    })
+      });
+
+       
+    var url="{:url('admin/Ueditor/index',array('savePath'=>'article'))}";
+    var ue = UE.getEditor('post_content',{
+        serverUrl :url,
+        zIndex: 999,
+        initialFrameWidth: "80%", //初化宽度
+        initialFrameHeight: 300, //初化高度            
+        focus: false, //初始化时，是否让编辑器获得焦点true或false
+        maximumWords: 99999, removeFormatAttributes: 'class,style,lang,width,height,align,hspace,valign',//允许的最大字符数 'fullscreen',
+        pasteplain:false, //是否默认为纯文本粘贴。false为不使用纯文本粘贴，true为使用纯文本粘贴
+        autoHeightEnabled: true
+    });
+
+      function img_call_back(fileurl_tmp , elementid)
+    {
+        $("#"+elementid).val(fileurl_tmp);
+        $("#"+elementid+'_pre').attr('href', fileurl_tmp);
+        $("#"+elementid+'_preimg').attr('src', fileurl_tmp);
+        $("#"+elementid+'_preimg').attr('onmouseover', "layer.tips('<img src="+fileurl_tmp+">',this,{tips: [1, '#fff']});");
+    }  
+</script>
+
+<script type="text/javascript">
+   
+    // 判断输入框是否为空
+    function adsubmit(){
+        $('.err').show();
+        var password =$('#password').val();
+        var act =$('#act').val();
+        if((password.length < 6 || password.length>18) && act=='add'){
+            layer.msg('密码长度应该在6-18位！', {icon: 2,time: 1000});//alert('少年，密码不能为空！');
+            return false;
+        }
+        $.ajax({
+            async:false,
+            url:'/index.php/Admin/Admin/adminHandle?t='+Math.random(),
+            data:$('#adminHandle').serialize(),
+            type:'post',
+            dataType:'json',
+            success:function(data){
+                if(!data.code){
+                    layer.msg(data.msg,{icon: 2,time: 2000})
+                    $.each(data.result,function (index,item) {
+                        $('#err_'+index).text(item)
+                    })
+                }else{
+                    layer.msg(data.msg,{icon: 1,time: 3000},function () {
+                        window.location.href = data.url;
+                    })
+                }
+            },
+            error : function(XMLHttpRequest, textStatus, errorThrown) {
+                $('#error').html('<span class="error">网络失败，请刷新页面后重试!</span>');
+            }
+        });
+    }
+</script>
+</body>
+</html>

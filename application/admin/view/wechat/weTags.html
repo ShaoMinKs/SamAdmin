@@ -1,0 +1,80 @@
+{include file="public/layout" /}
+<link rel="stylesheet" href="__PUBLIC__/static/css/consoles.css">
+<link rel="stylesheet" href="__PUBLIC__/static/css/bootstrap.min.css">
+<link rel="stylesheet" href="__PUBLIC__/static/css/style.css">
+<script src="__PUBLIC__/static/js/wechat.js?v=1.2"></script>
+<style>
+    a {
+        color:#333
+    }
+</style>
+<body>
+    <div class="wrapper wrapper-content  layui-anim layui-anim-up" style="padding:0 10px">
+        <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+            <ul class="layui-tab-title">
+                <li class="layui-this"> <a href="{:url('admin/wechat/weTags')}">微信标签管理</a> </li>
+                <div class="pull-right margin-right-15 nowrap">
+                    <button data-modal="{:url('tagsAdd')}" data-title="添加标签" class='layui-btn layui-btn-sm'> <i class="fa fa-plus"></i> 添加标签</button>
+                    <button data-load="{:url('sync')}" class='layui-btn layui-btn-sm layui-btn-primary'>远程获取标签</button>            
+                </div>    
+            </ul>
+        </div> 
+        <!-- 表单搜索 开始 -->
+        <form autocomplete="off" class="layui-form layui-form-pane form-search" action="{:request()->url()}"  method="get">
+            <div class="layui-form-item layui-inline">
+                <label class="layui-form-label">标 签</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="name" value="{$Think.get.name|default=''}" placeholder="请输入标签" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item layui-inline">
+                <button class="layui-btn layui-btn-primary"><i class="layui-icon">&#xe615;</i> 搜 索</button>
+            </div>
+        </form>
+        <!-- 表单搜索 结束 -->
+        <form onsubmit="return false;" data-auto="true" method="post">
+            {if empty($list)}
+            <p class="help-block text-center well">没 有 记 录 哦！</p>
+            {else}
+            <input type="hidden" value="resort" name="action"/>
+            <table class="layui-table" lay-skin="line">
+                <thead>
+                <tr>
+                    <th class='list-table-check-td think-checkbox'>
+                        <input data-auto-none="" data-check-target='.list-check-box' type='checkbox'/>
+                    </th>
+                    <th class='text-center'>ID</th>
+                    <th class='text-left'>标签名称</th>
+                    <th class='text-left'>标签类型</th>
+                    <th class='text-right'>粉丝数</th>
+                    <th class='text-center'>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                {foreach $list as $key=>$vo}
+                <tr>
+                    <td class='list-table-check-td think-checkbox'>
+                        <input class="list-check-box" value='{$vo.id}' type='checkbox'>
+                    </td>
+                    <td class='text-center'>{$vo.id|default='0'}</td>
+                    <td class='text-left'>{$vo.name|default=''}</td>
+                    <td class='text-left'>{$vo.id < 100 ? "系统标签" : "自定义标签"}</td>
+                    <td class='text-right'>{$vo.count|default=''}</td>
+                    <td class='text-center nowrap'>
+                        {if $vo.id < 100}
+                            {else /}
+                            <span class="text-explode">|</span>
+                            <a data-modal='{:url("admin/wechat/tagEdit")}?id={$vo.id}' data-title="编辑标签">编辑</a>        
+                            <span class="text-explode">|</span>
+                            <a data-update="{$vo.id}" data-field='delete' data-action='{:url("tagDel")}'>删除</a>
+                        {/if}   
+                    </td>
+                </tr>
+                {/foreach}
+                </tbody>
+            </table>
+            {if isset($page)}<p>{$page|raw}</p>{/if}
+            {/if}
+        </form>
+    </div>
+</body>

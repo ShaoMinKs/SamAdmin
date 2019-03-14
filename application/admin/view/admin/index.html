@@ -1,0 +1,161 @@
+{include file="public/layout" /}
+<body style="background-color: rgb(255, 255, 255); overflow: auto; cursor: default; -moz-user-select: inherit;">
+<div id="append_parent"></div>
+<div id="ajaxwaitid"></div>
+<div class="page" style="padding-top:10px">
+	<div class="flexigrid">
+		<div class="mDiv">
+			<div class="ftitle">
+				<h3>管理员列表</h3>
+				<h5>(共{$list|count}条记录)</h5>
+			</div>
+			<div title="刷新数据" class="pReload"><i class="fa fa-refresh"></i></div>
+        </div>
+        <div class="demoTable" style="margin-top:10px">
+                用户名搜索：
+                <div class="layui-inline">
+                  <input class="layui-input" name="id" id="demoReload" autocomplete="off">
+                </div>
+                <button class="layui-btn" data-type="reload" id="search">搜索</button>
+                <a class="layui-btn" href="{:url('admin/admin/admin_info')}"> <i class="fa fa-plus"></i> 新增管理员</a>
+        </div>	
+        <div>                   
+            <table class="layui-hide" id="test" lay-filter="test"></table>
+        </div>	
+        <script type="text/html" id="barDemo">
+            {{#  if(d.admin_id != 1){ }}
+                <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+                <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+            {{#  } else { }}
+               
+            {{#  } }}
+          </script>
+	</div>
+</div>
+<script>
+	$(document).ready(function(){
+    layui.use('table', function(){
+    var table = layui.table;
+  
+var tableIns = table.render({
+    elem: '#test'
+    ,url:"{:url('admin/admin/getAdmin')}"
+    ,toolbar: '#toolbarDemo'
+    ,title: '用户数据表'
+    ,cols: [[
+      {type: 'checkbox', fixed: 'left'}
+      ,{field:'admin_id', title:'ID',  fixed: 'left', unresize: true, sort: true}
+      ,{field:'user_name', title:'用户名',  edit: 'text'}
+      ,{field:'email', title:'邮箱', edit: 'text', templet: function(res){
+        return '<em>'+ res.email +'</em>'
+      }}
+      ,{field:'role', title:'所属角色'}
+      ,{field:'last_ip', title:'IP'}
+      ,{field:'last_login', title:'最近登录',  sort: true}
+      ,{field:'add_time', title:'加入时间'}
+      ,{fixed: 'right', title:'操作', toolbar: '#barDemo'}
+    ]]
+    ,page: true
+  });
+
+  $('#search').on('click',function(){
+      var name = $("#demoReload").val();
+      tableIns.reload({
+        where: { //设定异步数据接口的额外参数，任意设
+           'keyword' : name,
+        }
+        ,page: {
+            curr: 1 //重新从第 1 页开始
+        }
+        });
+  })
+
+ 
+
+  //头工具栏事件
+  table.on('toolbar(test)', function(obj){
+    var checkStatus = table.checkStatus(obj.config.id);
+    switch(obj.event){
+      case 'getCheckData':
+        var data = checkStatus.data;
+        layer.alert(JSON.stringify(data));
+      break;
+      case 'getCheckLength':
+        var data = checkStatus.data;
+        layer.msg('选中了：'+ data.length + ' 个');
+      break;
+      case 'isAll':
+        layer.msg(checkStatus.isAll ? '全选': '未全选');
+      break;
+    };
+  });
+
+    //监听单元格编辑
+ table.on('edit(test)', function(obj){
+    var value = obj.value //得到修改后的值
+    ,data     = obj.data //得到所在行所有键值
+    ,field    = obj.field; //得到字段
+    changeTableValue('admin','admin_id',data.admin_id,field,value);
+    // layer.msg('[ID: '+ data.admin_id +'] ' + field + ' 字段更改为：'+ value);
+  });
+
+
+  
+  //监听行工具事件
+  table.on('tool(test)', function(obj){
+    var data = obj.data;
+    //console.log(obj)
+    if(obj.event === 'del'){
+      layer.confirm('确定删除么', function(index){
+        $.post("{:url('admin/admin/adminHandle')}",{admin_id:data.admin_id,'act':'del','auth_code':"{$Think.config.AUTH_CODE}"},function(res){
+          if(res.code == 1){
+            obj.del();
+            layer.close(index);
+          }
+        });
+      });
+    } else if(obj.event === 'edit'){
+        var admin_id  = data.admin_id;
+        window.location.href = "/admin/admin/admin_info/admin_id/"+admin_id;
+    }
+  });
+});
+		// 表格行点击选中切换
+		$('#flexigrid > table>tbody >tr').click(function(){
+			$(this).toggleClass('trSelected');
+		});
+
+		// 点击刷新数据
+		$('.fa-refresh').click(function(){
+			location.href = location.href;
+		});
+
+	});
+
+
+	function delfun(obj) {
+		// 删除按钮
+		layer.confirm('确认删除？', {
+			btn: ['确定', '取消'] //按钮
+		}, function () {
+			$.ajax({
+				type: 'post',
+				url: $(obj).attr('data-url'),
+				data : {act:'del',admin_id:$(obj).attr('data-id')},
+				dataType: 'json',
+				success: function (data) {
+					if (data.status == 1) {
+						layer.msg(data.msg,{icon: 1,time: 1000},function () {
+							$(obj).parent().parent().parent().remove();
+						})
+					} else {
+						layer.msg(data.msg,{icon: 2,time: 2000})
+					}
+				}
+			})
+		}, function () {
+		});
+	}
+</script>
+</body>
+</html>

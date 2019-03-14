@@ -1,0 +1,171 @@
+{include file="public/layout" /}
+<body style="background-color: rgb(255, 255, 255); overflow: auto; cursor: default; -moz-user-select: inherit;">
+  <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+    <ul class="layui-tab-title">
+      <li class="layui-this">分类列表 <span style="font-size:12px;color:#777">(共{$list|count}条记录)</span></li>
+      <li><a  href="{:url('admin/article/category',['act'=>'add'])}">新增分类</a></li>
+      <li style="float:right"><div title="刷新数据" class="pReload"><i class="fa fa-refresh"></i></div></li>
+    </ul>
+    <div class="layui-tab-content">
+      <div>
+        <div class="flexigrid">
+              <div class="demoTable">
+                <form class="layui-form layui-form-pane" action="{:url('admin/article/categoryList')}"  id="search_form">
+                  <div class="layui-inline">
+                    <label class="layui-form-label">关键词</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="cat_name" value="{$Request.get.cat_name}" id="name" placeholder="请输入关键字" class="layui-input" style="padding-left:8px">
+                    </div>
+                  </div>
+                  <div class="layui-inline">
+                    <button class="layui-btn" data-type="reload" id="search">搜索</button>
+                  </div>
+                </form>
+              </div>	
+              <div>  
+                  <hr>	                 
+                  <table class="layui-table">
+                      <thead>
+                          <tr>
+                              <th>排序</th>
+                              <th>分类名称</th>
+                              <th>分类描述</th>
+                              <th style="width:300px">操作</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          {volist name="list" id="vo"}
+                              <tr>
+                                  <td>{$vo.sort_order}</td>
+                                  <td>{gt name="$vo.level" value="0"}{php}for($i=0;$i<$vo['level'];$i++){echo ' &nbsp;&nbsp;&nbsp;&nbsp;';}{/php}{/gt}{$vo.cat_name}</td>
+                                  <td>{$vo.cat_desc}</td>
+                                  <td>
+                                      <a href="{:url('admin/article/editCategory',['cat_id'=>$vo.cat_id,'act'=>'edit'])}" class="layui-btn layui-btn-xs"><i class="fa fa-pencil-square-o"></i>编辑</a>
+                                      <a href="{:url('admin/article/category',['parent_id'=>$vo.cat_id,'act'=>'add'])}" class="layui-btn layui-btn-xs"><i class="fa fa-plus"></i>新增下级分类</a>
+                                      <a href="javascript:void(0)" data-url="{:url('admin/article/categoryHandle')}" class="layui-btn layui-btn-danger layui-btn-xs" data-id="{$vo.cat_id}" onclick="delfun(this)"><i class="fa fa-trash-o"></i>删除</a>
+                                  </td>
+                              </tr>
+                          {/volist}
+                      </tbody>
+                  </table>
+              </div>	
+       
+        </div>
+      </div>
+    </div>
+  </div>
+<script>
+$(document).ready(function(){
+    layui.use('table', function(){
+    var table = layui.table;
+	  var  form = layui.form;
+
+
+//监听锁定操作
+form.on('checkbox(is_open)', function(obj){
+	var checked = obj.elem.checked ? '1' : '0';
+	changeTableValue('article','article_id',$(this).data('id'),this.name,checked);
+    // layer.tips(this.value + ' ' + this.name + '：'+ obj.elem.checked, obj.othis);
+  });
+
+  $('#search').on('click',function(){
+      var name = $("#name").val();
+      tableIns.reload({
+        where: { //设定异步数据接口的额外参数，任意设
+           'keyword' : name,
+        }
+        ,page: {
+            curr: 1 //重新从第 1 页开始
+        }
+        });
+  })
+
+ 
+
+  //头工具栏事件
+  table.on('toolbar(test)', function(obj){
+    var checkStatus = table.checkStatus(obj.config.id);
+    switch(obj.event){
+      case 'getCheckData':
+        var data = checkStatus.data;
+        layer.alert(JSON.stringify(data));
+      break;
+      case 'getCheckLength':
+        var data = checkStatus.data;
+        layer.msg('选中了：'+ data.length + ' 个');
+      break;
+      case 'isAll':
+        layer.msg(checkStatus.isAll ? '全选': '未全选');
+      break;
+    };
+  });
+
+    //监听单元格编辑
+ table.on('edit(test)', function(obj){
+    var value = obj.value //得到修改后的值
+    ,data     = obj.data //得到所在行所有键值
+    ,field    = obj.field; //得到字段
+    changeTableValue('admin','admin_id',data.admin_id,field,value);
+    // layer.msg('[ID: '+ data.admin_id +'] ' + field + ' 字段更改为：'+ value);
+  });
+
+
+  
+  //监听行工具事件
+  table.on('tool(test)', function(obj){
+    var data = obj.data;
+    //console.log(obj)
+    if(obj.event === 'del'){
+      layer.confirm('确定删除么', function(index){
+        $.post("{:url('admin/system/edit_right')}",{id:data.id,'right':data.right,'act':'del','auth_code':"{$Think.config.AUTH_CODE}"},function(res){
+          if(res.code == 1){
+            obj.del();
+            layer.close(index);
+          }
+        });
+      });
+    } else if(obj.event === 'edit'){
+        var id  = data.articel_id;
+        window.location.href = "/admin/article/article/id/"+id;
+    }
+  });
+});
+		// 表格行点击选中切换
+		$('#flexigrid > table>tbody >tr').click(function(){
+			$(this).toggleClass('trSelected');
+		});
+
+		// 点击刷新数据
+		$('.fa-refresh').click(function(){
+			location.href = location.href;
+		});
+
+	});
+
+
+	function delfun(obj) {
+		// 删除按钮
+		layer.confirm('确认删除？', {
+			btn: ['确定', '取消'] //按钮
+		}, function () {
+			$.ajax({
+				type: 'post',
+				url: $(obj).attr('data-url'),
+				data : {act:'del',cat_id:$(obj).attr('data-id')},
+				dataType: 'json',
+				success: function (data) {
+					if (data.code == 1) {
+						layer.msg(data.msg,{icon: 1,time: 1000},function () {
+							$(obj).parent().parent().remove();
+						})
+					} else {
+						layer.msg(data.msg,{icon: 2,time: 2000})
+					}
+				}
+			})
+		}, function () {
+		});
+	}
+</script>
+</body>
+</html>

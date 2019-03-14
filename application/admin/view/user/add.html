@@ -1,0 +1,125 @@
+{include file="public/layout" /}
+<style>
+    .system_img_location{text-align: center; width: 120px;position:absolute;top:15px; margin-left:265px;}
+    .layui-input-inline {
+        width: 280px!important;
+    }
+    .select {
+        width: 150px!important;
+    }
+    .err {
+        margin-top: 5px!important;
+        display: inline-block!important;
+    }
+</style>
+<body style="background-color: #FFF; overflow: auto;">
+    <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+        <ul class="layui-tab-title">
+            <li> <a href="{:url('admin/user/index')}">会员列表</a> </li>
+            <li class="layui-this"><a  href="{:url('admin/user/add')}">{$info.user_id ? '编辑' : '新增'}会员</a></li>
+            <li style="float:right;padding: 0;min-width: 35px;"><div title="刷新数据" class="pReload"><i class="fa fa-refresh"></i></div></li>
+            <li style="float:right;padding: 0;min-width: 35px;"><a  href="javascript:history.back();" title="返回列表"> <i class="fa  fa-arrow-left"></i></a></li>
+        </ul>
+    </div>
+    <div class="layui-tab-content">
+                <div class="layui-row">
+                    <form class="layui-form" action="{:url('admin/user/userHandle')}" method="post">
+                        <input type="hidden" name="act" id="act" value="{$info.user_id ? 'edit' : 'add'}">
+                        <input type="hidden" name="user_id" value="{$info.user_id|default=''}">
+                        <input type="hidden" name="auth_code" value="{$Think.config.AUTH_CODE}"/>
+                        {:token()}
+                        <div class="layui-form-item">
+                            <label class="layui-form-label" for="nickname">会员昵称</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="nickname" maxlength="20"  id="nickname" value="{$info.nickname|default=''}" required  lay-verify="required"  autocomplete="off" class="layui-input">   
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label" for="head_pic">头像</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="head_pic"  id="head_pic" value="{$info.head_pic|default=''}" onClick="GetUploadify(1,'head_pic','head','img_call_back')" readonly  placeholder="请上传链接图片" autocomplete="off" class="layui-input">
+                                <span class="show">
+                                    <a id="link_logo_pre" target="_blank" class="nyroModal" rel="gal" href="{$config.head_pic|default=''}">
+                                        <img  id="head_pic_preimg" style="width:150px;height:60px;border:2px solid #e5e5e5;border-radius:5px;margin-top:5px" src="{$info.head_pic|default=''}" alt="图片" onmouseover="layer.tips('<img src={$info.head_pic|default=''}>',this,{tips: [1, '#fff']});" onmouseout="layer.closeAll();">
+                                        
+                                    </a>
+                                </span>
+                            </div>
+                            <div class="layui-input-inline">
+                                <input type="button" class="layui-btn layui-btn-normal"  onClick="GetUploadify(1,'head_pic','head','img_call_back')" value="上传">
+                            </div>
+                            <div class="layui-form-mid layui-word-aux" style="margin-left:-200px">头像</div>
+                        </div>
+                        <div class="layui-form-item">
+                                <label class="layui-form-label" for="password">登录密码</label>
+                                <div class="layui-input-inline">
+                                    <input type="password" name="password"   id="password" value="{$info.password|default=''}"  required  lay-verify="required"  autocomplete="off" class="layui-input"> 
+                                </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label" for="password_confirm">重复密码</label>
+                            <div class="layui-input-inline">
+                                <input type="password" name="password_confirm"   id="password_confirm" value="{$info.password|default=''}"  required  lay-verify="required"  autocomplete="off" class="layui-input"> 
+                            </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label" for="mobile">手机号码</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="mobile"   id="mobile" value="{$info.mobile|default=''}"  required  lay-verify="required|phone|number"  autocomplete="off" class="layui-input"> 
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">性别</label>
+                        <div class="layui-input-block">
+                          <input type="radio" name="sex" value="1" title="男"  {if condition="isset($info.sex) && $info.sex == 1"} 'checked'{/if}>
+                          <input type="radio" name="sex" value="2" title="女" {if condition="isset($info.sex) && $info.sex == 2"} 'checked'{/if}>
+                        </div>
+                      </div>
+                      <div class="layui-form-item">
+                        <label class="layui-form-label" for="qq">QQ</label>
+                        <div class="layui-input-inline">
+                            <input type="password" name="qq"   id="qq" value="{$info.qq|default=''}"    autocomplete="off" class="layui-input"> 
+                        </div>
+                       </div>
+                       <div class="layui-form-item">
+                        <label class="layui-form-label" for="email">邮箱</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="email"   id="email" value="{$info.email|default=''}"    autocomplete="off" class="layui-input"> 
+                        </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">是否锁定</label>
+                            <div class="layui-input-block">
+                                <input type="checkbox" name="is_lock" lay-skin="switch" lay-text="是|否" {$info.is_lock ? 'checked' : ''}>
+                            </div>
+                        </div> 
+                        
+                        <div class="layui-form-item">
+                            <div class="layui-input-block">
+                            <button class="layui-btn" lay-submit lay-filter="ajaxSubmit">立即提交</button>
+                            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+    </div>
+<div id="goTop"> <a href="JavaScript:void(0);" id="btntop"><i class="fa fa-angle-up"></i></a><a href="JavaScript:void(0);" id="btnbottom"><i class="fa fa-angle-down"></i></a></div>     
+<script>
+      //Demo
+layui.use('form', function(){
+        var form = layui.form;
+        //监听select
+      });
+
+      function img_call_back(fileurl_tmp , elementid)
+    {
+        $("#"+elementid).val(fileurl_tmp);
+        $("#"+elementid+'_pre').attr('href', fileurl_tmp);
+        $("#"+elementid+'_preimg').attr('src', fileurl_tmp);
+        $("#"+elementid+'_preimg').attr('onmouseover', "layer.tips('<img src="+fileurl_tmp+">',this,{tips: [1, '#fff']});");
+    }  
+</script>
+
+
+</body>
+</html>

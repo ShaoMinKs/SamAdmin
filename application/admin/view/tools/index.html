@@ -1,0 +1,170 @@
+{include file="public/layout" /}
+<body style="background-color: rgb(255, 255, 255); overflow: auto; cursor: default; -moz-user-select: inherit;">
+<div id="append_parent"></div>
+<div id="ajaxwaitid"></div>
+<div class="page" style="padding-top:10px">
+	<div class="flexigrid">
+		<div class="mDiv">
+			<div class="ftitle">
+				<h3>数据库列表</h3>
+				<h5>(共{$count}条记录,共{$total})</h5>
+			</div>
+			<div title="刷新数据" class="pReload"><i class="fa fa-refresh"></i></div>
+        </div>		
+        <div>                   
+            <table class="layui-hide" id="test" lay-filter="test"></table>
+        </div>	
+        <script type="text/html" id="barDemo">
+            <a class="layui-btn layui-btn-xs" lay-event="optimize"><i class="fa fa-magic"></i>优化</a>
+            <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="repair"><i class="fa fa-wrench"></i>修复</a>
+        </script>
+        <script type="text/html" id="toolbarDemo">
+            <div class="layui-btn-container">
+              <button class="layui-btn layui-btn-sm" lay-event="backup" id="backup">备份数据</button>
+            </div>
+          </script>
+	</div>
+</div>
+<script>
+	$(document).ready(function(){
+    layui.use('table', function(){
+    var table = layui.table;
+  
+var tableIns = table.render({
+    elem: '#test'
+    ,url:"{:url('admin/tools/ajaxGetTables')}"
+    ,toolbar: '#toolbarDemo'
+    ,title: '数据表'
+    ,cols: [[
+      {type: 'checkbox', fixed: 'left'}
+      ,{field:'Name', title:'表名',  fixed: 'left', unresize: true}
+      ,{field:'Rows', title:'记录条数'}
+      ,{field:'size', title:'占用空间'}
+      ,{field:'Collation', title:'编码'}
+      ,{fixed: 'right', title:'操作', toolbar: '#barDemo'}
+    ]]
+    ,page: true
+  });
+
+  //头工具栏事件
+  table.on('toolbar(test)', function(obj){
+    var checkStatus = table.checkStatus(obj.config.id);
+    switch(obj.event){
+      case 'backup':
+        var data = checkStatus.data;
+        if(!data.length){
+            layer.msg('请选中要备份的数据表');
+            return false
+        }
+        $('#backup').addClass("disabled");
+		$('#backup').html("正在发送备份请求...");
+       $.ajax({
+           url : "{:url('admin/tools/createBackup')}",
+           data : {
+               tables : data
+           },
+           type : 'post',
+           success:function(res){
+            if(!res.code){
+                layer.msg(res.msg,{icon: 2,time: 2000})
+                $('#backup').removeClass("disabled");
+				$('#backup').html("立即备份");
+              }else{
+                tables = res.data.tables;
+                $('#backup').html(res.msg + "开始备份，请不要关闭本页面！");
+                backup(res.data.tab);
+				window.onbeforeunload = function(){ return "正在备份数据库，请不要关闭！" }
+              }
+           }
+       });
+      break;
+    };
+  });
+
+  function backup(tab, status){
+			status && $('#backup').html("开始备份...(0%)");
+			$.get("{:url('admin/tools/createBackup')}", tab, function(data){
+				if(data.code){
+                    $('#backup').html(data.msg);
+					if(!$.isPlainObject(data.data.tab)){
+						$('#backup').removeClass("disabled");
+						$('#backup').html("备份完成，点击重新备份");
+						window.onbeforeunload = function(){ return null }
+						return;
+					}
+					backup(data.data.tab, tab.id != data.data.tab.id);
+				} else {
+					$('#backup').removeClass("disabled");
+					$('#backup').html("立即备份");
+				}
+			}, "json");
+		}
+
+
+  
+  //监听行工具事件
+  table.on('tool(test)', function(obj){
+    var data = obj.data;
+    //console.log(obj)
+    if(obj.event === 'optimize'){
+      $.post("{:url('admin/tools/optimize')}",{tablename : data.Name},function(res){
+        if(!res.code){
+                layer.msg(res.msg,{icon: 2,time: 1000})
+              }else{
+                layer.msg(res.msg,{icon: 1,time: 1000},function () {
+                        window.location.href = res.url;
+                    })
+              }
+      });
+    } else if(obj.event === 'repair'){
+        $.post("{:url('admin/tools/repair')}",{tablename : data.Name},function(res){
+        if(!res.code){
+                layer.msg(res.msg,{icon: 2,time: 1000})
+              }else{
+                layer.msg(res.msg,{icon: 1,time: 1000},function () {
+                        window.location.href = res.url;
+                    })
+              }
+      });
+    }
+  });
+});
+		// 表格行点击选中切换
+		$('#flexigrid > table>tbody >tr').click(function(){
+			$(this).toggleClass('trSelected');
+		});
+
+		// 点击刷新数据
+		$('.fa-refresh').click(function(){
+			location.href = location.href;
+		});
+
+	});
+
+
+	function delfun(obj) {
+		// 删除按钮
+		layer.confirm('确认删除？', {
+			btn: ['确定', '取消'] //按钮
+		}, function () {
+			$.ajax({
+				type: 'post',
+				url: $(obj).attr('data-url'),
+				data : {act:'del',admin_id:$(obj).attr('data-id')},
+				dataType: 'json',
+				success: function (data) {
+					if (data.status == 1) {
+						layer.msg(data.msg,{icon: 1,time: 1000},function () {
+							$(obj).parent().parent().parent().remove();
+						})
+					} else {
+						layer.msg(data.msg,{icon: 2,time: 2000})
+					}
+				}
+			})
+		}, function () {
+		});
+	}
+</script>
+</body>
+</html>

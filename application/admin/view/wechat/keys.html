@@ -1,0 +1,198 @@
+{include file="public/layout" /}
+<link rel="stylesheet" href="__PUBLIC__/static/css/consoles.css">
+<link rel="stylesheet" href="__PUBLIC__/static/css/bootstrap.min.css">
+<link rel="stylesheet" href="__PUBLIC__/static/css/style.css">
+<script src="__PUBLIC__/static/js/wechat.js?v=1.2"></script>
+<style>
+    a {
+        color:#333
+    }
+</style>
+<body>
+    <div class="wrapper wrapper-content  layui-anim layui-anim-up" style="padding:0 10px">
+        <!-- <div class="layui-header notselect"  style="border-bottom:1px solid #e7eaec;height: 40px;">
+            <div class="pull-left"><span style="color:#333">微信关键字管理</span></div>
+            <div class="pull-right margin-right-15 nowrap">
+                    <a href="{:url('add')}" class='layui-btn layui-btn-sm layui-btn-primary'>添加规则</a>
+                    <button data-update data-field='delete' data-action='{:url("home/wechats/del")}' class='layui-btn layui-btn-sm layui-btn-primary'>删除规则</button>            
+            </div>
+        </div>       -->
+        <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+            <ul class="layui-tab-title">
+                <li class="layui-this"> <a href="{:url('admin/wechat/keys')}">微信关键字管理</a> </li>
+                <li> <a href="{:url('admin/wechat/keysEdit',['act'=>'add'])}">添加关键字</a> </li>
+                <!-- <div class="pull-right margin-right-15 nowrap">
+                    <a href="{:url('admin/wechat/keysEdit',['act'=>'add'])}" class='layui-btn layui-btn-sm layui-btn-primary'>添加规则</a>
+                    <button data-update data-field='delete' data-action="{:url('admin/wechat/keysEdit',['act'=>'del'])}" class='layui-btn layui-btn-sm layui-btn-primary'>删除规则</button>            
+                </div>     -->
+            </ul>
+        </div> 
+    <form onsubmit="return false;" data-auto="true" action="{:request()->url()}" method="post">
+            {if count($list) == 0}
+            <p class="help-block text-center well">没 有 记 录 哦！</p>
+            {else /}
+            <input type="hidden" value="resort" name="action"/>
+            <table class="layui-table" lay-skin="line">
+                <thead>
+                <tr>
+                    <th class='list-table-check-td think-checkbox'>
+                        <input data-auto-none="" data-check-target='.list-check-box' type='checkbox'/>
+                    </th>
+                    <th class='list-table-sort-td'>
+                        <button type="submit" class="layui-btn layui-btn-normal layui-btn-xs">排 序</button>
+                    </th>
+                    <th class="text-left nowrap">关键字</th>
+                    <th class="text-left nowrap">类型</th>
+                    <th class="text-left nowrap">预览</th>
+                    <th class="text-left nowrap">添加时间</th>
+                    <th class="text-left nowrap">状态</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+             
+                {foreach  $list as $key=>$vo}
+                <tr>
+                    <td class='list-table-check-td think-checkbox'>
+                        <input class="list-check-box" value='{$vo.id}' type='checkbox'/>
+                    </td>
+                    <td class='list-table-sort-td'>
+                        <input name="_{$vo.id}" value="{$vo.sort}" class="list-sort-input"/>
+                    </td>
+                    <td class="text-left nowrap">
+
+                        {$vo.keys}
+                    </td>
+                    <td class="text-left nowrap">{$vo.type}</td>
+                    <td class="text-left nowrap">
+                        {if condition="$vo.type eq 'music'" }
+                        <a data-phone-view='{:url("admin/wechat/review")}?type=music&title={$vo.music_title|urlencode}&desc={$vo.music_desc|urlencode}'>预览 <i class="fa fa-eye"></i></a>
+                        {elseif condition="$vo.type eq 'text'" }
+                        <a data-phone-view='{:url("admin/wechat/review")}?type=text&content={$vo.content|urlencode}'>预览 <i class="fa fa-eye"></i></a>
+                        {elseif condition="$vo.type eq 'image'"}
+                        <a data-phone-view='{:url("admin/wechat/review")}?type=image&content={$vo.image_url|urlencode}'>预览 <i class="fa fa-eye"></i></a>
+                        {elseif condition="$vo.type eq 'news'"}
+                        <a data-phone-view='{:url("admin/wechat/review")}?type=news&content={$vo.news_id}'>预览 <i class="fa fa-eye"></i></a>
+                        {elseif condition="$vo.type eq 'video'" }
+                        <a data-phone-view='{:url("admin/wechat/review")}?type=video&title={$vo.video_title|urlencode}&desc={$vo.video_desc|urlencode}&url={$vo.video_url|urlencode}'>预览 <i class="fa fa-eye"></i></a>
+                        {else}
+                            {$vo.content}
+                        {/if}
+                    </td>
+                    <td class="text-left nowrap">{$vo.create_at}</td>
+                    <td class='text-left nowrap'>
+                        {if  condition="$vo.status eq 0"}<span class="color-desc">已禁用</span>{elseif condition="$vo.status eq 1"}<span class="color-green">使用中</span>{/if}
+                    </td>
+                    <td class='text-left nowrap'>
+        
+                        <span class="text-explode">|</span>
+                        <a data-open='{:url("edit")}?id={$vo.id}' href="{:url('keysEdit',['id'=>$vo.id,'act'=>'edit'])}">编辑</a>
+
+        
+                        {if condition="$vo.status eq 1"}
+                        <span class="text-explode">|</span>
+                        <a data-update="{$vo.id}" data-field='status' data-value='0' data-action='{:url("admin/wechat/forbid")}'>禁用</a>
+                        {elseif condition="1==1"}
+                        <span class="text-explode">|</span>
+                        <a data-update="{$vo.id}" data-field='status' data-value='1' data-action='{:url("admin/wechat/forbid")}'>启用</a>
+                        {/if}
+        
+                  
+                        <span class="text-explode">|</span>
+                        <a data-update="{$vo.id}" data-field='delete'  data-action="{:url('admin/wechat/keysHandle',['id'=>$vo.id,'act'=>'del'])}">删除</a>
+                  
+        
+                    </td>
+                </tr>
+            {/foreach}
+                </tbody>
+            </table>
+            {$list|raw}
+        {/if}
+        </form>
+        </div>
+<script>
+    
+$(function () {
+    /**
+     * 默认类型事件
+     * @type String
+     */
+    $('body').off('change', 'select[name=type]').on('change', 'select[name=type]', function () {
+        var value = $(this).val(), $form = $(this).parents('form');
+        var $current = $form.find('[data-keys-type="' + value + '"]').removeClass('hide');
+        $form.find('[data-keys-type]').not($current).addClass('hide');
+        switch (value) {
+            case 'news':
+                return $('[name="news_id"]').trigger('change');
+            case 'text':
+                return $('[name="content"]').trigger('change');
+            case 'image':
+                return $('[name="image_url"]').trigger('change');
+            case 'video':
+                return $('[name="video_url"]').trigger('change');
+            case 'music':
+                return $('[name="music_url"]').trigger('change');
+            case 'voice':
+                return $('[name="voice_url"]').trigger('change');
+        }
+    });
+
+    function showReview(params) {
+        params = params || {};
+        $('#phone-preview').attr('src', '{"@wechat/review"|app_url}&' + $.param(params));
+    }
+
+    // 图文显示预览
+    $('body').off('change', '[name="news_id"]').on('change', '[name="news_id"]', function () {
+        showReview({type: 'news', content: this.value});
+    });
+    // 文字显示预览
+    $('body').off('change', '[name="content"]').on('change', '[name="content"]', function () {
+        showReview({type: 'text', content: this.value});
+    });
+    // 图片显示预览
+    $('body').off('change', '[name="image_url"]').on('change', '[name="image_url"]', function () {
+        showReview({type: 'image', content: this.value});
+    });
+    // 音乐显示预览
+    var musicSelector = '[name="music_url"],[name="music_title"],[name="music_desc"],[name="music_image"]';
+    $('body').off('change', musicSelector).on('change', musicSelector, function () {
+        var params = {type: 'music'}, $parent = $(this).parents('form');
+        params.title = $parent.find('[name="music_title"]').val();
+        params.url = $parent.find('[name="music_url"]').val();
+        params.image = $parent.find('[name="music_image"]').val();
+        params.desc = $parent.find('[name="music_desc"]').val();
+        showReview(params);
+    });
+    // 视频显示预览
+    var videoSelector = '[name="video_title"],[name="video_url"],[name="video_desc"]';
+    $('body').off('change', videoSelector).on('change', videoSelector, function () {
+        var params = {type: 'video'}, $parent = $(this).parents('form');
+        params.title = $parent.find('[name="video_title"]').val();
+        params.url = $parent.find('[name="video_url"]').val();
+        params.desc = $parent.find('[name="video_desc"]').val();
+        showReview(params);
+    });
+
+    // 默认事件触发
+    $('select[name=type]').map(function () {
+        $(this).trigger('change');
+    });
+
+    /*! 删除关键字 */
+    $('[data-delete]').on('click', function () {
+        var id = this.getAttribute('data-delete');
+        var url = this.getAttribute('data-action');
+        var dialogIndex = $.msg.confirm('确定要删除这条记录吗？', function () {
+            $.form.load(url, {id: id}, 'post', function (ret) {
+                if (ret.code === "SUCCESS") {
+                    window.location.reload();
+                }
+                $.msg.close(dialogIndex);
+            });
+        })
+    });
+});
+</script>
+</body>
