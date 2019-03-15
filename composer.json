@@ -1,28 +1,28 @@
 {
-    "name": "topthink/think",
-    "description": "the new thinkphp framework",
-    "type": "project",
-    "keywords": [
+    "name"       : "topthink/think",
+    "description": "a new framework use for myself",
+    "type"       : "project",
+    "keywords"   : [
         "framework",
         "thinkphp",
-        "ORM"
+        "ORM",
+        "SamAdmin"
     ],
-    "homepage": "http://thinkphp.cn/",
     "license": "Apache-2.0",
     "authors": [
         {
-            "name": "liu21st",
-            "email": "liu21st@gmail.com"
+            "name" : "sam",
+            "email": "sam_zz@126.com"
         }
     ],
     "require": {
-        "php": ">=5.6.0",
-        "topthink/framework": "5.1.*",
-        "topthink/think-captcha": "^2.0",
+        "php"                       : ">=5.6.0",
+        "topthink/framework"        : "5.1.*",
+        "topthink/think-captcha"    : "^2.0",
         "zoujingli/wechat-developer": "^1.2",
-        "topthink/think-image": "^1.0",
-        "anerg2046/sns_auth": "^2.0",
-        "jaeger/querylist": "^4.1"
+        "topthink/think-image"      : "^1.0",
+        "anerg2046/sns_auth"        : "^2.0",
+        "jaeger/querylist"          : "^4.1"
     },
     "autoload": {
         "psr-4": {
@@ -38,7 +38,7 @@
     "repositories": {
         "packagist": {
             "type": "composer",
-            "url": "https://packagist.phpcomposer.com"
+            "url" : "https://packagist.phpcomposer.com"
         }
     }
 }
