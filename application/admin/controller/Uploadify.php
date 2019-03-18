@@ -1,5 +1,6 @@
 <?php
 namespace app\admin\controller;
+use service\FileService;
 
 class Uploadify extends Base {
 
@@ -7,7 +8,8 @@ class Uploadify extends Base {
     public function upload(){
         $func = input('func');
         $path = input('path','temp');
-        $image_upload_limit_size = config('image_upload_limit_size');
+		$image_upload_limit_size = config('image_upload_limit_size');
+		$uptype = freshCache('storage_info.storage_type');
         $fileType = input('fileType','Images');  //上传文件类型，视频，图片
         if($fileType == 'Flash'){
             $upload = url('Admin/Ueditor/videoUp',array('savepath'=>$path,'pictitle'=>'banner','dir'=>'video'));
@@ -26,7 +28,8 @@ class Uploadify extends Base {
             'upload' =>$upload,
         	'fileList'=>url('Admin/Uploadify/fileList',array('path'=>$path)),
             'size' => $image_upload_limit_size/(1024 * 1024).'M',
-            'type' =>$type,
+			'type' =>$type,
+			'uptype' => $uptype ? $uptype : 'local',
             'input' =>input('input'),
             'func' => empty($func) ? 'undefined' : $func,
         );
@@ -34,6 +37,71 @@ class Uploadify extends Base {
         return $this->fetch();
     }
 
+
+	    /**
+     * 文件状态检查
+     * @throws \OSS\Core\OssException
+     * @throws \think\Exception
+     * @throws \think\exception\PDOException
+     */
+    public function upstate()
+    {
+        $post = $this->request->post();
+        $ext = strtolower(pathinfo($post['filename'], 4));
+        $filename = join('/', str_split($post['md5'], 16)) . '.' . ($ext ? $ext : 'tmp');
+        // 检查文件是否已上传
+        if (($site_url = FileService::getFileUrl($filename,$post['uptype']))) {
+            return json(['data' => ['site_url' => $site_url], 'code' => "IS_FOUND"]);
+        }
+        // 需要上传文件，生成上传配置参数
+        $data = ['uptype' => $post['uptype'], 'file_url' => $filename];
+        switch (strtolower($post['uptype'])) {
+            case 'local':
+                $data['token'] = md5($filename . session_id());
+                $data['server'] = FileService::getUploadLocalUrl();
+                break;
+            case 'qiniu':
+                $data['token'] = $this->_getQiniuToken($filename);
+                $data['server'] = FileService::getUploadQiniuUrl(true);
+                break;
+            case 'oss':
+                $time = time() + 3600;
+                $policyText = [
+                    'expiration' => date('Y-m-d', $time) . 'T' . date('H:i:s', $time) . '.000Z',
+                    'conditions' => [['content-length-range', 0, 1048576000]],
+                ];
+                $data['server'] = FileService::getUploadOssUrl();
+                $data['policy'] = base64_encode(json_encode($policyText));
+                $data['site_url'] = FileService::getBaseUriOss() . $filename;
+                $data['signature'] = base64_encode(hash_hmac('sha1', $data['policy'], sysconf('storage_oss_secret'), true));
+                $data['OSSAccessKeyId'] = sysconf('storage_oss_keyid');
+                break;
+        }
+        return json(['data' => $data, 'code' => "NOT_FOUND"]);
+	}
+
+	    /**
+     * 生成七牛文件上传Token
+     * @param string $key
+     * @return string
+     * @throws \think\Exception
+     * @throws \think\exception\PDOException
+     */
+    protected function _getQiniuToken($key)
+    {
+		$baseUrl = FileService::getBaseUriQiniu();
+        $bucket = freshCache('storage_info.storage_qiniu_bucket');
+        $accessKey = freshCache('storage_info.storage_qiniu_access_key');
+        $secretKey = freshCache('storage_info.storage_qiniu_secret_key');
+        $params = [
+            "scope"      => "{$bucket}:{$key}", "deadline" => 3600 + time(),
+			// "returnBody" => "{\"data\":{\"site_url\":\"{$baseUrl}/$(key)\",\"file_url\":\"$(key)\"}, \"code\": \"SUCCESS\"}",
+			"returnBody" => "{\"url\":\"{$baseUrl}/$(key)\",\"file_url\":\"$(key)\", \"state\": \"SUCCESS\"}",
+        ];
+        $data = str_replace(['+', '/'], ['-', '_'], base64_encode(json_encode($params)));
+        return $accessKey . ':' . str_replace(['+', '/'], ['-', '_'], base64_encode(hash_hmac('sha1', $data, $secretKey, true))) . ':' . $data;
+    }
+	
         /**
      * 删除上传的图片,视频
      */

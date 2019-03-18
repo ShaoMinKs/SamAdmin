@@ -1,4 +1,4 @@
-<?php /*a:2:{s:77:"/www/wwwroot/sam_zhuzhouyike_com/application/admin/view/system/site_info.html";i:1548696751;s:74:"/www/wwwroot/sam_zhuzhouyike_com/application/admin/view/public/layout.html";i:1551805875;}*/ ?>
+<?php /*a:2:{s:77:"/www/wwwroot/sam_zhuzhouyike_com/application/admin/view/system/site_info.html";i:1552875431;s:74:"/www/wwwroot/sam_zhuzhouyike_com/application/admin/view/public/layout.html";i:1551805875;}*/ ?>
 <!doctype html>
 <html>
 <head>
@@ -367,6 +367,7 @@
     //网站图标
     function img_call_back(fileurl_tmp , elementid)
     {
+        
         $("#"+elementid).val(fileurl_tmp);
         $("#"+elementid+'_a').attr('href', fileurl_tmp);
         $("#"+elementid+'_i').attr('src', fileurl_tmp);

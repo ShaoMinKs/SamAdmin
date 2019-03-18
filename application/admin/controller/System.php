@@ -10,8 +10,8 @@ class System extends Base {
     public function index(){
         /*配置列表*/
 		$group_list = [
-            'site_info' => '站点信息',
-          
+            'site_info'    => '站点信息',
+            'storage_info' => '对象储存'
         ];	
         $inc_type =  input('param.inc_type','site_info');
         $config   =  freshCache($inc_type);

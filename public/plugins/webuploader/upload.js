@@ -132,6 +132,7 @@ $(function() {
 	}
 
 
+
 	function updateStatus() {
 		var text = '', stats;
 		if ( state === 'ready' ) {
@@ -296,6 +297,7 @@ $(function() {
 		// 实例化
 		uploader = WebUploader.create(opts);
 
+		
 		// 拖拽时不接受 js, txt 文件。
 		uploader.on( 'dndAccept', function( items ) {
 			var denied = false,
@@ -337,7 +339,8 @@ $(function() {
 		});
 
 		uploader.on( 'uploadSuccess', function( file,data) {
-		    $( '#'+file.id ).addClass('upload-state-done');
+			$( '#'+file.id ).addClass('upload-state-done');
+			//本地
 			if(data.state == 'SUCCESS'){
 				var sLi  = "";
 				    sLi += '<li class="img '+file.id+'">';
@@ -353,8 +356,10 @@ $(function() {
 				},function(){
 					$( '#'+file.id ).find('.file-panel').css('height','0px');
 				})
+				// 七牛
 			}else{
-				alert(data.state);
+				alert(data);
+				console.log(data);
 			}
 		});
 		
@@ -711,9 +716,61 @@ $(function() {
 		},
 
 		upload : function(opts){
-
+					// 文件上传前的检查
+					console.log(opts.uptype);
+					if(opts.uptype != 'local'){
+						WebUploader.Uploader.register({'before-send-file': 'preupload'}, {
+							preupload: function (file) {
+								var me = this, owner = this.owner, deferred = WebUploader.Deferred();
+								owner.md5File(file.source).fail(function () {
+									deferred.reject();
+								}).then(function (md5) {
+																	    file.md5 = md5;
+																	var data     = {id: file.id, md5: md5, uptype: me.options.uptype , filename: file.name};
+											$.ajax("/admin/Uploadify/upstate", {
+												dataType: 'json', method: 'post', data: data, success: function (ret) {
+													if (ret.code !== 'NOT_FOUND') {
+														owner.skipFile(file);
+														// uploaded.call(uploader, ret.data, file);
+														percentages[file.id] = [file.size, 1];
+														updateTotalProgress();
+														console.log('文件秒传成功 --> ' + file.name);
+														var sLi  = "";
+														    sLi += '<li class="img '+file.id+'">';
+														    sLi += '<img src="' + ret.data.site_url + '" width="100" height="100" onerror="this.src=\'__ROOT__/public/plugins/uploadify/nopic.png\'">';
+														    sLi += '<input type="hidden" name="fileurl_tmp[]" value="' + ret.data.site_url + '">';
+														    sLi += '</li>';
+														$(".fileWarp ul").append(sLi);
+														$( '#'+file.id ).hover(function(){
+															$( '#'+file.id ).find('.file-panel').css('height','30px');
+														},function(){
+															$( '#'+file.id ).find('.file-panel').css('height','0px');
+														})
+													} else {
+														// file.md5 = md5;
+														// file.token = ret.data.token || '';
+														// file.key = ret.data.file_url || '';
+														// file.site_url = ret.data.site_url || '';
+														me.options.formData.md5                   = md5;
+														me.options.formData.token                 = ret.data.token || '';
+														me.options.formData.key                   = ret.data.file_url || '';
+														me.options.formData.site_url              = ret.data.site_url || '';
+														me.options.formData.OSSAccessKeyId        = ret.data.OSSAccessKeyId || '';  // OSS
+														me.options.formData.signature             = ret.data.signature;             // OSS
+														me.options.formData.policy                = ret.data.policy;                // OSS
+														me.options.formData.success_action_status = '200';                          // OSS
+														me.options.server                         = ret.data.server;
+													}
+													deferred.resolve();
+												}
+											});											
+								});
+								return deferred.promise();
+							}
+						});
+					}
+					
 			this.opts = opts, par = window.parent, type = this.opts.type;
-
 			if(type == 'Images'){
 			
 				this.opts.accept = {

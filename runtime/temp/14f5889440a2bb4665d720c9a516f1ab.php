@@ -1,4 +1,4 @@
-<?php /*a:1:{s:77:"/www/wwwroot/sam_zhuzhouyike_com/application/admin/view/uploadify/upload.html";i:1552233426;}*/ ?>
+<?php /*a:1:{s:77:"/www/wwwroot/sam_zhuzhouyike_com/application/admin/view/uploadify/upload.html";i:1552892133;}*/ ?>
 <html lang="zh-cn">
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
@@ -85,9 +85,10 @@
 </div>
 <script type="text/javascript" src="/public/js/jquery-1.10.2.min.js"></script>
 <script type="text/javascript" src="/public/plugins/webuploader/webuploader.min.js"></script>
-<script type="text/javascript" src="/public/plugins/webuploader/upload.js?v=1.2"></script>
+<script type="text/javascript" src="/public/plugins/webuploader/upload.js?v=5.1"></script>
 <script>
 $(function(){
+	
 	moudle = 'Admin';
 	var config = {
 			"swf":"/public/plugins/webuploader/Uploader.swf",
@@ -102,12 +103,15 @@ $(function(){
 			"fileVal":"file",
 			"auto":true,
 			"formData":{},
+			"uptype" : "<?php echo htmlentities($info['uptype']); ?>",
 			"pick":{"id":"#filePicker","label":"点击选择文件","name":"file"},
 			"thumb":{"width":110,"height":110,"quality":70,"allowMagnify":true,"crop":true,"preserveHeaders":false,"type":"image\/jpeg"},
 			"compress":false
 	};
     var fileType = "<?php echo htmlentities((isset($info['fileType']) && ($info['fileType'] !== '')?$info['fileType']:'Images')); ?>";
 	Manager.upload($.extend(config, {type : fileType}));
+
+
 
 	/*点击保存按钮时
 	 *判断允许上传数，检测是单一文件上传还是组文件上传

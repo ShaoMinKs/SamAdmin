@@ -22,7 +22,10 @@
         "zoujingli/wechat-developer": "^1.2",
         "topthink/think-image"      : "^1.0",
         "anerg2046/sns_auth"        : "^2.0",
-        "jaeger/querylist"          : "^4.1"
+        "jaeger/querylist"          : "^4.1",
+        "phpmailer/phpmailer": "^6.0",
+        "qiniu/php-sdk": "^7.2",
+        "aliyuncs/oss-sdk-php": "^2.3"
     },
     "autoload": {
         "psr-4": {
