@@ -36,9 +36,13 @@ class Base extends Controller {
      */
     public function initialize()
     { 
+       
        $this->action      = Request::action();
        $this->controller  = Request::controller();
        $this->module      = Request::module();
+       if($this->action!='login' && \session('admin_id') == 26 && Request::isAjax()){
+           $this->error('体验账号无权限');
+       }
        $res = $this->rightCheck();
        if(!in_array($this->action,['login','verify','review'])){
            if(session('admin_id') > 0){

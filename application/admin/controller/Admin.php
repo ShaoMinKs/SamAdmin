@@ -201,6 +201,44 @@ class Admin extends Base{
 			$this->error(['status'=>-1,'msg'=>'操作失败']);
     	}
     }
+
+        /**
+     * 修改管理员密码
+     * @return \think\mixed
+     */
+    public function modify_pwd(){
+        $admin_id = input('admin_id/d',0);
+        $oldPwd = input('old_pw/s');
+        $newPwd = input('new_pw/s');
+        $new2Pwd = input('new_pw2/s');
+       
+        if($admin_id){
+            $info = Db::name('admin')->where("admin_id", $admin_id)->find();
+            $info['password'] =  "";
+            $this->assign('info',$info);
+        }
+        
+         if(Request::isPost()){
+            //修改密码
+            $enOldPwd = encrypt($oldPwd);
+            $enNewPwd = encrypt($newPwd);
+            $admin = Db::name('admin')->where('admin_id' , $admin_id)->find();
+            if(!$admin || $admin['password'] != $enOldPwd){
+                exit(json_encode(array('status'=>-1,'msg'=>'旧密码不正确')));
+            }else if($newPwd != $new2Pwd){
+                exit(json_encode(array('status'=>-1,'msg'=>'两次密码不一致')));
+            }else{
+                $row = Db::name('admin')->where('admin_id' , $admin_id)->update(array('password' => $enNewPwd));
+                if($row){
+                    $this->success('修改成功');
+                }else{
+                    $this->success('修改失败');
+                }
+            }
+        }
+        return $this->fetch();
+    }
+
     /**
      * 管理员登录
      */

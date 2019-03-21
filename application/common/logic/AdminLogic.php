@@ -18,7 +18,7 @@ class AdminLogic {
         if (!$admin) {
              return ['status' => 0, 'msg' => '账号密码不正确'];
         }
-        $admin['act_list']  = Db::name('admin_role')->where('role_id',$admin['admin_id'])->value('act_list');
+        $admin['act_list']  = Db::name('admin_role')->where('role_id',$admin['role_id'])->value('act_list');
         Db::name('admin')->where('admin_id', $admin['admin_id'])->update([
             'last_login' => time(),
             'last_ip' => Request::ip()

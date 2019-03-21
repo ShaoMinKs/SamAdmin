@@ -1,4 +1,4 @@
-<?php /*a:2:{s:72:"/www/wwwroot/sam_zhuzhouyike_com/application/admin/view/index/index.html";i:1548958138;s:72:"/www/wwwroot/sam_zhuzhouyike_com/application/admin/view/public/left.html";i:1549046060;}*/ ?>
+<?php /*a:2:{s:72:"/www/wwwroot/sam_zhuzhouyike_com/application/admin/view/index/index.html";i:1553155364;s:72:"/www/wwwroot/sam_zhuzhouyike_com/application/admin/view/public/left.html";i:1549046060;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,6 +25,7 @@
     <script src="/public/static/js/layui/layui.all.js"></script>
     <script src="/public/static/js/layer/layer.js"></script>
 </head>
+
 <body>
     <div class="admincp-header">
         <div class="bgSelector"></div>
@@ -45,40 +46,35 @@
             </ul>
         </div>
         <div class="admincp-header-r">
-            <div class="manager">    
+            <!-- <div class="manager">    
                 <dl>
                   <dt class="name"><?php echo htmlentities($admin_info['user_name']); ?></dt>
                   <dd class="group">管理员</dd>
                 </dl>
                 <span class="avatar">
-                <!-- 屏蔽管理员头像上传 -->
-                <!-- input name="_pic" type="file" class="admin-avatar-file" id="_pic" title="设置管理员头像"/ -->
-                <input type="file" name="_pic" class="admin-avatar-file" id="_pic" title="设置管理员头像"> 
                 <img alt="" tptype="admin_avatar" src="/public/static/images/admint.png"> </span><i class="arrow" id="admin-manager-btn" title="显示快捷管理菜单"></i>
                 <div class="manager-menu">
                     <div class="title">
                         <h4>最后登录</h4>
                         <a href="javascript:void(0);" onClick="CUR_DIALOG = ajax_form('modifypw', '修改密码', '<?php echo url('Admin/modify_pwd',array('admin_id'=>$admin_info['admin_id'])); ?>');" class="edit-password">修改密码</a> 
-                    </div>
-                    <div class="login-date"> <?php echo date('Y-m-d H:i:s',session('last_login_time'));?> <span>(IP: <?php echo session('last_login_ip');?> )</span> </div>
-                    <div class="title">
+                    </div> 
+                    <div class="login-date"> <?php echo date('Y-m-d H:i:s',session('last_login_time'));?> <span>(IP: <?php echo session('last_login_ip');?> )</span> </div> 
+                     <div class="title">
                         <h4>常用操作</h4>
                         <a href="javascript:void(0)" class="add-menu">添加菜单</a> 
                     </div>
                     <ul class="nc-row" tptype="quick_link">
                         <li><a href="javascript:void(0);" onClick="openItem('index|System')">站点设置</a></li>
-                    </ul>
+                    </ul> 
                 </div>
-            </div>
+            </div> -->
             <div class="operate bgd-opa">
-                <span class="bgdopa-t">我的工作台<i class="opa-arow"></i></span>
+                <span class="bgdopa-t"><?php echo htmlentities($admin_info['user_name']); ?><i class="opa-arow"></i></span>
                 <ul class="bgdopa-list">
-                    <li style="display: none !important;" tptype="pending_matters"><a class="toast show-option" href="javascript:void(0);" onClick="$.cookie('commonPendingMatters', 0, {expires : -1});ajax_form('pending_matters', '待处理事项', 'http://www.tpshop.cn/admin/index.php?act=common&op=pending_matters', '480');" title="查看待处理事项">&nbsp;<em>0</em></a></li>
-                    <li><a class="login-out show-option" href="<?php echo url('Admin/logout'); ?>"><img src="/public/static/images/icon-exit.png">退出系统</a></li>
-                    <li><a class="sitemap show-option" id="trace_show" href="<?php echo url('System/cleanCache',array('quick'=>1)); ?>" target="workspace"><img src="/public/static/images/cle-cache.png">更新缓存</a></li>
-                    <li><a class="homepage show-option" target="_blank" href="/"><img src="/public/static/images/icon-home.png">打开商城</a></li>
-                    
-                </ul>
+                    <li><a class="login-out show-option" href="<?php echo url('Admin/logout'); ?>" style="text-align: center">退出系统</a></li>
+                    <li><a class="sitemap show-option" style="text-align: center" href="<?php echo url('System/cleanCache',array('quick'=>1)); ?>" target="workspace">更新缓存</a></li>
+                    <li><a class="sitemap show-option" style="text-align: center" target="workspace" href="<?php echo url('admin/modify_pwd',array('admin_id'=>$admin_info['admin_id'])); ?>">修改密码</a></li>
+                  
             </div>
           </div>
           <div class="clear"></div>
@@ -123,19 +119,24 @@
           </div>
     </div>
 
-    <script>
-           $("#admin-manager-btn").click(function () {
-        if ($(".manager-menu").css("display") == "none") {
-            $(".manager-menu").css('display', 'block'); 
-			$("#admin-manager-btn").attr("title","关闭快捷管理"); 
-			$("#admin-manager-btn").removeClass().addClass("arrow-close");
-        }
-        else {
-            $(".manager-menu").css('display', 'none');
-			$("#admin-manager-btn").attr("title","显示快捷管理");
-			$("#admin-manager-btn").removeClass().addClass("arrow");
-        }           
-    });
-    </script>
+    <script type="text/javascript">
+
+        function FullScreen(el){
+            var isFullscreen=document.fullScreen||document.mozFullScreen||document.webkitIsFullScreen;
+            if(!isFullscreen){
+                (el.requestFullscreen&&el.requestFullscreen())||(el.mozRequestFullScreen&&el.mozRequestFullScreen())||
+                 (el.webkitRequestFullscreen&&el.webkitRequestFullscreen())||(el.msRequestFullscreen&&el.msRequestFullscreen());
+            }else{
+                document.exitFullscreen?document.exitFullscreen():
+                document.mozCancelFullScreen?document.mozCancelFullScreen():
+                document.webkitExitFullscreen?document.webkitExitFullscreen():'';
+            }
+            }
+        function toggleFullScreen(e){
+            var el=e.srcElement||e.target;//target兼容Firefox
+            el.innerHTML=='点我全屏'?el.innerHTML='退出全屏':el.innerHTML='点我全屏';
+            FullScreen(el);
+            }
+            </script>
 </body>
 </html>

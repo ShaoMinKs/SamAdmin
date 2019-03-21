@@ -338,6 +338,7 @@ $(function() {
 			window.uploader = uploader;
 		});
 
+
 		uploader.on( 'uploadSuccess', function( file,data) {
 			$( '#'+file.id ).addClass('upload-state-done');
 			//本地
@@ -725,8 +726,8 @@ $(function() {
 								owner.md5File(file.source).fail(function () {
 									deferred.reject();
 								}).then(function (md5) {
-																	    file.md5 = md5;
-																	var data     = {id: file.id, md5: md5, uptype: me.options.uptype , filename: file.name};
+																	            file.md5 = md5;
+																	        var data     = {id: file.id, md5: md5, uptype: me.options.uptype , filename: file.name};
 											$.ajax("/admin/Uploadify/upstate", {
 												dataType: 'json', method: 'post', data: data, success: function (ret) {
 													if (ret.code !== 'NOT_FOUND') {

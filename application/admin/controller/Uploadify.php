@@ -73,8 +73,8 @@ class Uploadify extends Base {
                 $data['server'] = FileService::getUploadOssUrl();
                 $data['policy'] = base64_encode(json_encode($policyText));
                 $data['site_url'] = FileService::getBaseUriOss() . $filename;
-                $data['signature'] = base64_encode(hash_hmac('sha1', $data['policy'], sysconf('storage_oss_secret'), true));
-                $data['OSSAccessKeyId'] = sysconf('storage_oss_keyid');
+                $data['signature'] = base64_encode(hash_hmac('sha1', $data['policy'], freshCache('storage_info.storage_oss_secret'), true));
+                $data['OSSAccessKeyId'] = freshCache('storage_info.storage_oss_keyid');
                 break;
         }
         return json(['data' => $data, 'code' => "NOT_FOUND"]);
