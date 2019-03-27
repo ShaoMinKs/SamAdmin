@@ -20,6 +20,17 @@ function encrypt($str){
 }
 
 /**
+ * 模拟tab产生空格
+ * @param int $step
+ * @param string $string
+ * @param int $size
+ * @return string
+ */
+function tab($step = 1, $string = ' ', $size = 4)
+{
+    return str_repeat($string, $size * $step);
+}
+/**
  * 缓存处理
  */
 function freshCache($config_key,$data = array()){

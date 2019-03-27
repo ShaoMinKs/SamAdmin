@@ -1,4 +1,4 @@
-<?php /*a:2:{s:77:"/www/wwwroot/sam_zhuzhouyike_com/application/admin/view/system/site_info.html";i:1552875431;s:74:"/www/wwwroot/sam_zhuzhouyike_com/application/admin/view/public/layout.html";i:1551805875;}*/ ?>
+<?php /*a:2:{s:77:"/www/wwwroot/sam_zhuzhouyike_com/application/admin/view/system/site_info.html";i:1553228032;s:74:"/www/wwwroot/sam_zhuzhouyike_com/application/admin/view/public/layout.html";i:1551805875;}*/ ?>
 <!doctype html>
 <html>
 <head>
@@ -261,7 +261,7 @@
                                 <input type="text" name="store_logo"  id="store_logo" value="<?php echo htmlentities((isset($config['store_logo']) && ($config['store_logo'] !== '')?$config['store_logo']:'/public/static/images/logo/pc_home_logo_default.png')); ?>" onClick="GetUploadify(1,'store_logo','logo','img_call_back')" readonly required  lay-verify="required" placeholder="请上传网站logo" autocomplete="off" class="layui-input">
                                 <span class="show">
                                     <a id="store_logo_a" target="_blank" class="nyroModal" rel="gal" href="<?php echo htmlentities((isset($config['store_logo']) && ($config['store_logo'] !== '')?$config['store_logo']:'/public/static/images/logo/pc_home_logo_default.png')); ?>">
-                                        <img  id="store_logo_i" style="width:150px;height:60px;border:2px solid #e5e5e5;border-radius:5px;margin-top:5px" src="<?php echo htmlentities((isset($config['store_logo']) && ($config['store_logo'] !== '')?$config['store_logo']:'/public/static/images/logo/pc_home_logo_default.png')); ?>" alt="LOGO" onmouseover="layer.tips('<img src=<?php echo htmlentities((isset($config['store_logo']) && ($config['store_logo'] !== '')?$config['store_logo']:'/public/static/images/logo/pc_home_logo_default.png')); ?>>',this,{tips: [1, '#fff']});" onmouseout="layer.closeAll();">
+                                        <img  id="store_logo_i" style="width:150px;height:60px;border:2px solid #e5e5e5;border-radius:5px;margin-top:5px" src="<?php echo htmlentities((isset($config['store_logo']) && ($config['store_logo'] !== '')?$config['store_logo']:'/public/static/images/logo/pc_home_logo_default.png')); ?>" alt="LOGO" onmouseover="layer.tips('<img  src=<?php echo htmlentities((isset($config['store_logo']) && ($config['store_logo'] !== '')?$config['store_logo']:'/public/static/images/logo/pc_home_logo_default.png')); ?>>',this,{tips: [1, '#fff']});" onmouseout="layer.closeAll();">
                                         
                                     </a>
                                 </span>
