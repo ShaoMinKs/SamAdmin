@@ -5,9 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="__PUBLIC__/static/css/login.css?v=2.9" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="__PUBLIC__/static/js/layui/css/layui.css">
     <script type="text/javascript" src="__PUBLIC__/static/js/jquery.js"></script>
     <script type="text/javascript" src="__PUBLIC__/static/js/jquery.SuperSlide.2.1.2.js"></script>
     <script type="text/javascript" src="__PUBLIC__/static/js/jquery.validation.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/static/js/layui/layui.all.js"></script>
     <script type="text/javascript" src="__PUBLIC__/static/js/jquery.cookie.js"></script>
     <title>登录</title>
     <!--[if lte IE 8]>
@@ -51,7 +53,7 @@
                         <div class="formText">
                             <i class="icon icon-chick" style="top:14px"></i>
                             <input type="text" name="vertify" id="vertify" autocomplete="off" class="input-text chick_ue" value="" placeholder="验证码" />
-                            <img src="{:url('Admin/verify')}" class="chicuele" id="imgVerify" alt="" onclick="fleshVerify()">
+                            <img src="{:url('Admin/verify')}" class="chicuele" id="imgVerify" alt="" onclick="fleshVerify()" style="vertical-align: inherit;">
                         </div>
                         <div class="formText">
                         	<!--<div class="checkbox">
@@ -148,7 +150,7 @@
                     },
                     success : function(res){
                         if(res.status != 1){
-                            $('#error').html('<span class="error">'+res.msg+'!</span>');
+                            layer.msg(res.msg);
                             fleshVerify();
                             username=false;
                             password=false;
