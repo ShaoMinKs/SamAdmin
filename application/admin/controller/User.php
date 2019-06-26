@@ -45,16 +45,18 @@ class User extends Base{
      * 新增编辑会员
      */
     public function add(){
-        $act     = Request::param('act');
-        $user_id = Request::param('user_id');
-        if($act == 'edit' && $user_id){
-            $info = Db::name('users')->where('user_id',$user_id)->find();
-            if($info){
-                $this->assign('info',$info);
-            }
-        }
-        return $this->fetch();
+        return $this->_form($this->table,'add');
+        // $act     = Request::param('act');
+        // $user_id = Request::param('user_id');
+        // if($act == 'edit' && $user_id){
+        //     $info = Db::name('users')->where('user_id',$user_id)->find();
+        //     if($info){
+        //         $this->assign('info',$info);
+        //     }
+        // }
+        // return $this->fetch();
     }
+
 
     /**
      * 会员提交
@@ -69,6 +71,7 @@ class User extends Base{
             if(true != $result){
                 $this->error($validate->getError());
             }
+        
             switch ($data['act']) {
                 case 'add':
                     $data['reg_time']  = time();

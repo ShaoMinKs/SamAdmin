@@ -24,7 +24,7 @@ class Article extends Base {
      * 新增分类详情
      */
     public function category(){
-        $ArticleCat = new ArticleCatLogic(); 
+        $ArticleCat    = new ArticleCatLogic(); 
         $act           = input('act', 'add');
         $parent_id     = input('parent_id/d');
         if ($parent_id) {

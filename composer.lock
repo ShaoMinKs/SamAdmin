@@ -49,16 +49,16 @@
         },
         {
             "name": "anerg2046/sns_auth",
-            "version": "v2.0.7",
+            "version": "v2.0.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/anerg2046/sns_auth.git",
-                "reference": "5ab236d1d6d74f10b47828c69ac17dcb2f4ea180"
+                "reference": "9c4b4dbed62d3333361cc3a1b1a7eea4d92006d8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/anerg2046/sns_auth/zipball/5ab236d1d6d74f10b47828c69ac17dcb2f4ea180",
-                "reference": "5ab236d1d6d74f10b47828c69ac17dcb2f4ea180",
+                "url": "https://api.github.com/repos/anerg2046/sns_auth/zipball/9c4b4dbed62d3333361cc3a1b1a7eea4d92006d8",
+                "reference": "9c4b4dbed62d3333361cc3a1b1a7eea4d92006d8",
                 "shasum": ""
             },
             "require": {
@@ -82,7 +82,7 @@
                 }
             ],
             "description": "weixin weibo qq alipay twitter google line facebook sns oauth",
-            "time": "2019-02-13T06:08:01+00:00"
+            "time": "2019-04-30T02:10:19+00:00"
         },
         {
             "name": "cache/adapter-common",
@@ -1014,16 +1014,16 @@
         },
         {
             "name": "symfony/polyfill-mbstring",
-            "version": "v1.10.0",
+            "version": "v1.11.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-mbstring.git",
-                "reference": "c79c051f5b3a46be09205c73b80b346e4153e494"
+                "reference": "fe5e94c604826c35a32fa832f35bd036b6799609"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/c79c051f5b3a46be09205c73b80b346e4153e494",
-                "reference": "c79c051f5b3a46be09205c73b80b346e4153e494",
+                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/fe5e94c604826c35a32fa832f35bd036b6799609",
+                "reference": "fe5e94c604826c35a32fa832f35bd036b6799609",
                 "shasum": ""
             },
             "require": {
@@ -1035,7 +1035,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.9-dev"
+                    "dev-master": "1.11-dev"
                 }
             },
             "autoload": {
@@ -1069,20 +1069,20 @@
                 "portable",
                 "shim"
             ],
-            "time": "2018-09-21T13:07:52+00:00"
+            "time": "2019-02-06T07:57:58+00:00"
         },
         {
             "name": "symfony/var-dumper",
-            "version": "v3.4.23",
+            "version": "v3.4.27",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/var-dumper.git",
-                "reference": "d34d10236300876d14291e9df85c6ef3d3bb9066"
+                "reference": "ca5fef348a0440411bbca0f9ec14e9a11625bd6a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/d34d10236300876d14291e9df85c6ef3d3bb9066",
-                "reference": "d34d10236300876d14291e9df85c6ef3d3bb9066",
+                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/ca5fef348a0440411bbca0f9ec14e9a11625bd6a",
+                "reference": "ca5fef348a0440411bbca0f9ec14e9a11625bd6a",
                 "shasum": ""
             },
             "require": {
@@ -1138,7 +1138,7 @@
                 "debug",
                 "dump"
             ],
-            "time": "2019-02-23T15:06:07+00:00"
+            "time": "2019-05-01T09:52:10+00:00"
         },
         {
             "name": "tightenco/collect",
@@ -1192,16 +1192,16 @@
         },
         {
             "name": "topthink/framework",
-            "version": "v5.1.32",
+            "version": "v5.1.37",
             "source": {
                 "type": "git",
                 "url": "https://github.com/top-think/framework.git",
-                "reference": "88a2ab625b35e047896718db320e08375cf021da"
+                "reference": "c434854cbb5e680ecaf4c7191ddb7e672059d286"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/top-think/framework/zipball/88a2ab625b35e047896718db320e08375cf021da",
-                "reference": "88a2ab625b35e047896718db320e08375cf021da",
+                "url": "https://api.github.com/repos/top-think/framework/zipball/c434854cbb5e680ecaf4c7191ddb7e672059d286",
+                "reference": "c434854cbb5e680ecaf4c7191ddb7e672059d286",
                 "shasum": ""
             },
             "require": {
@@ -1239,7 +1239,7 @@
                 "orm",
                 "thinkphp"
             ],
-            "time": "2018-12-23T13:42:11+00:00"
+            "time": "2019-05-24T03:04:09+00:00"
         },
         {
             "name": "topthink/think-captcha",
@@ -1363,16 +1363,16 @@
         },
         {
             "name": "zoujingli/wechat-developer",
-            "version": "v1.2.9",
+            "version": "v1.2.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zoujingli/WeChatDeveloper.git",
-                "reference": "06ee3506a8f513c748dd986029508f9dea7e281a"
+                "reference": "9464d20af40b24bc06fd146509ad003c17240116"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zoujingli/WeChatDeveloper/zipball/06ee3506a8f513c748dd986029508f9dea7e281a",
-                "reference": "06ee3506a8f513c748dd986029508f9dea7e281a",
+                "url": "https://api.github.com/repos/zoujingli/WeChatDeveloper/zipball/9464d20af40b24bc06fd146509ad003c17240116",
+                "reference": "9464d20af40b24bc06fd146509ad003c17240116",
                 "shasum": ""
             },
             "require": {
@@ -1417,7 +1417,7 @@
                 "wechatpay",
                 "wepay"
             ],
-            "time": "2019-02-18T07:47:07+00:00"
+            "time": "2019-05-16T02:17:20+00:00"
         }
     ],
     "packages-dev": [],
