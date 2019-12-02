@@ -1,0 +1,113 @@
+{include file="public/layout" /}
+<style>
+    .system_img_location{text-align: center; width: 120px;position:absolute;top:15px; margin-left:265px;}
+    .layui-input-inline {
+        width: 280px!important;
+    }
+    .select {
+        width: 150px!important;
+    }
+    .err {
+        margin-top: 5px!important;
+        display: inline-block!important;
+    }
+</style>
+<body style="background-color: #FFF; overflow: auto;">
+    <div class="page">
+        <div class="fixed-bar">
+            <div class="item-title" style="padding-bottom: 5px">
+               
+                <div class="subject" style="height: auto;margin-left: 15px">
+                    <h3>{$info.admin_id ? '编辑' : '新增'}管理员</h3>
+                </div>
+               
+            </div>
+            <div class="layui-row" style="margin-top: 15px">
+                    <form class="form-horizontal" id="adminHandle" method="post" name="admin_form">
+                            <input type="hidden" name="admin_id" value="{$info.admin_id|default=''}">
+                            <div class="layui-form-item">
+                                <label class="layui-form-label" for="user_name">用户名</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="user_name" maxlength="20"  id="user_name" value="{$info.user_name|default=''}" required  lay-verify="required"  autocomplete="off" class="layui-input"> 
+                                    <span class="err" id="err_user_name"></span>    
+                                </div>
+                            </div>
+          
+                             <div class="layui-form-item">
+                                <label class="layui-form-label" for="password">原密码</label>
+                                <div class="layui-input-inline">
+                                    <input type="password" id="old_pw" name="old_pw" value="" required  lay-verify="required"  autocomplete="off" class="layui-input"> 
+                                    <span class="err" id="err_password"></span>      
+                                </div>
+                             </div>
+                             <div class="layui-form-item">
+                                <label class="layui-form-label" for="password">新密码</label>
+                                <div class="layui-input-inline">
+                                    <input type="password" id="new_pw" name="new_pw" value="" required  lay-verify="required"  autocomplete="off" class="layui-input"> 
+                                    <span class="err" id="err_password"></span>      
+                                </div>
+                             </div>
+                             <div class="layui-form-item">
+                                <label class="layui-form-label" for="password">确认密码</label>
+                                <div class="layui-input-inline">
+                                    <input type="password" id="new_pw2" name="new_pw2" value="" required  lay-verify="required"  autocomplete="off" class="layui-input"> 
+                                    <span class="err" id="err_password"></span>      
+                                </div>
+                             </div>
+                             <div class="layui-form-item">
+                                <div class="layui-input-block">
+                                    <div class="layui-form-item">
+                                        <div class="layui-input-block">
+                                            <div class="layui-btn" onclick="adsubmit()">立即提交</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script type="text/javascript">
+    // 判断输入框是否为空
+    function adsubmit(){
+        var password =$('#new_pw').val();
+        var password2 =$('#new_pw2').val();
+        if($('#old_pw').val() == ''){
+            layer.msg('密码不得为空！', {icon: 2,time: 1000});//alert('少年，密码不能为空！');
+            $('#old_pw').focus();
+            return false;
+        }
+        if((password.length < 6 || password.length>18)){
+            layer.msg('密码长度应该在6-18位！', {icon: 2,time: 1000});//alert('少年，密码不能为空！');
+            $('#new_pw').focus();
+            return false;
+        }
+        if(password != password2){
+            layer.msg('两次密码不一致！', {icon: 2,time: 1000});//alert('少年，密码不能为空！');
+            return false;
+        }
+        $.ajax({
+            url:'/index.php/Admin/Admin/modify_pwd?t='+Math.random(),
+            data:$('#adminHandle').serialize(),
+            type:'post',
+            dataType:'json',
+            success:function(data){
+                if(!data.code){
+                    layer.msg(data.msg,{icon: 2,time: 2000})
+                    $.each(data.result,function (index,item) {
+                        $('#err_'+index).text(item)
+                    })
+                }else{
+                    layer.msg(data.msg,{icon: 1,time: 3000},function () {
+                        window.location.href = data.url;
+                    })
+                }
+            },
+            error : function(XMLHttpRequest, textStatus, errorThrown) {
+                $('#error').html('<span class="error">网络失败，请刷新页面后重试!</span>');
+            }
+        });
+    }
+</script>

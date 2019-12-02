@@ -1,0 +1,99 @@
+{include file="public/layout" /}
+<style>
+    .system_img_location{text-align: center; width: 120px;position:absolute;top:15px; margin-left:265px;}
+    .layui-input-inline {
+        width: 280px!important;
+    }
+    .select {
+        width: 150px!important;
+    }
+    .err {
+        margin-top: 5px!important;
+        display: inline-block!important;
+    }
+</style>
+<body style="background-color: #FFF; overflow: auto;">
+    <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+            <ul class="layui-tab-title">
+                <li> <a href="{:url('admin/goods/categoryList')}">分类列表</a> </li>
+                <li class="layui-this"><a  href="#">{$info.id ? '编辑' : '新增'}分类</a></li>
+                <li style="float:right;padding: 0;min-width: 35px;"><div title="刷新数据" class="pReload"><i class="fa fa-refresh"></i></div></li>
+                <li style="float:right;padding: 0;min-width: 35px;"><a  href="javascript:history.back();" title="返回列表"> <i class="fa  fa-arrow-left"></i></a></li>
+            </ul>
+        </div>
+        <div class="layui-tab-content">
+            <div class="layui-row">
+                    <form class="form-horizontal layui-form" id="adminHandle" method="post" action="{:url('admin/goods/categoryHandle')}">
+                            <input type="hidden" name="act" id="act" value="add">
+                            <input type="hidden" name="cat_id" value="{$info.id|default=''}">
+                            <input type="hidden" name="auth_code" value="{$Think.config.AUTH_CODE}"/>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label" for="name">分类名称</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="name" maxlength="20"  id="name" value="{$info.name|default=''}" required  lay-verify="required"  autocomplete="off" class="layui-input">    
+                                </div>
+                            </div>
+                          
+                                <div class="layui-form-item">
+                                    <label class="layui-form-label">上级分类</label>
+                                    <div class="layui-input-inline">
+                                        <select name="parent_id" lay-filter="aihao">
+                                        <option value="0">顶级分类</option>
+                                            {volist name="cat_select" id="v"}
+                                                <option value="{$v.id}"   {if condition="!empty($parent_id) && $parent_id == $v.id"}selected{/if}>{gt name="$v.level" value="0"}{php}for($i=0;$i<$v['level'];$i++){echo ' &nbsp;&nbsp;&nbsp;&nbsp;';}{/php}{/gt}{$v.name}</option>
+                                            {/volist} 
+                                        </select>
+                                    </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label" for="email">排序</label>
+                                <div class="layui-input-inline">
+                                    <input type="number" name="sort_order" maxlength="20"  id="sort_order" value="{$info.sort_order|default=''}" required  lay-verify="required"  autocomplete="off" class="layui-input">   
+                                </div>
+                                </div>
+                                <div class="layui-form-item">
+                                <div class="layui-input-block">
+                                    <button class="layui-btn" lay-submit lay-filter="*">立即提交</button>
+                                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                                </div>
+                                </div>
+                        </form>
+    
+            </div>
+        </div>
+
+<script type="text/javascript">
+layui.use('form', function(){
+  var form = layui.form;
+  //监听选择全部
+
+
+
+//监听提交
+form.on('submit(*)', function (data) {
+    $.ajax({
+        url: data.form.action,
+        type: data.form.method,
+        data: data.field,
+        error:function(){
+            layer.alert('服务器繁忙，请联系管理员');
+        },
+        success: function (info) {
+            if(!info.code){
+                layer.msg(info.msg,{icon: 2,time: 1000})
+              }else{
+                layer.msg(info.msg,{icon: 1,time: 1000},function () {
+                        window.location.href = info.url;
+                    })
+              }
+        }
+    });
+
+    return false;
+});
+
+});
+
+</script>
+</body>
+</html>

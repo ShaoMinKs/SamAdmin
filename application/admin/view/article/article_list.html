@@ -1,0 +1,196 @@
+{include file="public/layout" /}
+<body style="background-color: rgb(255, 255, 255); overflow: auto; cursor: default; -moz-user-select: inherit;">
+  <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+      <ul class="layui-tab-title">
+        <li class="layui-this">文章列表 <span style="font-size:12px;color:#777">(共{$count}条记录)</span></li>
+        <li><a  href="{:url('admin/article/article')}">新增文章</a></li>
+        <li style="float:right"><div title="刷新数据" class="pReload"><i class="fa fa-refresh"></i></div></li>
+      </ul>
+      <div class="layui-tab-content">
+          <div class="page" style="padding-top:10px">
+              <div class="flexigrid">             
+                    <div class="demoTable">
+                      <form class="layui-form layui-form-pane" action=""  id="search_form" onsubmit="return false">
+                        <div class="layui-inline">
+                          <label class="layui-form-label">关键词</label>
+                          <div class="layui-input-inline">
+                              <input type="text" name="name" value="" id="name" placeholder="请输入标题或者关键字" class="layui-input" style="padding-left:8px">
+                          </div>
+                        </div>
+                        <div class="layui-inline">
+                          <label class="layui-form-label">分类</label>
+                          <div class="layui-input-inline">
+                            <select name="cat_id" id="cat_id"  class="layui-select" lay-verify="required">
+                                <option value="0">全部</option>
+                              {volist name="cats" id="item"}
+                                  <option value="{$item.cat_id}" {if condition="!empty($info.group) && $key == $info.group"}selected{/if}> {gt name="$item.level" value="0"}{php}for($i=0;$i<$item['level'];$i++){echo ' &nbsp;&nbsp;&nbsp;&nbsp;';}{/php}{/gt} {$item.cat_name}</option>
+                              {/volist}
+                          </select> 
+                          </div>
+                        </div>
+                        <div class="layui-inline">
+                          <button class="layui-btn" data-type="reload" id="search">搜索</button>
+                        </div>
+                      </form>
+                    </div>
+                    <hr>	
+                    <div>                   
+                        <table class="layui-hide" id="test" lay-filter="test"></table>
+                    </div>	
+                    <script type="text/html" id="barDemo">
+                        <a class="layui-btn layui-btn-xs" lay-event="edit"> <i class="fa fa-pencil-square-o"></i> 编辑</a>
+                        <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del"> <i class="fa fa-trash-o"></i> 删除</a>
+                    </script>
+                
+                <script type="text/html" id="is_open">
+                  <input type="checkbox" name="is_open" value="{{d.is_open}}" data-id="{{d.article_id}}" title="显示" lay-filter="is_open" {{ d.is_open == 1 ? 'checked' : '' }}>
+                </script>
+              </div>
+            </div>
+      </div>
+  </div> 
+
+<script>
+$(document).ready(function(){
+    layui.use('table', function(){
+    var table = layui.table;
+	var  form = layui.form;
+  
+var tableIns = table.render({
+    elem: '#test'
+    ,url:"{:url('admin/article/getArticles')}"
+    ,toolbar: '#toolbarDemo'
+    ,title: '用户数据表'
+    ,cols: [[
+      {type: 'checkbox', fixed: 'left'}
+      ,{field:'article_id', title:'ID',  fixed: 'left',width:80, unresize: true, sort: true}
+      ,{field:'title', title:'标题',  edit: 'text'}
+      ,{field:'cat', title:'分类',  edit: 'text',align:'center'}
+      ,{field:'is_open', title:'显示',templet: '#is_open',align:'center',width:120}
+      ,{field:'publish_time', title:'发布时间',sort: true}
+      ,{fixed: 'right', title:'操作', toolbar: '#barDemo'}
+    ]]
+    ,page: true
+  });
+
+//监听锁定操作
+form.on('checkbox(is_open)', function(obj){
+	var checked = obj.elem.checked ? '1' : '0';
+	changeTableValue('article','article_id',$(this).data('id'),this.name,checked);
+    // layer.tips(this.value + ' ' + this.name + '：'+ obj.elem.checked, obj.othis);
+  });
+
+  $('#search').on('click',function(){
+      var data = $('#search_form').serializeObject();
+      tableIns.reload({
+        where:data
+        ,page: {
+            curr: 1 //重新从第 1 页开始
+        }
+        });
+  })
+
+  $.fn.serializeObject = function() {  
+        var o = {};  
+        var a = this.serializeArray();  
+        $.each(a, function() {  
+            if (o[this.name]) {  
+                if (!o[this.name].push) {  
+                    o[this.name] = [ o[this.name] ];  
+                }  
+                o[this.name].push(this.value || '');  
+            } else {  
+                o[this.name] = this.value || '';  
+            }  
+        });  
+        return o;  
+    }  
+
+  //头工具栏事件
+  table.on('toolbar(test)', function(obj){
+    var checkStatus = table.checkStatus(obj.config.id);
+    switch(obj.event){
+      case 'getCheckData':
+        var data = checkStatus.data;
+        layer.alert(JSON.stringify(data));
+      break;
+      case 'getCheckLength':
+        var data = checkStatus.data;
+        layer.msg('选中了：'+ data.length + ' 个');
+      break;
+      case 'isAll':
+        layer.msg(checkStatus.isAll ? '全选': '未全选');
+      break;
+    };
+  });
+
+    //监听单元格编辑
+ table.on('edit(test)', function(obj){
+    var value = obj.value //得到修改后的值
+    ,data     = obj.data //得到所在行所有键值
+    ,field    = obj.field; //得到字段
+    changeTableValue('article','article_id',data.article_id,field,value);
+    // layer.msg('[ID: '+ data.admin_id +'] ' + field + ' 字段更改为：'+ value);
+  });
+
+
+  
+  //监听行工具事件
+  table.on('tool(test)', function(obj){
+    var data = obj.data;
+    //console.log(obj)
+    if(obj.event === 'del'){
+      layer.confirm('确定删除么', function(index){
+        $.post("{:url('admin/article/articleHandle')}",{id:data.article_id,'act':'del','auth_code':"{$Think.config.AUTH_CODE}"},function(res){
+          if(res.code == 1){
+            layer.msg(res.msg,{icon: 2,time: 1000})
+            obj.del();
+            layer.close(index);
+          }
+        });
+      });
+    } else if(obj.event === 'edit'){
+        var id  = data.article_id;
+        window.location.href = "/admin/article/article/act/edit/article_id/"+id;
+    }
+  });
+});
+		// 表格行点击选中切换
+		$('#flexigrid > table>tbody >tr').click(function(){
+			$(this).toggleClass('trSelected');
+		});
+
+		// 点击刷新数据
+		$('.fa-refresh').click(function(){
+			location.href = location.href;
+		});
+
+	});
+
+
+	function delfun(obj) {
+		// 删除按钮
+		layer.confirm('确认删除？', {
+			btn: ['确定', '取消'] //按钮
+		}, function () {
+			$.ajax({
+				type: 'post',
+				url: $(obj).attr('data-url'),
+				data : {act:'del',admin_id:$(obj).attr('data-id')},
+				dataType: 'json',
+				success: function (data) {
+					if (data.status == 1) {
+						layer.msg(data.msg,{icon: 1,time: 1000},function () {
+							$(obj).parent().parent().parent().remove();
+						})
+					} else {
+						layer.msg(data.msg,{icon: 2,time: 2000})
+					}
+				}
+			})
+		}, function () {
+		});
+	}
+</script>
+</body>
+</html>

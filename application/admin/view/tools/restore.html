@@ -1,0 +1,136 @@
+{include file="public/layout" /}
+<body style="background-color: rgb(255, 255, 255); overflow: auto; cursor: default; -moz-user-select: inherit;">
+<div id="append_parent"></div>
+<div id="ajaxwaitid"></div>
+<div class="page" style="padding-top:10px">
+	<div class="flexigrid">
+		<div class="mDiv">
+			<div class="ftitle">
+				<h3>数据库列表</h3>
+				<h5></h5>
+			</div>
+			<div title="刷新数据" class="pReload"><i class="fa fa-refresh"></i></div>
+        </div>		
+        <div>                   
+            <table class="layui-hide" id="test" lay-filter="test"></table>
+        </div>	
+        <script type="text/html" id="barDemo">
+            <a class="layui-btn layui-btn-xs" lay-event="import"><i class="fa fa-repeat"></i>恢复</a>
+            <a class="layui-btn layui-btn layui-btn-xs" lay-event="downFile"><i class="fa fa-download"></i>下载</a>
+            <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del"><i class="fa fa-trash"></i>删除</a>
+        </script>
+	</div>
+</div>
+<script>
+	$(document).ready(function(){
+    layui.use('table', function(){
+    var table = layui.table;
+  
+var tableIns = table.render({
+    elem: '#test'
+    ,url:"{:url('admin/tools/getRestore')}"
+    ,toolbar: '#toolbarDemo'
+    ,title: '数据表'
+    ,cols: [[
+      {type: 'checkbox', fixed: 'left'}
+      ,{field:'basename', title:'文件名称',  fixed: 'left', unresize: true}
+      ,{field:'part', title:'卷号'}
+      ,{field:'compress', title:'压缩'}
+      ,{field:'size', title:'数据大小'}
+      ,{field:'time',title:'备份时间'}
+      ,{fixed: 'right', title:'操作', toolbar: '#barDemo'}
+    ]]
+    ,page: true
+  });
+
+
+
+  function backup(tab, status){
+			status && $('#backup').html("开始备份...(0%)");
+			$.get("{:url('admin/tools/createBackup')}", tab, function(data){
+				if(data.code){
+                    $('#backup').html(data.msg);
+					if(!$.isPlainObject(data.data.tab)){
+						$('#backup').removeClass("disabled");
+						$('#backup').html("备份完成，点击重新备份");
+						window.onbeforeunload = function(){ return null }
+						return;
+					}
+					backup(data.data.tab, tab.id != data.data.tab.id);
+				} else {
+					$('#backup').removeClass("disabled");
+					$('#backup').html("立即备份");
+				}
+			}, "json");
+		}
+
+
+  
+  //监听行工具事件
+  table.on('tool(test)', function(obj){
+    var data = obj.data;
+    //console.log(obj)
+    if(obj.event === 'import'){
+      $.post("{:url('admin/tools/import')}",{time : data.time},function(res){
+        if(!res.code){
+                layer.msg(res.msg,{icon: 2,time: 1000})
+              }else{
+                layer.msg(res.msg,{icon: 1,time: 1000},function () {
+                        window.location.href = res.url;
+                    })
+              }
+      });
+    } else if(obj.event === 'downFile'){
+        window.location.href = "/admin/tools/downFile/time/"+data.time;
+    }else if(obj.event === 'del'){
+      $.post("{:url('admin/tools/del')}",{time : data.time},function(res){
+        if(!res.code){
+                layer.msg(res.msg,{icon: 2,time: 1000})
+              }else{
+                layer.msg(res.msg,{icon: 1,time: 1000},function () {
+                        window.location.href = res.url;
+                    })
+              }
+      });
+    }
+  });
+});
+		// 表格行点击选中切换
+		$('#flexigrid > table>tbody >tr').click(function(){
+			$(this).toggleClass('trSelected');
+		});
+
+		// 点击刷新数据
+		$('.fa-refresh').click(function(){
+			location.href = location.href;
+		});
+
+	});
+
+
+	function delfun(obj) {
+		// 删除按钮
+		layer.confirm('确认删除？', {
+			btn: ['确定', '取消'] //按钮
+		}, function () {
+			$.ajax({
+				type: 'post',
+				url: $(obj).attr('data-url'),
+				data : {act:'del',admin_id:$(obj).attr('data-id')},
+				dataType: 'json',
+				success: function (data) {
+					if (data.status == 1) {
+						layer.msg(data.msg,{icon: 1,time: 1000},function () {
+							$(obj).parent().parent().parent().remove();
+						})
+					} else {
+						layer.msg(data.msg,{icon: 2,time: 2000})
+					}
+				}
+			})
+		}, function () {
+		});
+	}
+</script>
+</body>
+</html>

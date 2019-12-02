@@ -1,0 +1,110 @@
+{include file="public/layout" /}
+<style>
+    .system_img_location{text-align: center; width: 120px;position:absolute;top:15px; margin-left:265px;}
+    .layui-input-inline {
+        width: 280px!important;
+    }
+    .select {
+        width: 150px!important;
+    }
+    .err {
+        margin-top: 5px!important;
+        display: inline-block!important;
+    }
+</style>
+<body style="background-color: #FFF; overflow: auto;">
+<div id="toolTipLayer" style="position: absolute; z-index: 9999; display: none; visibility: visible; left: 95px; top: 573px;"></div>
+<div id="append_parent"></div>
+<div id="ajaxwaitid"></div>
+<div class="page">
+    <div class="fixed-bar">
+        <div class="item-title" style="padding-bottom: 5px">
+           
+            <div class="subject" style="height: auto;margin-left: 15px">
+                <h3>{$info.admin_id ? '编辑' : '新增'}管理员</h3>
+            </div>
+            <a class="layui-btn layui-btn-sm" style="float: right"  href="javascript:history.back();" title="返回列表"> <i class="fa  fa-arrow-left"></i> 返回上一页</a>
+        </div>
+        <div class="layui-row" style="margin-top: 15px">
+                <form class="form-horizontal" id="adminHandle" method="post">
+                        <input type="hidden" name="act" id="act" value="{$act}">
+                        <input type="hidden" name="admin_id" value="{$info.admin_id|default=''}">
+                        <input type="hidden" name="auth_code" value="{$Think.config.AUTH_CODE}"/>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label" for="user_name">用户名</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="user_name" maxlength="20"  id="user_name" value="{$info.user_name|default=''}" required  lay-verify="required"  autocomplete="off" class="layui-input"> 
+                                <span class="err" id="err_user_name"></span>    
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label" for="email">Email</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="email"   id="email" value="{$info.email|default=''}" required  lay-verify="required"  autocomplete="off" class="layui-input">    
+                                <span class="err" id="err_email"></span>    
+                            </div>
+                         </div>
+                         <div class="layui-form-item">
+                            <label class="layui-form-label" for="password">登陆密码</label>
+                            <div class="layui-input-inline">
+                                <input type="password" name="password"   id="password" value="{$info.password|default=''}" required  lay-verify="required"  autocomplete="off" class="layui-input"> 
+                                <span class="err" id="err_password"></span>      
+                            </div>
+                         </div>
+                         {if condition="($act eq 'add') or $info.admin_id gt 1"}
+                          <div class="layui-form-item">
+                                <label class="layui-form-label" for="role">所属角色</label>
+                                <div class="layui-input-inline">
+                                    <select name="role_id" id="role" lay-ignore class="layui-select">
+                                            {volist name="role" id="item"}
+                                                <option value="{$item.role_id}" {if condition="!empty($info.role_id) && $item.role_id == $info.role_id"}seleced{/if}>{$item.role_name}</option>
+                                            {/volist}
+                                    </select>                                   
+                               </div>
+                          </div>
+                         {/if}
+                         <div class="layui-form-item">
+                            <div class="layui-input-block">
+                                <div class="layui-btn" onclick="adsubmit()">立即提交</div>
+                            </div>
+                        </div>
+                    </form>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    // 判断输入框是否为空
+    function adsubmit(){
+        $('.err').show();
+        var password =$('#password').val();
+        var act =$('#act').val();
+        if((password.length < 6 || password.length>18) && act=='add'){
+            layer.msg('密码长度应该在6-18位！', {icon: 2,time: 1000});//alert('少年，密码不能为空！');
+            return false;
+        }
+        $.ajax({
+            async:false,
+            url:'/index.php/Admin/Admin/adminHandle?t='+Math.random(),
+            data:$('#adminHandle').serialize(),
+            type:'post',
+            dataType:'json',
+            success:function(data){
+                if(!data.code){
+                    layer.msg(data.msg,{icon: 2,time: 2000})
+                    $.each(data.result,function (index,item) {
+                        $('#err_'+index).text(item)
+                    })
+                }else{
+                    layer.msg(data.msg,{icon: 1,time: 3000},function () {
+                        window.location.href = data.url;
+                    })
+                }
+            },
+            error : function(XMLHttpRequest, textStatus, errorThrown) {
+                $('#error').html('<span class="error">网络失败，请刷新页面后重试!</span>');
+            }
+        });
+    }
+</script>
+</body>
+</html>
