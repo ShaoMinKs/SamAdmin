@@ -1,0 +1,24 @@
+---------------------------------------------------------------
+[2019-12-03T00:27:15+08:00] 59.36.132.240 GET www.samber.cn/Admin/admin/login.html
+[运行时间：0.481196s] [吞吐率：2.08req/s] [内存消耗：3,657.81kb] [文件加载：101]
+[ info ] [ LANG ] /www/wwwroot/www.samber.cn/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'user-agent' => 'Go-http-client/1.1',
+  'q-sub-business' => 'contentsecurity',
+  'host' => 'www.samber.cn',
+  'accept-encoding' => 'gzip',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] /www/wwwroot/www.samber.cn/application/admin/view/admin/login.html [ array (
+  0 => 'site_config',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.050864s ] mysql:host=127.0.0.1;port=3306;dbname=www_samber_cn;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sm_config` [ RunTime:0.028314s ]
+[ sql ] [ SQL ] SELECT * FROM `sm_config` [ RunTime:0.003684s ]
