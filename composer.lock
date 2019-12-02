@@ -4,7 +4,11 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
+<<<<<<< HEAD
     "content-hash": "157f796a0eb4fddb191745b7f3edaa39",
+=======
+    "content-hash": "47dd385a1649528617b86d69f8c83ffb",
+>>>>>>> 08fd3df2e645c5201063c7dfeb9266561fb5755c
     "packages": [
         {
             "name": "aliyuncs/oss-sdk-php",
@@ -665,6 +669,7 @@
             "time": "2018-08-22T07:45:22+00:00"
         },
         {
+<<<<<<< HEAD
             "name": "paragonie/random_compat",
             "version": "v9.99.99",
             "source": {
@@ -710,6 +715,8 @@
             "time": "2018-07-02T15:55:56+00:00"
         },
         {
+=======
+>>>>>>> 08fd3df2e645c5201063c7dfeb9266561fb5755c
             "name": "phpmailer/phpmailer",
             "version": "v6.0.7",
             "source": {
@@ -1058,6 +1065,7 @@
             "time": "2016-02-11T07:05:27+00:00"
         },
         {
+<<<<<<< HEAD
             "name": "symfony/http-foundation",
             "version": "v3.4.31",
             "source": {
@@ -1112,6 +1120,8 @@
             "time": "2019-08-26T07:50:50+00:00"
         },
         {
+=======
+>>>>>>> 08fd3df2e645c5201063c7dfeb9266561fb5755c
             "name": "symfony/polyfill-mbstring",
             "version": "v1.11.0",
             "source": {
@@ -1171,6 +1181,7 @@
             "time": "2019-02-06T07:57:58+00:00"
         },
         {
+<<<<<<< HEAD
             "name": "symfony/polyfill-php70",
             "version": "v1.12.0",
             "source": {
@@ -1230,6 +1241,8 @@
             "time": "2019-08-06T08:03:45+00:00"
         },
         {
+=======
+>>>>>>> 08fd3df2e645c5201063c7dfeb9266561fb5755c
             "name": "symfony/var-dumper",
             "version": "v3.4.27",
             "source": {
@@ -1520,6 +1533,7 @@
             "time": "2018-05-11T06:45:42+00:00"
         },
         {
+<<<<<<< HEAD
             "name": "xaboy/form-builder",
             "version": "2.0.1",
             "source": {
@@ -1567,6 +1581,8 @@
             "time": "2019-09-14T06:33:07+00:00"
         },
         {
+=======
+>>>>>>> 08fd3df2e645c5201063c7dfeb9266561fb5755c
             "name": "zoujingli/wechat-developer",
             "version": "v1.2.12",
             "source": {

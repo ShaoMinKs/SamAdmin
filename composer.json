@@ -25,8 +25,12 @@
         "jaeger/querylist"          : "^4.1",
         "phpmailer/phpmailer": "^6.0",
         "qiniu/php-sdk": "^7.2",
+<<<<<<< HEAD
         "aliyuncs/oss-sdk-php": "^2.3",
         "xaboy/form-builder": "^2.0"
+=======
+        "aliyuncs/oss-sdk-php": "^2.3"
+>>>>>>> 08fd3df2e645c5201063c7dfeb9266561fb5755c
     },
     "autoload": {
         "psr-4": {

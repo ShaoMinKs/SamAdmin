@@ -1055,11 +1055,19 @@ html {
   .glyphicon-menu-up:before {
     content: "\e260";
   }
+<<<<<<< HEAD
   /* * {
     -webkit-box-sizing: border-box;
     -moz-box-sizing   : border-box;
     box-sizing        : border-box;
   } */
+=======
+  * {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing   : border-box;
+    box-sizing        : border-box;
+  }
+>>>>>>> 08fd3df2e645c5201063c7dfeb9266561fb5755c
   *: before,
   *: after {
     -webkit-box-sizing: border-box;

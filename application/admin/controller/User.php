@@ -6,9 +6,12 @@ use think\facade\Cache;
 use think\facade\Request;
 use app\admin\validate\User as uservalidate;
 use app\admin\model\Users as userModel;
+<<<<<<< HEAD
 use service\FormBuilder as Form;
 use think\Url;
 
+=======
+>>>>>>> 08fd3df2e645c5201063c7dfeb9266561fb5755c
 
 class User extends Base{
     
@@ -34,7 +37,11 @@ class User extends Base{
             list($page,$limit)  = [$this->request->get('page/d'),$this->request->get('limit/d')];
             ($page && $limit)  && $db->page($page,$limit);
             $db->field('user_id,nickname,email,sex,mobile,email,reg_time,last_login');
+<<<<<<< HEAD
             return $this->data_list($db,true,true,true);
+=======
+            return parent::data_list($db->where(['is_lock' => '0']),true,true,true);
+>>>>>>> 08fd3df2e645c5201063c7dfeb9266561fb5755c
         }else{
             return $this->fetch(); 
         }
@@ -44,13 +51,20 @@ class User extends Base{
 
 
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 08fd3df2e645c5201063c7dfeb9266561fb5755c
     /**
      * 新增编辑会员
      */
     public function add(){
+<<<<<<< HEAD
         return $this->_form($this->table,'public/form-builder');
+=======
+        return $this->_form($this->table,'add');
+>>>>>>> 08fd3df2e645c5201063c7dfeb9266561fb5755c
         // $act     = Request::param('act');
         // $user_id = Request::param('user_id');
         // if($act == 'edit' && $user_id){
@@ -63,6 +77,7 @@ class User extends Base{
     }
 
 
+<<<<<<< HEAD
     public function _add_form_filter(&$data){
         if(!Request::isPost()){
             $field = [
@@ -118,6 +133,8 @@ class User extends Base{
         return $this->_form($this->table);
     }
 
+=======
+>>>>>>> 08fd3df2e645c5201063c7dfeb9266561fb5755c
     /**
      * 会员提交
      */
@@ -125,7 +142,11 @@ class User extends Base{
         if(Request::isAjax()){
             $data               = Request::post();
             $validate           = new uservalidate();
+<<<<<<< HEAD
             $data['is_lock']    = isset($data['is_lock']) ? 1 : 0;
+=======
+            $data['is_lock']    =  isset($data['is_lock']) ? 1 : 0;
+>>>>>>> 08fd3df2e645c5201063c7dfeb9266561fb5755c
             $user               = new userModel();
             $result             = $validate->scene($data['act'])->check($data);
             if(true != $result){
@@ -155,6 +176,7 @@ class User extends Base{
             $this->error('非法提交!');
         }
     }
+<<<<<<< HEAD
 
     public function _save_form_filter(&$data){
         $validate           = new uservalidate;
@@ -165,4 +187,6 @@ class User extends Base{
         }
         
     }
+=======
+>>>>>>> 08fd3df2e645c5201063c7dfeb9266561fb5755c
 }

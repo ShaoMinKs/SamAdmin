@@ -22,3 +22,47 @@
 [ sql ] [ DB ] CONNECT:[ UseTime:0.050864s ] mysql:host=127.0.0.1;port=3306;dbname=www_samber_cn;charset=utf8
 [ sql ] [ SQL ] SHOW COLUMNS FROM `sm_config` [ RunTime:0.028314s ]
 [ sql ] [ SQL ] SELECT * FROM `sm_config` [ RunTime:0.003684s ]
+---------------------------------------------------------------
+[2019-12-03T00:41:41+08:00] 220.181.108.109 GET www.samber.cn/
+[运行时间：0.038426s] [吞吐率：26.02req/s] [内存消耗：3,392.64kb] [文件加载：99]
+[ info ] [ LANG ] /www/wwwroot/www.samber.cn/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'accept' => '*/*',
+  'accept-encoding' => 'gzip',
+  'if-none-match' => '"@NULL@"',
+  'accept-language' => 'zh-cn,zh-tw',
+  'user-agent' => 'Mozilla/5.0 (compatible; Baiduspider/2.0; +http://www.baidu.com/search/spider.html)',
+  'connection' => 'close',
+  'host' => 'www.samber.cn',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+---------------------------------------------------------------
+[2019-12-03T00:41:41+08:00] 220.181.108.187 GET www.samber.cn/Admin/admin/login.html
+[运行时间：0.040201s] [吞吐率：24.87req/s] [内存消耗：3,439.83kb] [文件加载：99]
+[ info ] [ LANG ] /www/wwwroot/www.samber.cn/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=0nvtvh0cucij7les4kquq7nrc7;',
+  'accept' => '*/*',
+  'accept-encoding' => 'gzip',
+  'if-none-match' => '"@NULL@"',
+  'accept-language' => 'zh-cn,zh-tw',
+  'user-agent' => 'Mozilla/5.0 (compatible; Baiduspider/2.0; +http://www.baidu.com/search/spider.html)',
+  'connection' => 'close',
+  'host' => 'www.samber.cn',
+  'content-type' => '',
+  'content-length' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] /www/wwwroot/www.samber.cn/application/admin/view/admin/login.html [ array (
+  0 => 'site_config',
+) ]

@@ -131,9 +131,13 @@ $(function(){
 				fileurl_tmp = $("input[name^='fileurl_tmp']").val();	
 			}
 			eval('window.parent.'+callback+'(fileurl_tmp,elementid)');
+<<<<<<< HEAD
 			//当你在iframe页面关闭自身时
 				var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
 				parent.layer.close(index); //再执行关闭  
+=======
+			window.parent.layer.closeAll();
+>>>>>>> 08fd3df2e645c5201063c7dfeb9266561fb5755c
 			return;
 		}					 
 		if(num > 1){
@@ -145,9 +149,13 @@ $(function(){
 		}else{
 				$(window.parent.document).find("#{$info.input}").val($("input[name^='fileurl_tmp']").val());
 		}
+<<<<<<< HEAD
 		//当你在iframe页面关闭自身时
 			var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
 			parent.layer.close(index); //再执行关闭  
+=======
+		window.parent.layer.closeAll();
+>>>>>>> 08fd3df2e645c5201063c7dfeb9266561fb5755c
 	});
 	
 });
