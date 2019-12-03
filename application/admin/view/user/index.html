@@ -3,11 +3,7 @@
         <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
                 <ul class="layui-tab-title">
                   <li class="layui-this">会员列表 <span style="font-size:12px;color:#777">(共 <span class="count"></span> 条记录)</span></li>
-<<<<<<< HEAD
                   <li><a   data-modal="{:url('admin/user/add')}" data-title="新增">新增会员</a></li>
-=======
-                  <li><a  href="{:url('admin/user/add',['act'=>'add'])}">新增会员</a></li>
->>>>>>> 08fd3df2e645c5201063c7dfeb9266561fb5755c
                   <li style="float:right"><div title="刷新数据" class="pReload"><i class="fa fa-refresh"></i></div></li>
                 </ul>
                 <div class="layui-tab-content">
@@ -32,10 +28,7 @@
                               </div>	
                               <script type="text/html" id="barDemo">
                                   <a class="layui-btn layui-btn-xs" lay-event="edit"> <i class="fa fa-pencil-square-o"></i> 编辑</a>
-<<<<<<< HEAD
                                  
-=======
->>>>>>> 08fd3df2e645c5201063c7dfeb9266561fb5755c
                                   <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del"> <i class="fa fa-trash-o"></i> 删除</a>
                               </script>                        
                         </div>
@@ -129,12 +122,8 @@
                   });
                 } else if(obj.event === 'edit'){
                     var id  = data.user_id;
-<<<<<<< HEAD
                     // window.location.href = "/admin/user/add/act/edit/user_id/"+id;
                     modal_iframe("/admin/user/add/user_id/"+id,'','编辑会员')
-=======
-                    window.location.href = "/admin/user/add/act/edit/user_id/"+id;
->>>>>>> 08fd3df2e645c5201063c7dfeb9266561fb5755c
                 }
               });
             });

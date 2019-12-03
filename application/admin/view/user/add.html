@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-
-=======
-{include file="public/layout" /}
->>>>>>> 08fd3df2e645c5201063c7dfeb9266561fb5755c
 <style>
     .system_img_location{text-align: center; width: 120px;position:absolute;top:15px; margin-left:265px;}
     .layui-input-inline {
@@ -17,44 +12,26 @@
     }
 </style>
 <body style="background-color: #FFF; overflow: auto;">
-<<<<<<< HEAD
     <!-- <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
-=======
-    <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
->>>>>>> 08fd3df2e645c5201063c7dfeb9266561fb5755c
         <ul class="layui-tab-title">
             <li> <a href="{:url('admin/user/index')}">会员列表</a> </li>
             <li class="layui-this"><a  href="{:url('admin/user/add')}">{$vo.user_id ? '编辑' : '新增'}会员</a></li>
             <li style="float:right;padding: 0;min-width: 35px;"><div title="刷新数据" class="pReload"><i class="fa fa-refresh"></i></div></li>
             <li style="float:right;padding: 0;min-width: 35px;"><a  href="javascript:history.back();" title="返回列表"> <i class="fa  fa-arrow-left"></i></a></li>
         </ul>
-<<<<<<< HEAD
     </div> -->
     <div class="layui-tab-content">
                 <div class="layui-row">
                     <form class="layui-form" action="{:url('admin/user/userHandle')}" method="post" onsubmit="return false">
-=======
-    </div>
-    <div class="layui-tab-content">
-                <div class="layui-row">
-                    <form class="layui-form" action="{:url('admin/user/userHandle')}" method="post">
->>>>>>> 08fd3df2e645c5201063c7dfeb9266561fb5755c
                         <input type="hidden" name="act" id="act" value="{$vo.user_id ? 'edit' : 'add'}">
                         <input type="hidden" name="user_id" value="{$vo.user_id|default=''}">
                         <input type="hidden" name="auth_code" value="{$Think.config.AUTH_CODE}"/>
                         {:token()}
-<<<<<<< HEAD
                         
                         <div class="layui-form-item">
                             <label class="layui-form-label" for="nickname">会员昵称</label>
                             <div class="layui-input-inline">
                                 <input type="text" name="nickname" maxlength="20"  id="nickname"  required  lay-verify="required"  value="{$vo.nickname|default=''}"   autocomplete="off" class="layui-input">   
-=======
-                        <div class="layui-form-item">
-                            <label class="layui-form-label" for="nickname">会员昵称</label>
-                            <div class="layui-input-inline">
-                                <input type="text" name="nickname" maxlength="20"  id="nickname" value="{$vo.nickname|default=''}" required  lay-verify="required"  autocomplete="off" class="layui-input">   
->>>>>>> 08fd3df2e645c5201063c7dfeb9266561fb5755c
                             </div>
                         </div>
                         <div class="layui-form-item">
@@ -62,17 +39,10 @@
                             <div class="layui-input-inline">
                                 <input type="text" name="head_pic"  id="head_pic" value="{$vo.head_pic|default=''}" onClick="GetUploadify(1,'head_pic','head','img_call_back')" readonly  placeholder="请上传链接图片" autocomplete="off" class="layui-input">
                                 <span class="show">
-<<<<<<< HEAD
                                     <p id="link_logo_pre" target="_blank" class="nyroModal" rel="gal" href="javascript:void(0);">
                                         <img  id="head_pic_preimg" data-tips-image style="width:150px;height:60px;border:2px solid #e5e5e5;border-radius:5px;margin-top:5px" src="{$vo.head_pic|default=''}" alt="图片" title="点击查看大图">
                                         
                                     </p>
-=======
-                                    <a id="link_logo_pre" target="_blank" class="nyroModal" rel="gal" href="{$config.head_pic|default=''}">
-                                        <img  id="head_pic_preimg" style="width:150px;height:60px;border:2px solid #e5e5e5;border-radius:5px;margin-top:5px" src="{$vo.head_pic|default=''}" alt="图片" onmouseover="layer.tips('<img src={$vo.head_pic|default=''}>',this,{tips: [1, '#fff']});" onmouseout="layer.closeAll();">
-                                        
-                                    </a>
->>>>>>> 08fd3df2e645c5201063c7dfeb9266561fb5755c
                                 </span>
                             </div>
                             <div class="layui-input-inline">
@@ -126,42 +96,19 @@
                         
                         <div class="layui-form-item">
                             <div class="layui-input-block">
-<<<<<<< HEAD
                             <button class="layui-btn ajax_form_submit" lay-submit lay-filter="ajax_form_submit">立即提交</button>
                        
-=======
-                            <button class="layui-btn" lay-submit lay-filter="ajaxSubmit">立即提交</button>
-                            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
->>>>>>> 08fd3df2e645c5201063c7dfeb9266561fb5755c
                             </div>
                         </div>
                     </form>
                 </div>
     </div>
-<<<<<<< HEAD
     
 <script>
      var form = layui.form;
             form.render();
 
 
-=======
-<div id="goTop"> <a href="JavaScript:void(0);" id="btntop"><i class="fa fa-angle-up"></i></a><a href="JavaScript:void(0);" id="btnbottom"><i class="fa fa-angle-down"></i></a></div>     
-<script>
-      //Demo
-layui.use('form', function(){
-        var form = layui.form;
-        //监听select
-      });
-
-      function img_call_back(fileurl_tmp , elementid)
-    {
-        $("#"+elementid).val(fileurl_tmp);
-        $("#"+elementid+'_pre').attr('href', fileurl_tmp);
-        $("#"+elementid+'_preimg').attr('src', fileurl_tmp);
-        $("#"+elementid+'_preimg').attr('onmouseover', "layer.tips('<img src="+fileurl_tmp+">',this,{tips: [1, '#fff']});");
-    }  
->>>>>>> 08fd3df2e645c5201063c7dfeb9266561fb5755c
 </script>
 
 

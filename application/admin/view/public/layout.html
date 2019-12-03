@@ -12,11 +12,8 @@
 <link href="__PUBLIC__/static/css/main.css?v=1.5" rel="stylesheet" type="text/css">
 <link href="__PUBLIC__/static/css/page.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="__PUBLIC__/static/awesome/css/font-awesome.min.css">
-<<<<<<< HEAD
 
 <link rel="stylesheet" href="__PUBLIC__/static/css/bootstrap.css?v=1.0">
-=======
->>>>>>> 08fd3df2e645c5201063c7dfeb9266561fb5755c
 <link rel="stylesheet" href="__PUBLIC__/static/js/layui/css/layui.css">
 <!--[if IE 7]>
   <link rel="stylesheet" href="__PUBLIC__/static/font/css/font-awesome-ie7.min.css">
@@ -37,7 +34,6 @@
 <script src="__PUBLIC__/js/myFormValidate.js"></script>
 <script src="__PUBLIC__/js/myAjax2.js?v=1.0"></script>
 <script src="__PUBLIC__/js/global.js?v=2.3"></script>
-<<<<<<< HEAD
 <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <style>
 
@@ -53,18 +49,11 @@
 </style>
     <script type="text/javascript">
    
-=======
-    <script type="text/javascript">
->>>>>>> 08fd3df2e645c5201063c7dfeb9266561fb5755c
     $(function(){
           var form = layui.form;
             form.render();
       //监听提交
-<<<<<<< HEAD
       form.on('submit(ajax_form_submit)', function(data){
-=======
-      form.on('submit(ajaxSubmit)', function(data){
->>>>>>> 08fd3df2e645c5201063c7dfeb9266561fb5755c
         var url    = data.form.action;
         var method = data.form.method;
         var field  = data.field;
@@ -72,7 +61,6 @@
             url  : url,
             type : method,
             data : field,
-<<<<<<< HEAD
             beforeSend:function(){
                 load = layer.load(1); //0代表加载的风格，支持0-2
                 $('.ajax_form_submit').addClass('layui-btn-disabled').removeAttr('lay-filter');
@@ -94,26 +82,11 @@
                 layer.alert('服务器繁忙，请稍候');
             },
             
-=======
-            success:function(res){
-            if(!res.code){
-                layer.msg(res.msg,{icon: 2,time: 1000})
-              }else{
-                layer.msg(res.msg,{icon: 1,time: 1000},function () {
-                        window.location.href = res.url;
-                    })
-              }
-            },
-            error:function(){
-                layer.alert('服务器繁忙，请稍候');
-            }
->>>>>>> 08fd3df2e645c5201063c7dfeb9266561fb5755c
         });
         return false;
       });
     })
   
-<<<<<<< HEAD
    
     $(function(){
         $('body').on('click', '[data-modal]', function () {
@@ -176,8 +149,6 @@
       })
   }
 
-=======
->>>>>>> 08fd3df2e645c5201063c7dfeb9266561fb5755c
     function delfunc(obj){
     	layer.confirm('确认删除？', {
     		  btn: ['确定','取消'] //按钮
@@ -327,7 +298,6 @@
 
 </script>  
 
-<<<<<<< HEAD
 </head>
 
 
@@ -350,6 +320,3 @@
 		</div><!-- /.modal-content -->
 	</div><!-- /.modal -->
 </div>
-=======
-</head>
->>>>>>> 08fd3df2e645c5201063c7dfeb9266561fb5755c

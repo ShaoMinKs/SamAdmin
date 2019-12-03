@@ -15,23 +15,13 @@ return [
     // 服务器地址
     'hostname'        => '127.0.0.1',
     // 数据库名
-<<<<<<< HEAD
-    'database'        => 'www_samber_cn',
+    'database'        => 'tpshop2.0',
     // 用户名
-    'username'        => 'www_samber_cn',
+    'username'        => 'root',
     // 密码
-    'password'        => 'T2zkGGnFeecifZPe',
+    'password'        => 'root',
     // 端口
     'hostport'        => '3306',
-=======
-    'database'        => 'sam_zhuzhouyike_',
-    // 用户名
-    'username'        => 'sam_zhuzhouyike_',
-    // 密码
-    'password'        => 'n4dm2c27Xrr23Ers',
-    // 端口
-    'hostport'        => '',
->>>>>>> 08fd3df2e645c5201063c7dfeb9266561fb5755c
     // 连接dsn
     'dsn'             => '',
     // 数据库连接参数

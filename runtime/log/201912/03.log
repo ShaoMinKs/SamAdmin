@@ -66,3 +66,1074 @@
 [ info ] [ VIEW ] /www/wwwroot/www.samber.cn/application/admin/view/admin/login.html [ array (
   0 => 'site_config',
 ) ]
+---------------------------------------------------------------
+[2019-12-03T13:33:34+00:00] 127.0.0.1 GET www.sam.com/index.php/
+[运行时间：0.011095s] [吞吐率：90.13req/s] [内存消耗：737.63kb] [文件加载：37]
+[ error ] [0]Parse error: syntax error, unexpected '<<' (T_SL), expecting ']'[D:\phpstudy\PHPTutorial\WWW\SamAdmin\config\database.php:18]
+---------------------------------------------------------------
+[2019-12-03T21:33:43+08:00] 127.0.0.1 GET www.sam.com/index.php/
+[运行时间：0.027249s] [吞吐率：36.70req/s] [内存消耗：2,245.87kb] [文件加载：72]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; PHPSESSID=212630o0e3tk541b9d0h4aonp0; workspaceParam=index%7Cuser',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'max-age=0',
+  'connection' => 'keep-alive',
+  'host' => 'www.sam.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ error ] [1045]SQLSTATE[HY000] [1045] Access denied for user 'www_samber_cn'@'localhost' (using password: YES)[D:\phpstudy\PHPTutorial\WWW\SamAdmin\thinkphp\library\think\db\Connection.php:528]
+---------------------------------------------------------------
+[2019-12-03T21:36:07+08:00] 127.0.0.1 GET www.sam.com/index.php/
+[运行时间：0.051402s] [吞吐率：19.45req/s] [内存消耗：2,601.55kb] [文件加载：74]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; PHPSESSID=212630o0e3tk541b9d0h4aonp0; workspaceParam=index%7Cuser',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'max-age=0',
+  'connection' => 'keep-alive',
+  'host' => 'www.sam.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\application\admin\view\index\index.html [ array (
+  0 => 'site_config',
+  1 => 'admin_info',
+  2 => 'menu',
+  3 => 'head_menu',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000683s ] mysql:host=127.0.0.1;port=3306;dbname=tpshop2.0;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sm_system_menu` [ RunTime:0.004498s ]
+[ sql ] [ SQL ] SELECT `right` FROM `sm_system_menu` [ RunTime:0.000285s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sm_config` [ RunTime:0.004057s ]
+[ sql ] [ SQL ] SELECT * FROM `sm_config` [ RunTime:0.000315s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sm_admin` [ RunTime:0.004376s ]
+[ sql ] [ SQL ] SELECT * FROM `sm_admin` WHERE  `admin_id` = 1 LIMIT 1 [ RunTime:0.000321s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sm_admin_menu` [ RunTime:0.003940s ]
+[ sql ] [ SQL ] SELECT * FROM `sm_admin_menu` [ RunTime:0.000373s ]
+[ sql ] [ SQL ] SELECT `name`,`op` FROM `sm_admin_menu` WHERE  `pid` = 0 [ RunTime:0.000260s ]
+---------------------------------------------------------------
+[2019-12-03T21:36:08+08:00] 127.0.0.1 GET www.sam.com/index.php/Admin/user/index
+[运行时间：0.027534s] [吞吐率：36.32req/s] [内存消耗：2,545.18kb] [文件加载：74]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; PHPSESSID=212630o0e3tk541b9d0h4aonp0; workspaceParam=index%7Cuser',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.sam.com/index.php/',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => 'www.sam.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\application\admin\view\user\index.html [ array (
+  0 => 'site_config',
+) ]
+---------------------------------------------------------------
+[2019-12-03T21:36:08+08:00] 127.0.0.1 GET www.sam.com/public/static/css/bootstrap.css.map
+[运行时间：0.018134s] [吞吐率：55.15req/s] [内存消耗：1,109.60kb] [文件加载：55]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\thinkphp\lang\zh-cn.php
+---------------------------------------------------------------
+[2019-12-03T21:36:09+08:00] 127.0.0.1 GET www.sam.com/index.php/
+[运行时间：0.051777s] [吞吐率：19.31req/s] [内存消耗：2,459.62kb] [文件加载：72]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; PHPSESSID=212630o0e3tk541b9d0h4aonp0; workspaceParam=index%7Cuser',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'max-age=0',
+  'connection' => 'keep-alive',
+  'host' => 'www.sam.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\application\admin\view\index\index.html [ array (
+  0 => 'site_config',
+  1 => 'admin_info',
+  2 => 'menu',
+  3 => 'head_menu',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010494s ] mysql:host=127.0.0.1;port=3306;dbname=tpshop2.0;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sm_admin` [ RunTime:0.006306s ]
+[ sql ] [ SQL ] SELECT * FROM `sm_admin` WHERE  `admin_id` = 1 LIMIT 1 [ RunTime:0.000393s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sm_admin_menu` [ RunTime:0.004618s ]
+[ sql ] [ SQL ] SELECT * FROM `sm_admin_menu` [ RunTime:0.000388s ]
+[ sql ] [ SQL ] SELECT `name`,`op` FROM `sm_admin_menu` WHERE  `pid` = 0 [ RunTime:0.000220s ]
+---------------------------------------------------------------
+[2019-12-03T21:36:09+08:00] 127.0.0.1 GET www.sam.com/index.php/Admin/user/index
+[运行时间：0.023247s] [吞吐率：43.02req/s] [内存消耗：2,338.46kb] [文件加载：72]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; PHPSESSID=212630o0e3tk541b9d0h4aonp0; workspaceParam=index%7Cuser',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.sam.com/index.php/',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => 'www.sam.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\application\admin\view\user\index.html [ array (
+  0 => 'site_config',
+) ]
+---------------------------------------------------------------
+[2019-12-03T21:36:09+08:00] 127.0.0.1 GET www.sam.com/public/static/css/bootstrap.css.map
+[运行时间：0.016460s] [吞吐率：60.75req/s] [内存消耗：1,109.60kb] [文件加载：55]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\thinkphp\lang\zh-cn.php
+---------------------------------------------------------------
+[2019-12-03T21:37:32+08:00] 127.0.0.1 GET www.sam.com/index.php/
+[运行时间：0.045603s] [吞吐率：21.93req/s] [内存消耗：2,459.62kb] [文件加载：72]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; PHPSESSID=212630o0e3tk541b9d0h4aonp0; workspaceParam=index%7Cuser',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'max-age=0',
+  'connection' => 'keep-alive',
+  'host' => 'www.sam.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\application\admin\view\index\index.html [ array (
+  0 => 'site_config',
+  1 => 'admin_info',
+  2 => 'menu',
+  3 => 'head_menu',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010692s ] mysql:host=127.0.0.1;port=3306;dbname=tpshop2.0;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sm_admin` [ RunTime:0.004640s ]
+[ sql ] [ SQL ] SELECT * FROM `sm_admin` WHERE  `admin_id` = 1 LIMIT 1 [ RunTime:0.000367s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sm_admin_menu` [ RunTime:0.003658s ]
+[ sql ] [ SQL ] SELECT * FROM `sm_admin_menu` [ RunTime:0.000360s ]
+[ sql ] [ SQL ] SELECT `name`,`op` FROM `sm_admin_menu` WHERE  `pid` = 0 [ RunTime:0.000286s ]
+---------------------------------------------------------------
+[2019-12-03T21:37:32+08:00] 127.0.0.1 GET www.sam.com/index.php/Admin/user/index
+[运行时间：0.024863s] [吞吐率：40.22req/s] [内存消耗：2,541.07kb] [文件加载：74]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; PHPSESSID=212630o0e3tk541b9d0h4aonp0; workspaceParam=index%7Cuser',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.sam.com/index.php/',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => 'www.sam.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\application\admin\view\user\index.html [ array (
+  0 => 'site_config',
+) ]
+---------------------------------------------------------------
+[2019-12-03T21:37:32+08:00] 127.0.0.1 GET www.sam.com/public/static/css/bootstrap.css.map
+[运行时间：0.015562s] [吞吐率：64.26req/s] [内存消耗：1,109.60kb] [文件加载：55]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\thinkphp\lang\zh-cn.php
+---------------------------------------------------------------
+[2019-12-03T21:37:32+08:00] 127.0.0.1 GET www.sam.com/index.php/admin/user/index.html?page=1&limit=10
+[运行时间：0.029377s] [吞吐率：34.04req/s] [内存消耗：2,407.20kb] [文件加载：71]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; PHPSESSID=212630o0e3tk541b9d0h4aonp0; workspaceParam=index%7Cuser',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.sam.com/index.php/Admin/user/index',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36',
+  'x-requested-with' => 'XMLHttpRequest',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'connection' => 'keep-alive',
+  'host' => 'www.sam.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'page' => '1',
+  'limit' => '10',
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000631s ] mysql:host=127.0.0.1;port=3306;dbname=tpshop2.0;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sm_users` [ RunTime:0.004716s ]
+[ sql ] [ SQL ] SELECT `user_id`,`nickname`,`email`,`sex`,`mobile`,`reg_time`,`last_login` FROM `sm_users` LIMIT 0,10 [ RunTime:0.000235s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `sm_users` LIMIT 0,10 [ RunTime:0.000152s ]
+---------------------------------------------------------------
+[2019-12-03T21:37:34+08:00] 127.0.0.1 GET www.sam.com/admin/user/add/user_id/45
+[运行时间：0.047503s] [吞吐率：21.05req/s] [内存消耗：2,509.88kb] [文件加载：77]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; PHPSESSID=212630o0e3tk541b9d0h4aonp0; workspaceParam=index%7Cuser',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.sam.com/index.php/Admin/user/index',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => 'www.sam.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'user_id' => '45',
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.009815s ] mysql:host=127.0.0.1;port=3306;dbname=tpshop2.0;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sm_users` [ RunTime:0.004985s ]
+[ sql ] [ SQL ] SELECT * FROM `sm_users` WHERE  `user_id` = 45 LIMIT 1 [ RunTime:0.000445s ]
+[ error ] [1]Class 'FormBuilder\Form' not found[D:\phpstudy\PHPTutorial\WWW\SamAdmin\extend\service\FormBuilder.php:12]
+---------------------------------------------------------------
+[2019-12-03T21:37:54+08:00] 127.0.0.1 GET www.sam.com/index.php/
+[运行时间：0.051719s] [吞吐率：19.34req/s] [内存消耗：3,224.51kb] [文件加载：99]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; PHPSESSID=212630o0e3tk541b9d0h4aonp0; workspaceParam=index%7Cuser',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'max-age=0',
+  'connection' => 'keep-alive',
+  'host' => 'www.sam.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\application\admin\view\index\index.html [ array (
+  0 => 'site_config',
+  1 => 'admin_info',
+  2 => 'menu',
+  3 => 'head_menu',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010512s ] mysql:host=127.0.0.1;port=3306;dbname=tpshop2.0;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sm_admin` [ RunTime:0.004034s ]
+[ sql ] [ SQL ] SELECT * FROM `sm_admin` WHERE  `admin_id` = 1 LIMIT 1 [ RunTime:0.000364s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sm_admin_menu` [ RunTime:0.003550s ]
+[ sql ] [ SQL ] SELECT * FROM `sm_admin_menu` [ RunTime:0.000360s ]
+[ sql ] [ SQL ] SELECT `name`,`op` FROM `sm_admin_menu` WHERE  `pid` = 0 [ RunTime:0.000281s ]
+---------------------------------------------------------------
+[2019-12-03T21:37:54+08:00] 127.0.0.1 GET www.sam.com/index.php/Admin/user/index
+[运行时间：0.029525s] [吞吐率：33.87req/s] [内存消耗：3,167.17kb] [文件加载：99]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; PHPSESSID=212630o0e3tk541b9d0h4aonp0; workspaceParam=index%7Cuser',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.sam.com/index.php/',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => 'www.sam.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\application\admin\view\user\index.html [ array (
+  0 => 'site_config',
+) ]
+---------------------------------------------------------------
+[2019-12-03T21:37:55+08:00] 127.0.0.1 GET www.sam.com/index.php/admin/user/index.html?page=1&limit=10
+[运行时间：0.039473s] [吞吐率：25.33req/s] [内存消耗：3,168.02kb] [文件加载：98]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; PHPSESSID=212630o0e3tk541b9d0h4aonp0; workspaceParam=index%7Cuser',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.sam.com/index.php/Admin/user/index',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36',
+  'x-requested-with' => 'XMLHttpRequest',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'connection' => 'keep-alive',
+  'host' => 'www.sam.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'page' => '1',
+  'limit' => '10',
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000588s ] mysql:host=127.0.0.1;port=3306;dbname=tpshop2.0;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sm_users` [ RunTime:0.004571s ]
+[ sql ] [ SQL ] SELECT `user_id`,`nickname`,`email`,`sex`,`mobile`,`reg_time`,`last_login` FROM `sm_users` LIMIT 0,10 [ RunTime:0.000251s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `sm_users` LIMIT 0,10 [ RunTime:0.000147s ]
+---------------------------------------------------------------
+[2019-12-03T21:37:55+08:00] 127.0.0.1 GET www.sam.com/public/static/css/bootstrap.css.map
+[运行时间：0.023597s] [吞吐率：42.38req/s] [内存消耗：1,818.48kb] [文件加载：82]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\thinkphp\lang\zh-cn.php
+---------------------------------------------------------------
+[2019-12-03T21:37:56+08:00] 127.0.0.1 GET www.sam.com/admin/user/add/user_id/45
+[运行时间：0.052259s] [吞吐率：19.14req/s] [内存消耗：3,570.00kb] [文件加载：133]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; PHPSESSID=212630o0e3tk541b9d0h4aonp0; workspaceParam=index%7Cuser',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.sam.com/index.php/Admin/user/index',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => 'www.sam.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'user_id' => '45',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\application\admin\view\public\form-builder.html [ array (
+  0 => 'site_config',
+  1 => 'form',
+  2 => 'vo',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.009883s ] mysql:host=127.0.0.1;port=3306;dbname=tpshop2.0;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sm_users` [ RunTime:0.004123s ]
+[ sql ] [ SQL ] SELECT * FROM `sm_users` WHERE  `user_id` = 45 LIMIT 1 [ RunTime:0.000434s ]
+---------------------------------------------------------------
+[2019-12-03T21:37:56+08:00] 127.0.0.1 GET www.sam.com/public/plugins/form-create/form-create.min.js.map
+[运行时间：0.025361s] [吞吐率：39.43req/s] [内存消耗：1,818.51kb] [文件加载：82]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\thinkphp\lang\zh-cn.php
+---------------------------------------------------------------
+[2019-12-03T21:38:00+08:00] 127.0.0.1 GET www.sam.com/index.php/
+[运行时间：0.049636s] [吞吐率：20.15req/s] [内存消耗：3,224.51kb] [文件加载：99]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; PHPSESSID=212630o0e3tk541b9d0h4aonp0; workspaceParam=index%7Cuser',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'max-age=0',
+  'connection' => 'keep-alive',
+  'host' => 'www.sam.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\application\admin\view\index\index.html [ array (
+  0 => 'site_config',
+  1 => 'admin_info',
+  2 => 'menu',
+  3 => 'head_menu',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010470s ] mysql:host=127.0.0.1;port=3306;dbname=tpshop2.0;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sm_admin` [ RunTime:0.004027s ]
+[ sql ] [ SQL ] SELECT * FROM `sm_admin` WHERE  `admin_id` = 1 LIMIT 1 [ RunTime:0.000354s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sm_admin_menu` [ RunTime:0.003590s ]
+[ sql ] [ SQL ] SELECT * FROM `sm_admin_menu` [ RunTime:0.000353s ]
+[ sql ] [ SQL ] SELECT `name`,`op` FROM `sm_admin_menu` WHERE  `pid` = 0 [ RunTime:0.000290s ]
+---------------------------------------------------------------
+[2019-12-03T21:38:00+08:00] 127.0.0.1 GET www.sam.com/index.php/Admin/user/index
+[运行时间：0.029398s] [吞吐率：34.02req/s] [内存消耗：3,167.17kb] [文件加载：99]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; PHPSESSID=212630o0e3tk541b9d0h4aonp0; workspaceParam=index%7Cuser',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.sam.com/index.php/',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => 'www.sam.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\application\admin\view\user\index.html [ array (
+  0 => 'site_config',
+) ]
+---------------------------------------------------------------
+[2019-12-03T21:38:00+08:00] 127.0.0.1 GET www.sam.com/index.php/admin/user/index.html?page=1&limit=10
+[运行时间：0.046307s] [吞吐率：21.59req/s] [内存消耗：3,168.02kb] [文件加载：98]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; PHPSESSID=212630o0e3tk541b9d0h4aonp0; workspaceParam=index%7Cuser',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.sam.com/index.php/Admin/user/index',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36',
+  'x-requested-with' => 'XMLHttpRequest',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'connection' => 'keep-alive',
+  'host' => 'www.sam.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'page' => '1',
+  'limit' => '10',
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010679s ] mysql:host=127.0.0.1;port=3306;dbname=tpshop2.0;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sm_users` [ RunTime:0.004770s ]
+[ sql ] [ SQL ] SELECT `user_id`,`nickname`,`email`,`sex`,`mobile`,`reg_time`,`last_login` FROM `sm_users` LIMIT 0,10 [ RunTime:0.000249s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `sm_users` LIMIT 0,10 [ RunTime:0.000144s ]
+---------------------------------------------------------------
+[2019-12-03T21:38:01+08:00] 127.0.0.1 GET www.sam.com/index.php/admin/user/add.html
+[运行时间：0.049766s] [吞吐率：20.09req/s] [内存消耗：3,422.77kb] [文件加载：131]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; PHPSESSID=212630o0e3tk541b9d0h4aonp0; workspaceParam=index%7Cuser',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.sam.com/index.php/Admin/user/index',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => 'www.sam.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\application\admin\view\public\form-builder.html [ array (
+  0 => 'site_config',
+  1 => 'form',
+  2 => 'vo',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010005s ] mysql:host=127.0.0.1;port=3306;dbname=tpshop2.0;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sm_users` [ RunTime:0.004205s ]
+---------------------------------------------------------------
+[2019-12-03T21:42:14+08:00] 127.0.0.1 GET www.sam.com/index.php/
+[运行时间：0.056911s] [吞吐率：17.57req/s] [内存消耗：3,224.51kb] [文件加载：99]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; PHPSESSID=212630o0e3tk541b9d0h4aonp0; workspaceParam=index%7Cuser',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'max-age=0',
+  'connection' => 'keep-alive',
+  'host' => 'www.sam.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\application\admin\view\index\index.html [ array (
+  0 => 'site_config',
+  1 => 'admin_info',
+  2 => 'menu',
+  3 => 'head_menu',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010075s ] mysql:host=127.0.0.1;port=3306;dbname=tpshop2.0;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sm_admin` [ RunTime:0.004711s ]
+[ sql ] [ SQL ] SELECT * FROM `sm_admin` WHERE  `admin_id` = 1 LIMIT 1 [ RunTime:0.000448s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sm_admin_menu` [ RunTime:0.004281s ]
+[ sql ] [ SQL ] SELECT * FROM `sm_admin_menu` [ RunTime:0.000346s ]
+[ sql ] [ SQL ] SELECT `name`,`op` FROM `sm_admin_menu` WHERE  `pid` = 0 [ RunTime:0.000263s ]
+---------------------------------------------------------------
+[2019-12-03T21:42:15+08:00] 127.0.0.1 GET www.sam.com/index.php/Admin/user/index
+[运行时间：0.030291s] [吞吐率：33.01req/s] [内存消耗：3,167.17kb] [文件加载：99]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; PHPSESSID=212630o0e3tk541b9d0h4aonp0; workspaceParam=index%7Cuser',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.sam.com/index.php/',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => 'www.sam.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\application\admin\view\user\index.html [ array (
+  0 => 'site_config',
+) ]
+---------------------------------------------------------------
+[2019-12-03T21:42:15+08:00] 127.0.0.1 GET www.sam.com/index.php/admin/user/index.html?page=1&limit=10
+[运行时间：0.045993s] [吞吐率：21.74req/s] [内存消耗：3,168.18kb] [文件加载：98]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; PHPSESSID=212630o0e3tk541b9d0h4aonp0; workspaceParam=index%7Cuser',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.sam.com/index.php/Admin/user/index',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36',
+  'x-requested-with' => 'XMLHttpRequest',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'connection' => 'keep-alive',
+  'host' => 'www.sam.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'page' => '1',
+  'limit' => '10',
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010869s ] mysql:host=127.0.0.1;port=3306;dbname=tpshop2.0;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sm_users` [ RunTime:0.004042s ]
+[ sql ] [ SQL ] SELECT `user_id`,`nickname`,`email`,`sex`,`mobile`,`reg_time`,`last_login` FROM `sm_users` LIMIT 0,10 [ RunTime:0.000259s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `sm_users` LIMIT 0,10 [ RunTime:0.000215s ]
+---------------------------------------------------------------
+[2019-12-03T21:42:16+08:00] 127.0.0.1 GET www.sam.com/index.php/Admin/user/index
+[运行时间：0.028641s] [吞吐率：34.91req/s] [内存消耗：3,167.17kb] [文件加载：99]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; PHPSESSID=212630o0e3tk541b9d0h4aonp0; workspaceParam=index%7Cuser',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.sam.com/index.php/',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => 'www.sam.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\application\admin\view\user\index.html [ array (
+  0 => 'site_config',
+) ]
+---------------------------------------------------------------
+[2019-12-03T21:42:16+08:00] 127.0.0.1 GET www.sam.com/index.php/admin/user/index.html?page=1&limit=10
+[运行时间：0.043316s] [吞吐率：23.09req/s] [内存消耗：3,168.18kb] [文件加载：98]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; PHPSESSID=212630o0e3tk541b9d0h4aonp0; workspaceParam=index%7Cuser',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.sam.com/index.php/Admin/user/index',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36',
+  'x-requested-with' => 'XMLHttpRequest',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'connection' => 'keep-alive',
+  'host' => 'www.sam.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'page' => '1',
+  'limit' => '10',
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010551s ] mysql:host=127.0.0.1;port=3306;dbname=tpshop2.0;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sm_users` [ RunTime:0.004238s ]
+[ sql ] [ SQL ] SELECT `user_id`,`nickname`,`email`,`sex`,`mobile`,`reg_time`,`last_login` FROM `sm_users` LIMIT 0,10 [ RunTime:0.000324s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `sm_users` LIMIT 0,10 [ RunTime:0.000243s ]
+---------------------------------------------------------------
+[2019-12-03T21:42:18+08:00] 127.0.0.1 GET www.sam.com/index.php/Admin/system/index
+[运行时间：0.067503s] [吞吐率：14.81req/s] [内存消耗：3,450.10kb] [文件加载：102]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; PHPSESSID=212630o0e3tk541b9d0h4aonp0; workspaceParam=index%7Csystem',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.sam.com/index.php/',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => 'www.sam.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\application\admin\view\system\site_info.html [ array (
+  0 => 'site_config',
+  1 => 'province',
+  2 => 'city',
+  3 => 'area',
+  4 => 'group_list',
+  5 => 'inc_type',
+  6 => 'config',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010891s ] mysql:host=127.0.0.1;port=3306;dbname=tpshop2.0;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sm_config` [ RunTime:0.003852s ]
+[ sql ] [ SQL ] SELECT * FROM `sm_config` WHERE  `inc_type` = 'site_info' [ RunTime:0.000317s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sm_region` [ RunTime:0.003726s ]
+[ sql ] [ SQL ] SELECT * FROM `sm_region` WHERE  `parent_id` = 0 [ RunTime:0.005207s ]
+[ sql ] [ SQL ] SELECT * FROM `sm_region` WHERE  `parent_id` = 25579 [ RunTime:0.005062s ]
+[ sql ] [ SQL ] SELECT * FROM `sm_region` WHERE  `parent_id` = 25758 [ RunTime:0.004985s ]
+---------------------------------------------------------------
+[2019-12-03T21:42:19+08:00] 127.0.0.1 GET www.sam.com/index.php/Admin/article/articleList
+[运行时间：0.056591s] [吞吐率：17.67req/s] [内存消耗：3,658.13kb] [文件加载：109]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; PHPSESSID=212630o0e3tk541b9d0h4aonp0; workspaceParam=articleList%7Carticle',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.sam.com/index.php/',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => 'www.sam.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\application\admin\view\article\article_list.html [ array (
+  0 => 'site_config',
+  1 => 'count',
+  2 => 'cats',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010525s ] mysql:host=127.0.0.1;port=3306;dbname=tpshop2.0;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sm_article` [ RunTime:0.005124s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `sm_article` [ RunTime:0.000264s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sm_article_cat` [ RunTime:0.004478s ]
+[ sql ] [ SQL ] SELECT c.*,count(s.cat_id) as has_children FROM `sm_article_cat` `c` LEFT JOIN `sm_article_cat` `s` ON `s`.`parent_id`=`c`.`cat_id` GROUP BY `c`.`cat_id` ORDER BY `parent_id`,`sort_order` [ RunTime:0.000719s ]
+---------------------------------------------------------------
+[2019-12-03T21:42:19+08:00] 127.0.0.1 GET www.sam.com/index.php/admin/article/getarticles.html?page=1&limit=10
+[运行时间：0.048775s] [吞吐率：20.50req/s] [内存消耗：3,176.86kb] [文件加载：98]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; PHPSESSID=212630o0e3tk541b9d0h4aonp0; workspaceParam=articleList%7Carticle',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.sam.com/index.php/Admin/article/articleList',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36',
+  'x-requested-with' => 'XMLHttpRequest',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'connection' => 'keep-alive',
+  'host' => 'www.sam.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'page' => '1',
+  'limit' => '10',
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010167s ] mysql:host=127.0.0.1;port=3306;dbname=tpshop2.0;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sm_article` [ RunTime:0.003963s ]
+[ sql ] [ SQL ] SELECT `article_id`,`title`,`cat_id`,`is_open`,`publish_time` FROM `sm_article` ORDER BY `publish_time` DESC LIMIT 0,10 [ RunTime:0.000337s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sm_article_cat` [ RunTime:0.003721s ]
+[ sql ] [ SQL ] SELECT `cat_name` FROM `sm_article_cat` WHERE  `cat_id` = 5 LIMIT 1 [ RunTime:0.000263s ]
+[ sql ] [ SQL ] SELECT `cat_name` FROM `sm_article_cat` WHERE  `cat_id` = 14 LIMIT 1 [ RunTime:0.000224s ]
+[ sql ] [ SQL ] SELECT `cat_name` FROM `sm_article_cat` WHERE  `cat_id` = 1 LIMIT 1 [ RunTime:0.000310s ]
+[ sql ] [ SQL ] SELECT `cat_name` FROM `sm_article_cat` WHERE  `cat_id` = 1 LIMIT 1 [ RunTime:0.000250s ]
+[ sql ] [ SQL ] SELECT `cat_name` FROM `sm_article_cat` WHERE  `cat_id` = 3 LIMIT 1 [ RunTime:0.000187s ]
+[ sql ] [ SQL ] SELECT `cat_name` FROM `sm_article_cat` WHERE  `cat_id` = 5 LIMIT 1 [ RunTime:0.000174s ]
+[ sql ] [ SQL ] SELECT `cat_name` FROM `sm_article_cat` WHERE  `cat_id` = 5 LIMIT 1 [ RunTime:0.000182s ]
+[ sql ] [ SQL ] SELECT `cat_name` FROM `sm_article_cat` WHERE  `cat_id` = 5 LIMIT 1 [ RunTime:0.000174s ]
+[ sql ] [ SQL ] SELECT `cat_name` FROM `sm_article_cat` WHERE  `cat_id` = 5 LIMIT 1 [ RunTime:0.000215s ]
+[ sql ] [ SQL ] SELECT `cat_name` FROM `sm_article_cat` WHERE  `cat_id` = 2 LIMIT 1 [ RunTime:0.000145s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `sm_article` WHERE  `is_open` = 1 [ RunTime:0.000137s ]
+---------------------------------------------------------------
+[2019-12-03T21:42:22+08:00] 127.0.0.1 GET www.sam.com/index.php/Admin/Curd/index
+[运行时间：0.035754s] [吞吐率：27.97req/s] [内存消耗：3,447.05kb] [文件加载：101]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; PHPSESSID=212630o0e3tk541b9d0h4aonp0; workspaceParam=index%7CCurd',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.sam.com/index.php/',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => 'www.sam.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\application\admin\view\curd\index.html [ array (
+  0 => 'site_config',
+  1 => 'tables',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000511s ] mysql:host=127.0.0.1;port=3306;dbname=tpshop2.0;charset=utf8
+[ sql ] [ SQL ] SHOW TABLE STATUS [ RunTime:0.003677s ]
+---------------------------------------------------------------
+[2019-12-03T21:42:23+08:00] 127.0.0.1 GET www.sam.com/index.php/Admin/user/index
+[运行时间：0.029051s] [吞吐率：34.42req/s] [内存消耗：3,167.17kb] [文件加载：99]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; PHPSESSID=212630o0e3tk541b9d0h4aonp0; workspaceParam=index%7Cuser',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.sam.com/index.php/',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => 'www.sam.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\application\admin\view\user\index.html [ array (
+  0 => 'site_config',
+) ]
+---------------------------------------------------------------
+[2019-12-03T21:42:23+08:00] 127.0.0.1 GET www.sam.com/index.php/admin/user/index.html?page=1&limit=10
+[运行时间：0.042477s] [吞吐率：23.54req/s] [内存消耗：3,168.18kb] [文件加载：98]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; PHPSESSID=212630o0e3tk541b9d0h4aonp0; workspaceParam=index%7Cuser',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.sam.com/index.php/Admin/user/index',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36',
+  'x-requested-with' => 'XMLHttpRequest',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'connection' => 'keep-alive',
+  'host' => 'www.sam.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'page' => '1',
+  'limit' => '10',
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010224s ] mysql:host=127.0.0.1;port=3306;dbname=tpshop2.0;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sm_users` [ RunTime:0.004113s ]
+[ sql ] [ SQL ] SELECT `user_id`,`nickname`,`email`,`sex`,`mobile`,`reg_time`,`last_login` FROM `sm_users` LIMIT 0,10 [ RunTime:0.000285s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `sm_users` LIMIT 0,10 [ RunTime:0.000242s ]
+---------------------------------------------------------------
+[2019-12-03T21:42:25+08:00] 127.0.0.1 GET www.sam.com/admin/user/add/user_id/45
+[运行时间：0.070893s] [吞吐率：14.11req/s] [内存消耗：3,444.11kb] [文件加载：131]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; PHPSESSID=212630o0e3tk541b9d0h4aonp0; workspaceParam=index%7Cuser',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.sam.com/index.php/Admin/user/index',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => 'www.sam.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'user_id' => '45',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\application\admin\view\public\form-builder.html [ array (
+  0 => 'site_config',
+  1 => 'form',
+  2 => 'vo',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010421s ] mysql:host=127.0.0.1;port=3306;dbname=tpshop2.0;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sm_users` [ RunTime:0.013073s ]
+[ sql ] [ SQL ] SELECT * FROM `sm_users` WHERE  `user_id` = 45 LIMIT 1 [ RunTime:0.001203s ]
+---------------------------------------------------------------
+[2019-12-03T21:42:30+08:00] 127.0.0.1 POST www.sam.com/admin/user/add/user_id/add
+[运行时间：0.044910s] [吞吐率：22.27req/s] [内存消耗：3,223.66kb] [文件加载：102]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; PHPSESSID=212630o0e3tk541b9d0h4aonp0; workspaceParam=index%7Cuser',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.sam.com/admin/user/add/user_id/45',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36',
+  'x-requested-with' => 'XMLHttpRequest',
+  'origin' => 'http://www.sam.com',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'content-length' => '206',
+  'connection' => 'keep-alive',
+  'host' => 'www.sam.com',
+)
+[ info ] [ PARAM ] array (
+  'user_id' => 'add',
+  'nickname' => 'sam',
+  'image' => '/public/upload/head/2019/02-27/496e02be63dcfe3648042871eb71417e.gif',
+  'password' => '',
+  'password_confirm' => '',
+  'mobile' => '18574781227',
+  'sex' => '2',
+  'qq' => '254631494',
+  'email' => '123@sina.com',
+  'is_lock' => '0',
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010061s ] mysql:host=127.0.0.1;port=3306;dbname=tpshop2.0;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sm_users` [ RunTime:0.004303s ]
+[ error ] [0]语法解析错误: syntax error, unexpected '<<' (T_SL), expecting function (T_FUNCTION) or const (T_CONST)[D:\phpstudy\PHPTutorial\WWW\SamAdmin\application\admin\model\Users.php:12]
+---------------------------------------------------------------
+[2019-12-03T21:42:33+08:00] 127.0.0.1 GET www.sam.com/public/plugins/form-create/form-create.min.js.map
+[运行时间：0.024273s] [吞吐率：41.20req/s] [内存消耗：1,818.51kb] [文件加载：82]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\thinkphp\lang\zh-cn.php
+---------------------------------------------------------------
+[2019-12-03T21:42:33+08:00] 127.0.0.1 GET www.sam.com/public/static/css/bootstrap.css.map
+[运行时间：0.022688s] [吞吐率：44.08req/s] [内存消耗：1,818.48kb] [文件加载：82]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\thinkphp\lang\zh-cn.php
+---------------------------------------------------------------
+[2019-12-03T21:42:39+08:00] 127.0.0.1 POST www.sam.com/admin/user/add/user_id/add
+[运行时间：0.063368s] [吞吐率：15.78req/s] [内存消耗：3,223.66kb] [文件加载：102]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; PHPSESSID=212630o0e3tk541b9d0h4aonp0; workspaceParam=index%7Cuser',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.sam.com/admin/user/add/user_id/45',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36',
+  'x-requested-with' => 'XMLHttpRequest',
+  'origin' => 'http://www.sam.com',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'content-length' => '206',
+  'connection' => 'keep-alive',
+  'host' => 'www.sam.com',
+)
+[ info ] [ PARAM ] array (
+  'user_id' => 'add',
+  'nickname' => 'sam',
+  'image' => '/public/upload/head/2019/02-27/496e02be63dcfe3648042871eb71417e.gif',
+  'password' => '',
+  'password_confirm' => '',
+  'mobile' => '18574781227',
+  'sex' => '2',
+  'qq' => '254631494',
+  'email' => '123@sina.com',
+  'is_lock' => '0',
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.011478s ] mysql:host=127.0.0.1;port=3306;dbname=tpshop2.0;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sm_users` [ RunTime:0.016586s ]
+[ error ] [0]语法解析错误: syntax error, unexpected '<<' (T_SL), expecting function (T_FUNCTION) or const (T_CONST)[D:\phpstudy\PHPTutorial\WWW\SamAdmin\application\admin\model\Users.php:12]
+---------------------------------------------------------------
+[2019-12-03T21:44:05+08:00] 127.0.0.1 POST www.sam.com/admin/user/add/user_id/add
+[运行时间：0.050107s] [吞吐率：19.96req/s] [内存消耗：3,393.22kb] [文件加载：108]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; PHPSESSID=212630o0e3tk541b9d0h4aonp0; workspaceParam=index%7Cuser',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.sam.com/admin/user/add/user_id/45',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36',
+  'x-requested-with' => 'XMLHttpRequest',
+  'origin' => 'http://www.sam.com',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'content-length' => '206',
+  'connection' => 'keep-alive',
+  'host' => 'www.sam.com',
+)
+[ info ] [ PARAM ] array (
+  'user_id' => 'add',
+  'nickname' => 'sam',
+  'image' => '/public/upload/head/2019/02-27/496e02be63dcfe3648042871eb71417e.gif',
+  'password' => '',
+  'password_confirm' => '',
+  'mobile' => '18574781227',
+  'sex' => '2',
+  'qq' => '254631494',
+  'email' => '123@sina.com',
+  'is_lock' => '0',
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010112s ] mysql:host=127.0.0.1;port=3306;dbname=tpshop2.0;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sm_users` [ RunTime:0.005392s ]
+[ sql ] [ SQL ] SELECT `user_id` FROM `sm_users` WHERE  `nickname` = 'sam'  AND `user_id` <> 45 LIMIT 1 [ RunTime:0.000339s ]
+[ sql ] [ SQL ] SELECT `user_id` FROM `sm_users` WHERE  `mobile` = '18574781227'  AND `user_id` <> 45 LIMIT 1 [ RunTime:0.000288s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `sm_users` WHERE  `user_id` = 45 [ RunTime:0.000261s ]
+[ sql ] [ SQL ] UPDATE `sm_users`  SET `user_id` = 45 , `nickname` = 'sam' , `mobile` = '18574781227' , `sex` = 2 , `qq` = '254631494' , `email` = '123@sina.com' , `is_lock` = 0 , `head_pic` = '/public/upload/head/2019/02-27/496e02be63dcfe3648042871eb71417e.gif'  WHERE  `user_id` = 45 [ RunTime:0.000355s ]
+---------------------------------------------------------------
+[2019-12-03T21:44:10+08:00] 127.0.0.1 GET www.sam.com/admin/user/add/user_id/45
+[运行时间：0.060331s] [吞吐率：16.58req/s] [内存消耗：3,444.11kb] [文件加载：131]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; PHPSESSID=212630o0e3tk541b9d0h4aonp0; workspaceParam=index%7Cuser',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.sam.com/index.php/Admin/user/index',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => 'www.sam.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'user_id' => '45',
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ VIEW ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\application\admin\view\public\form-builder.html [ array (
+  0 => 'site_config',
+  1 => 'form',
+  2 => 'vo',
+) ]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010381s ] mysql:host=127.0.0.1;port=3306;dbname=tpshop2.0;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sm_users` [ RunTime:0.010050s ]
+[ sql ] [ SQL ] SELECT * FROM `sm_users` WHERE  `user_id` = 45 LIMIT 1 [ RunTime:0.000744s ]
+---------------------------------------------------------------
+[2019-12-03T21:44:10+08:00] 127.0.0.1 GET www.sam.com/public/plugins/form-create/form-create.min.js.map
+[运行时间：0.022327s] [吞吐率：44.79req/s] [内存消耗：1,818.51kb] [文件加载：82]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\thinkphp\lang\zh-cn.php
+---------------------------------------------------------------
+[2019-12-03T21:44:13+08:00] 127.0.0.1 POST www.sam.com/admin/user/add/user_id/add
+[运行时间：0.048455s] [吞吐率：20.64req/s] [内存消耗：3,393.22kb] [文件加载：108]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; thinkphp_show_page_trace=0|0; PHPSESSID=212630o0e3tk541b9d0h4aonp0; workspaceParam=index%7Cuser',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.sam.com/admin/user/add/user_id/45',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36',
+  'x-requested-with' => 'XMLHttpRequest',
+  'origin' => 'http://www.sam.com',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'content-length' => '206',
+  'connection' => 'keep-alive',
+  'host' => 'www.sam.com',
+)
+[ info ] [ PARAM ] array (
+  'user_id' => 'add',
+  'nickname' => 'sam',
+  'image' => '/public/upload/head/2019/02-27/496e02be63dcfe3648042871eb71417e.gif',
+  'password' => '',
+  'password_confirm' => '',
+  'mobile' => '18574781227',
+  'sex' => '1',
+  'qq' => '254631494',
+  'email' => '123@sina.com',
+  'is_lock' => '0',
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010332s ] mysql:host=127.0.0.1;port=3306;dbname=tpshop2.0;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sm_users` [ RunTime:0.004873s ]
+[ sql ] [ SQL ] SELECT `user_id` FROM `sm_users` WHERE  `nickname` = 'sam'  AND `user_id` <> 45 LIMIT 1 [ RunTime:0.000371s ]
+[ sql ] [ SQL ] SELECT `user_id` FROM `sm_users` WHERE  `mobile` = '18574781227'  AND `user_id` <> 45 LIMIT 1 [ RunTime:0.000245s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `sm_users` WHERE  `user_id` = 45 [ RunTime:0.000229s ]
+[ sql ] [ SQL ] UPDATE `sm_users`  SET `user_id` = 45 , `nickname` = 'sam' , `mobile` = '18574781227' , `sex` = 1 , `qq` = '254631494' , `email` = '123@sina.com' , `is_lock` = 0 , `head_pic` = '/public/upload/head/2019/02-27/496e02be63dcfe3648042871eb71417e.gif'  WHERE  `user_id` = 45 [ RunTime:0.000271s ]

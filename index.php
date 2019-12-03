@@ -31,12 +31,9 @@ require __DIR__ . '/thinkphp/base.php';
 // 支持事先使用静态方法设置Request对象和Config对象
 define('PLUGIN_PATH', __DIR__ . '/plugins/');
 defined('UPLOAD_PATH') or define('UPLOAD_PATH','public/upload/'); // 编辑器图片上传路径
-<<<<<<< HEAD
 define('DS', DIRECTORY_SEPARATOR);
 defined('APP_PATH') or define('APP_PATH', dirname($_SERVER['SCRIPT_FILENAME']) . DS);
 defined('ROOT_PATH') or define('ROOT_PATH', dirname(realpath(APP_PATH)) . DS);
 defined('PUBILC_PATH') or define('PUBILC_PATH', APP_PATH.'public/');
-=======
->>>>>>> 08fd3df2e645c5201063c7dfeb9266561fb5755c
 // 执行应用并响应
 Container::get('app')->run()->send();
