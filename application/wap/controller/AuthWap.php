@@ -6,7 +6,7 @@ use think\facade\Request;
 use think\facade\Cookie;
 use think\facade\Url;
 
-class WapBasic extends Controller{
+class AuthWap extends BaseWap{
 
     protected $uid;
     protected $userInfo;

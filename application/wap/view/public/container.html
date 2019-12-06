@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {include file="public/head" /}
+    <title>{block name="title"}{/block}</title>
+    {include file="public/style" /}
+    {block name="head_top"}{/block}
+    {include file="public/requirejs" /}
+    {block name="head"}{/block}
+    <script type="text/javascript" src="__WAP_PATH__/js/common.js"></script>
+</head>
+<body>
+{block name="content"}{/block}
+{block name="foot"}{/block}
+{include file="public/foot" /}
+{include file="public/right_nav" /}
+</body>
+</html>

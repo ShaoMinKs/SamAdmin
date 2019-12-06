@@ -1,0 +1,51 @@
+<script type="text/javascript" src="__PLUG_PATH__/requirejs/require.js"></script>
+<script>
+        requirejs.config({
+            urlArgs: "v=15615616515616556",
+            map: {
+                '*': {
+                    'css': '__PLUG_PATH__/requirejs/require-css.js'
+                }
+            },
+            shim: {
+                'iview': {
+                    deps: ['css!iviewcss']
+                },
+                'layer': {
+                    deps: ['css!layercss']
+                },
+                'ydui': {
+                    deps: ['css!yduicss']
+                },
+                'vant': {
+                    deps: ['css!vantcss']
+                },
+                'cityselect': {
+                    deps: ['css!yduicss']
+                }
+            },
+            baseUrl: '//' + location.hostname + '__PUBLIC__',
+            paths: {
+                'static': 'static',
+                'vue': 'plugins/vue/dist/vue.min',
+                'axios': 'plugins/axios.min',
+                'iview': 'plugins/iview/dist/iview.min',
+                'iviewcss': 'plugins/iview/dist/styles/iview',
+                'lodash': 'plugins/lodash',
+                'layer': 'plugins/layer/layer',
+                'layercss': 'plugins/layer/theme/default/layer',
+                'jquery': 'plugins/jquery-1.10.2.min',
+                'moment': 'plugins/moment',
+                'sweetalert': 'plugins/sweetalert2/sweetalert2.all.min',
+                'helper':'plugins/helper',
+                'store':'wap/module/store',
+                'better-scroll':"plugins/better-scroll",
+                'ydui':"plugins/ydui/ydui",
+                'yduicss':"plugins/ydui/ydui-px",
+                'vant':"plugins/vant/vant.min",
+                'vantcss':"plugins/vant/vant",
+                'cityselect':"plugins/ydui/cityselect",
+                'reg-verify':"plugins/reg-verify"
+            }
+        });
+    </script>

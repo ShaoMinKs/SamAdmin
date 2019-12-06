@@ -36,5 +36,8 @@ return [
     'tpl_replace_string'  =>  [
         '__STATIC__'=>'/public/static',
         '__PUBLIC__'=>'/public',
-    ]
+        '__WAP_PATH__' => '/public/wap',
+        '__PLUG_PATH__' => '/public/plugins'
+    ],
+
 ];
