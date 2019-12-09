@@ -1,7 +1,7 @@
 <?php
 namespace app\wap\controller;
 use think\Controller;
-use app\wap\model\Users;
+use app\wap\model\user\Users;
 use think\facade\Request;
 use think\facade\Cookie;
 use think\facade\Url;
