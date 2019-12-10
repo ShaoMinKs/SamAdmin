@@ -30,6 +30,36 @@ function tab($step = 1, $string = ' ', $size = 4)
 {
     return str_repeat($string, $size * $step);
 }
+
+// 应用公共文件
+if(!function_exists('unThumb')){
+    function unThumb($src){
+        return str_replace('/s_','/',$src);
+    }
+}
+
+function setView($uid,$product_id=0,$cate=0,$type='',$product_type = 'product',$content='',$min=20){
+    $Db=think\Db::name('store_visit');
+    $view=$Db->where(['uid'=>$uid,'product_id'=>$product_id,'product_type'=>$product_type])->field('count,add_time,id')->find();
+    if($view && $type!='search'){
+        $time=time();
+        if(($view['add_time']+$min)<$time){
+            $Db->where(['id'=>$view['id']])->update(['count'=>$view['count']+1,'add_time'=>time()]);
+        }
+    }else{
+        $cate = explode(',',$cate)[0];
+        $Db->insert([
+            'add_time'=>time(),
+            'count'=>1,
+            'product_id'=>$product_id,
+            'cate_id'=>$cate,
+            'type'=>$type,
+            'uid'=>$uid,
+            'product_type'=>$product_type,
+            'content'=>$content
+        ]);
+    }
+}
 /**
  * 缓存处理
  */

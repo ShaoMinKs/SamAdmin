@@ -1,0 +1,28 @@
+<div style="height:.92rem;"></div>
+<?php
+use think\facade\Request;
+$now_c = Request::controller();$now_a = Request::action();
+$menu = [
+    ['c'=>'Index','a'=>'index','name'=>'首页','class'=>'home'],
+    ['c'=>'Store','a'=>'index','name'=>'商城','class'=>'sort'], 
+    ['c'=>'Store','a'=>'cart','name'=>'购物车','class'=>'car'],
+    ['c'=>'My','a'=>'index','name'=>'我的','class'=>'user'],
+];
+?>
+<footer class="common-footer flex border-1px" ref="storeMenu" @touchmove.prevent>
+    {volist name="menu" id="vo"}
+    <?php
+        if(strtolower($now_c) == strtolower($vo['c']) && strtolower($now_a) == strtolower($vo['a'])){
+            $href = 'javascript:void(0);';
+            $checked = true;
+        }else{
+            $href = Url($vo['c'].'/'.$vo['a']);
+            $checked = false;
+        }
+    ?>
+    <a class="{$vo.class} <?php if($checked){echo' on ';} ?>" href="{$href}">
+        <span class="footer-icon icon"></span>
+        <p>{$vo['name']}</p>
+    </a>
+    {/volist}
+</footer>

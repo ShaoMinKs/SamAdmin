@@ -1,0 +1,164 @@
+{extend name="public/container"}
+{block name="head_top"}
+<link rel="stylesheet" href="__PLUG_PATH__/swiper/swiper-3.4.1.min.css">
+<script type="text/javascript" src="__PLUG_PATH__/swiper/swiper-3.4.1.jquery.min.js"></script>
+<script type="text/javascript" src="__PLUG_PATH__/jquery-slide-up.js"></script>
+<script type="text/javascript" src="__WAP_PATH__/js/jquery.downCount.js"></script>
+<script type="text/javascript" src="__WAP_PATH__/js/car-model.js"></script>
+<script type="text/javascript" src="__WAP_PATH__/js/base.js"></script>
+<script type="text/javascript" src="__WAP_PATH__/js/lottie.min.js"></script>
+{/block}
+{block name="title"}
+首页
+{/block}
+{block name="content"}
+<div class="page-index" id="app-index">
+    <section ref="bsDom">
+        <!-- 轮播 -->
+        {notempty name="banner"}
+        <div class="banner" ref="banners" style="height: 200px;">
+            <ul class="swiper-wrapper">
+                {volist name="banner" id="vo"}
+                <li class="swiper-slide"><a href="<?= empty($vo['url']) ? 'javascript:void(0);' : $vo['url']; ?>">
+                        <img src="{$vo.pic|unThumb}"/> </a></li>
+                {/volist}
+            </ul>
+            <div class="swiper-pagination"></div>
+        </div>
+        {/notempty}
+
+        <!-- 菜单 -->
+        {notempty name="menus"}
+            <div class="nav">
+                <ul class="flex"> {volist name="menus" id="vo"}
+                    <li><a href="<?= empty($vo['url']) ? 'javascript:void(0);' : $vo['url']; ?>"> <img src="{$vo.icon|unThumb}">
+                            <p>{$vo.name}</p></a></li>
+                    {/volist}
+                </ul>
+            </div>
+        {/notempty}
+
+        <!-- 新闻 -->
+        {notempty name="roll_news"}
+        <div class="hot-txt-roll border-1px flex">
+            <div class="hot-icon"><img src="__WAP_PATH__/images/hot-icon.png"></div>
+            <div class="txt-list">
+                <ul class="line"> {volist name="roll_news" id="vo"}
+                    <li style="overflow: hidden;white-space: nowrap;text-overflow: ellipsis;"><a
+                            style="display: block;"
+                            href="<?= empty($vo['url']) ? 'javascript:void(0);' : $vo['url']; ?>">{$vo.info}</a>
+                    </li>
+                    {/volist}
+                </ul>
+            </div>
+        </div>
+        {/notempty}
+
+         <!-- 商品分类模板 -->
+         <div class="template-prolist" v-cloak="" v-for="item in cateGroupList" v-show="cateGroupList.length > 0">
+                <div class="index-common-title border-1px">
+                    <a :href="'/wap/store/index/cid/'+item.id">
+                        {{item.cate_name}} <i class="icon"></i> </a></div>
+                <div class="product-banner"><img :src="(item.pic)" v-show="item.pic != ''"></div>
+                <ul class="flex">
+                    <li v-for="pro in item.product"><a :href="'/wap/store/detail/id/'+pro.id">
+                            <div class="picture"><img :src="pro.image"></div>
+                            <div class="product-info"><p class="title" v-text="pro.store_name"></p>
+                                <p class="count-wrapper flex"><span class="price"
+                                                                    v-html="getPriceStr(pro.price)"></span> <span
+                                        class="count">已售{{pro.sales}}{{pro.unit_name || '件'}}</span></p></div>
+                        </a></li>
+                </ul>
+            </div>
+
+
+             <!-- 商品推荐模板 -->
+             <div class="template-prolist">
+                    <div class="title-like flex" v-show="page.list.length > 0" v-cloak=""><span class="title-line left"></span> <span class="icon"></span>
+                        <span>新品推荐</span> <span class="title-line right"></span></div>
+                    <ul class="flex">
+                        <li v-for="item in page.list" v-cloak=""><a :href="'/wap/store/detail/id/'+item.id">
+                                <div class="picture"><img :src="item.image"></div>
+                                <div class="product-info"><p class="title" v-text="item.store_name"></p>
+                                    <p class="count-wrapper flex"><span class="price"
+                                                                        v-html="getPriceStr(item.price)"></span> <span
+                                            class="count">已售{{item.sales}}{{item.unit_name || '件'}}</span></p></div>
+                            </a></li>
+                    </ul>
+                </div>
+                <p class="loading-line" v-show="loading == true"><i></i><span>正在加载中</span><i></i></p>
+                <p class="loading-line" v-show="loading == false && page.loaded == false" v-cloak="" @click="getList">
+                    <i></i><span>点击加载</span><i></i></p>
+                <p class="loading-line" v-show="loading == false && page.loaded == true" v-cloak="">
+                    <i></i><span>没有更多了</span><i></i></p></div>
+    </section>
+    {include file="public/store_menu"}
+</div>
+
+<script>
+    requirejs(['vue', 'store', 'helper', 'better-scroll'], function (Vue, storeApi, $h, BScroll) {
+        new Vue({
+            el: '#app-index',
+            data:{
+                cateGroupList : [],
+                page: {first: 0, limit: 10, list: [], loaded: false},
+                loading: false
+            },
+            methods:{
+                init:function(){
+                    var myBanner = new Swiper('.banner', {
+                                    pagination: '.swiper-pagination',
+                                    paginationClickable: false,
+                                    autoplay: 4500,
+                                    loop: true,
+                                    speed: 2500,
+                                    autoplayDisableOnInteraction: false
+                                });
+                $(".line").slideUp({"li_h": $('.txt-list').height()});
+                },
+                getCateData : function(){
+                    var that = this;
+                    storeApi.getCategoryProductList(4, function (res) {
+                        console.log(res);
+                            that.cateGroupList = res.data.data;
+                        })
+                },
+                getPriceStr: function (price) {
+                        var format = this.formatPrice(price);
+                        return "<i>￥</i>" + format[0] + "<i>." + format[1] + "</i>";
+                    },
+                formatPrice: function (price) {
+                    var format = price.toString().split('.');
+                    if (format[1] == undefined) format[1] = '00';
+                    if (format[1].length == 1) format[1] += '0';
+                    return format;
+                },
+                getList: function () {
+                        if (this.loading) return;
+                        var that = this, group = that.page;
+                        if (group.loaded) return;
+                        this.loading = true;
+                        storeApi.getBestProductList({first: group.first, limit: group.limit}, function (res) {
+                            var list = res.data.data;
+                            group.loaded = list.length < group.limit;
+                            group.first += list.length;
+                            group.list = group.list.concat(list);
+                            that.$set(that, 'page', group);
+                            that.loading = false;
+                        }, function () {
+                            that.loading = false
+                        });
+                    },
+            },
+            mounted:function(){
+                var that = this;
+                this.init();
+                this.getCateData();
+                setTimeout(function() {
+                        that.getList();
+                    },0);
+            }
+        })
+    })
+</script>
+{/block}

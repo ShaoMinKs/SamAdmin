@@ -14,11 +14,11 @@ class Login extends BaseWap {
      * 登录
      */
     public function index(){
-        if(UtilService::isWechatBrowser()){
-            $this->loginOut();
-            $openid = $this->wechatOauth();
-            exit($this->redirect(Url::build('Index/index')));
-        }
+        // if(UtilService::isWechatBrowser()){
+        //     $this->loginOut();
+        //     $openid = $this->wechatOauth();
+        //     exit($this->redirect(Url::build('Index/index')));
+        // }
         return $this->fetch();
     }
 
