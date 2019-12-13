@@ -16,6 +16,11 @@ class StoreProduct extends ModelBasic {
         return $this->belongsTo('store_category', 'cate_id');
     }
 
+    protected function getSliderImageAttr($value)
+    {
+        return json_decode($value,true)?:[];
+    }
+    
        /**
      * 新品产品
      * @param string $field
@@ -59,6 +64,11 @@ class StoreProduct extends ModelBasic {
             ->order('sort DESC, id DESC');
         if($limit) $model->limit($limit);
         return $model->select();
+    }
+
+    public static function getValidProduct($productId,$field = '*')
+    {
+        return self::where('is_del',0)->where('is_show',1)->where('id',$productId)->field($field)->find();
     }
 
 }
