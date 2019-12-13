@@ -1,6 +1,7 @@
 /.idea
 /.vscode
-/runtime
+runtime/
 *.log
 .env
 .DS_Store
+.gitignore

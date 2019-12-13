@@ -1,6 +1,7 @@
 <?php
 namespace app\wap\controller;
 use app\wap\model\store\StoreCategory;
+use app\wap\model\store\StoreProduct;
 
 class Store extends AuthWap {
 
@@ -19,7 +20,16 @@ class Store extends AuthWap {
         return $this->fetch();
     }
 
+    /**
+     * 商品详情
+     */
     public function detail($id){
-        
+        if(!$id || !$storeInfo = StoreProduct::getValidProduct($id)) {
+            return $this->failed('商品不存在或已下架！');
+        }
+        $this->assign([
+            'storeInfo'  => $storeInfo
+        ]);
+        return $this->fetch();
     }
 }
