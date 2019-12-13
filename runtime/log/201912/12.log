@@ -1,0 +1,807 @@
+---------------------------------------------------------------
+[2019-12-12T10:19:28+08:00] 127.0.0.1 GET www.sam.com/wap
+[运行时间：0.036883s] [吞吐率：27.11req/s] [内存消耗：2,472.70kb] [文件加载：104]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => 'www.sam.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+---------------------------------------------------------------
+[2019-12-12T10:19:28+08:00] 127.0.0.1 GET www.sam.com/wap/login/index.html
+[运行时间：0.022779s] [吞吐率：43.90req/s] [内存消耗：2,159.73kb] [文件加载：89]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=il1g12aacshqdrckl1so04p79q; is_login=0',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => 'www.sam.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\application\wap\view\login\index.html [ array (
+) ]
+---------------------------------------------------------------
+[2019-12-12T10:19:28+08:00] 127.0.0.1 GET www.sam.com/favicon.ico
+[运行时间：0.021878s] [吞吐率：45.71req/s] [内存消耗：1,887.00kb] [文件加载：82]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\thinkphp\lang\zh-cn.php
+---------------------------------------------------------------
+[2019-12-12T10:19:30+08:00] 127.0.0.1 GET www.sam.com/public/plugins/axios.min.map
+[运行时间：0.021556s] [吞吐率：46.39req/s] [内存消耗：1,886.64kb] [文件加载：82]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\thinkphp\lang\zh-cn.php
+---------------------------------------------------------------
+[2019-12-12T10:19:36+08:00] 127.0.0.1 GET www.sam.com/wap/login/index.html
+[运行时间：0.022109s] [吞吐率：45.23req/s] [内存消耗：2,160.21kb] [文件加载：89]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; PHPSESSID=il1g12aacshqdrckl1so04p79q; is_login=0',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1',
+  'upgrade-insecure-requests' => '1',
+  'cache-control' => 'max-age=0',
+  'connection' => 'keep-alive',
+  'host' => 'www.sam.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\application\wap\view\login\index.html [ array (
+) ]
+---------------------------------------------------------------
+[2019-12-12T10:19:36+08:00] 127.0.0.1 GET www.sam.com/public/plugins/axios.min.map
+[运行时间：0.021614s] [吞吐率：46.27req/s] [内存消耗：1,886.67kb] [文件加载：82]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\thinkphp\lang\zh-cn.php
+---------------------------------------------------------------
+[2019-12-12T10:19:40+08:00] 127.0.0.1 POST www.sam.com/wap/login/checkLogin
+[运行时间：0.036888s] [吞吐率：27.11req/s] [内存消耗：3,382.17kb] [文件加载：105]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; PHPSESSID=il1g12aacshqdrckl1so04p79q; is_login=0',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.sam.com/wap/login/index.html',
+  'content-type' => 'application/json;charset=UTF-8',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1',
+  'x-requested-with' => 'XMLHttpRequest',
+  'origin' => 'http://www.sam.com',
+  'accept' => 'application/json, text/plain, */*',
+  'content-length' => '33',
+  'connection' => 'keep-alive',
+  'host' => 'www.sam.com',
+)
+[ info ] [ PARAM ] array (
+  'account' => 'test',
+  'pwd' => '002123',
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001064s ] mysql:host=127.0.0.1;port=3306;dbname=tpshop2.0;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sm_users` [ RunTime:0.005443s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `sm_users` WHERE  `account` = 'test' [ RunTime:0.000433s ]
+[ sql ] [ SQL ] SELECT * FROM `sm_users` WHERE  `account` = 'test' LIMIT 1 [ RunTime:0.000516s ]
+[ sql ] [ SQL ] UPDATE `sm_users`  SET `last_login` = 1576117180  WHERE  `account` = 'test' [ RunTime:0.000342s ]
+---------------------------------------------------------------
+[2019-12-12T10:19:40+08:00] 127.0.0.1 GET www.sam.com/wap/index/index.html
+[运行时间：0.027154s] [吞吐率：36.83req/s] [内存消耗：2,635.02kb] [文件加载：103]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=il1g12aacshqdrckl1so04p79q; is_login=1',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.sam.com/wap/login/index.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => 'www.sam.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\application\wap\view\index\index.html [ array (
+  0 => 'banner',
+  1 => 'menus',
+  2 => 'roll_news',
+) ]
+---------------------------------------------------------------
+[2019-12-12T10:19:41+08:00] 127.0.0.1 GET www.sam.com/public/plugins/swiper/maps/swiper.jquery.min.js.map
+[运行时间：0.023916s] [吞吐率：41.81req/s] [内存消耗：1,887.21kb] [文件加载：82]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\thinkphp\lang\zh-cn.php
+---------------------------------------------------------------
+[2019-12-12T10:19:41+08:00] 127.0.0.1 GET www.sam.com/public/plugins/axios.min.map
+[运行时间：0.023388s] [吞吐率：42.76req/s] [内存消耗：1,886.67kb] [文件加载：82]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\thinkphp\lang\zh-cn.php
+---------------------------------------------------------------
+[2019-12-12T10:19:41+08:00] 127.0.0.1 GET www.sam.com/wap/public_api/get_category_product_list/limit/4
+[运行时间：0.047298s] [吞吐率：21.14req/s] [内存消耗：3,297.05kb] [文件加载：99]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=il1g12aacshqdrckl1so04p79q; is_login=1',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.sam.com/wap/index/index.html',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1',
+  'x-requested-with' => 'XMLHttpRequest',
+  'accept' => 'application/json, text/plain, */*',
+  'connection' => 'keep-alive',
+  'host' => 'www.sam.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'limit' => '4',
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000434s ] mysql:host=127.0.0.1;port=3306;dbname=tpshop2.0;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sm_store_category` [ RunTime:0.005584s ]
+[ sql ] [ SQL ] SELECT `id`,`cate_name`,`pic` FROM `sm_store_category` WHERE  `is_show` = 1  AND `pid` = 0 ORDER BY `sort` DESC [ RunTime:0.000333s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sm_store_product` [ RunTime:0.007369s ]
+[ sql ] [ SQL ] SELECT `A`.`id`,`A`.`image`,`A`.`store_name`,`A`.`sales`,`A`.`price`,`A`.`unit_name` FROM `sm_store_product` `A` INNER JOIN `sm_store_category` `B` ON `B`.`id`=`A`.`cate_id` WHERE  `A`.`is_del` = '0'  AND `A`.`is_show` = '1'  AND `A`.`mer_id` = '0'  AND `B`.`pid` = '32' ORDER BY `A`.`is_benefit` DESC,`A`.`sort` DESC,`A`.`add_time` DESC LIMIT 4 [ RunTime:0.001214s ]
+[ sql ] [ SQL ] SELECT `A`.`id`,`A`.`image`,`A`.`store_name`,`A`.`sales`,`A`.`price`,`A`.`unit_name` FROM `sm_store_product` `A` INNER JOIN `sm_store_category` `B` ON `B`.`id`=`A`.`cate_id` WHERE  `A`.`is_del` = '0'  AND `A`.`is_show` = '1'  AND `A`.`mer_id` = '0'  AND `B`.`pid` = '34' ORDER BY `A`.`is_benefit` DESC,`A`.`sort` DESC,`A`.`add_time` DESC LIMIT 4 [ RunTime:0.000410s ]
+[ sql ] [ SQL ] SELECT `A`.`id`,`A`.`image`,`A`.`store_name`,`A`.`sales`,`A`.`price`,`A`.`unit_name` FROM `sm_store_product` `A` INNER JOIN `sm_store_category` `B` ON `B`.`id`=`A`.`cate_id` WHERE  `A`.`is_del` = '0'  AND `A`.`is_show` = '1'  AND `A`.`mer_id` = '0'  AND `B`.`pid` = '35' ORDER BY `A`.`is_benefit` DESC,`A`.`sort` DESC,`A`.`add_time` DESC LIMIT 4 [ RunTime:0.000372s ]
+---------------------------------------------------------------
+[2019-12-12T10:19:41+08:00] 127.0.0.1 GET www.sam.com/wap/public_api/get_best_product_list/first/0/limit/10
+[运行时间：0.037995s] [吞吐率：26.32req/s] [内存消耗：3,279.33kb] [文件加载：98]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=il1g12aacshqdrckl1so04p79q; is_login=1',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.sam.com/wap/index/index.html',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1',
+  'x-requested-with' => 'XMLHttpRequest',
+  'accept' => 'application/json, text/plain, */*',
+  'connection' => 'keep-alive',
+  'host' => 'www.sam.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'first' => '0',
+  'limit' => '10',
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000574s ] mysql:host=127.0.0.1;port=3306;dbname=tpshop2.0;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sm_store_product` [ RunTime:0.003422s ]
+[ sql ] [ SQL ] SELECT `id`,`image`,`store_name`,`sales`,`price`,`unit_name` FROM `sm_store_product` WHERE  `is_del` = 0  AND `is_show` = 1  AND `mer_id` = 0  AND `mer_id` = 0 ORDER BY `is_best` DESC,`sort` DESC,`add_time` DESC LIMIT 0,10 [ RunTime:0.000368s ]
+---------------------------------------------------------------
+[2019-12-12T10:19:44+08:00] 127.0.0.1 GET www.sam.com/wap/store/index.html
+[运行时间：0.027278s] [吞吐率：36.66req/s] [内存消耗：2,542.17kb] [文件加载：103]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=il1g12aacshqdrckl1so04p79q; is_login=1',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.sam.com/wap/index/index.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => 'www.sam.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\application\wap\view\store\index.html [ array (
+  0 => 'keyword',
+  1 => 'cid',
+  2 => 'sid',
+  3 => 'category',
+) ]
+---------------------------------------------------------------
+[2019-12-12T10:19:44+08:00] 127.0.0.1 GET www.sam.com/public/plugins/axios.min.map
+[运行时间：0.023557s] [吞吐率：42.45req/s] [内存消耗：1,886.67kb] [文件加载：82]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\thinkphp\lang\zh-cn.php
+---------------------------------------------------------------
+[2019-12-12T10:19:44+08:00] 127.0.0.1 GET www.sam.com/wap/auth_api/get_product_list/keyword/0/cId/0/sId/0/priceOrder/0/salesOrder/0/news/0/first/0/limit/20
+[运行时间：0.041832s] [吞吐率：23.91req/s] [内存消耗：3,349.41kb] [文件加载：105]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=il1g12aacshqdrckl1so04p79q; is_login=1',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.sam.com/wap/store/index.html',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1',
+  'x-requested-with' => 'XMLHttpRequest',
+  'accept' => 'application/json, text/plain, */*',
+  'connection' => 'keep-alive',
+  'host' => 'www.sam.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'keyword' => '0',
+  'cId' => '0',
+  'sId' => '0',
+  'priceOrder' => '0',
+  'salesOrder' => '0',
+  'news' => '0',
+  'first' => '0',
+  'limit' => '20',
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000537s ] mysql:host=127.0.0.1;port=3306;dbname=tpshop2.0;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sm_store_product` [ RunTime:0.003733s ]
+[ sql ] [ SQL ] SELECT `id`,`store_name`,`image`,`sales`,`ficti`,`price`,`stock` FROM `sm_store_product` WHERE  `is_del` = 0  AND `is_show` = 1  AND `mer_id` = 0 ORDER BY `sort` DESC,`add_time` DESC LIMIT 0,20 [ RunTime:0.000404s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sm_store_visit` [ RunTime:0.005377s ]
+[ sql ] [ SQL ] SELECT `count`,`add_time`,`id` FROM `sm_store_visit` WHERE  `uid` IS NULL  AND `product_id` = 0  AND `product_type` = 'product' LIMIT 1 [ RunTime:0.001305s ]
+[ sql ] [ SQL ] INSERT INTO `sm_store_visit` (`id` , `add_time` , `count`) VALUES (NULL , 1576117184 , 1) [ RunTime:0.000950s ]
+---------------------------------------------------------------
+[2019-12-12T10:19:49+08:00] 127.0.0.1 GET www.sam.com/wap/store/cart.html
+[运行时间：0.025081s] [吞吐率：39.87req/s] [内存消耗：2,427.69kb] [文件加载：99]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; PHPSESSID=il1g12aacshqdrckl1so04p79q; is_login=1',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.sam.com/wap/store/index.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => 'www.sam.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\application\wap\view\public\error.html [ array (
+  0 => 'title',
+  1 => 'msg',
+  2 => 'url',
+) ]
+---------------------------------------------------------------
+[2019-12-12T10:19:50+08:00] 127.0.0.1 GET www.sam.com/wap/store/index.html
+[运行时间：0.028670s] [吞吐率：34.88req/s] [内存消耗：2,542.44kb] [文件加载：103]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; PHPSESSID=il1g12aacshqdrckl1so04p79q; is_login=1',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.sam.com/wap/store/cart.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => 'www.sam.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\application\wap\view\store\index.html [ array (
+  0 => 'keyword',
+  1 => 'cid',
+  2 => 'sid',
+  3 => 'category',
+) ]
+---------------------------------------------------------------
+[2019-12-12T10:19:51+08:00] 127.0.0.1 GET www.sam.com/wap/auth_api/get_product_list/keyword/0/cId/0/sId/0/priceOrder/0/salesOrder/0/news/0/first/0/limit/20
+[运行时间：0.055060s] [吞吐率：18.16req/s] [内存消耗：3,349.41kb] [文件加载：105]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=il1g12aacshqdrckl1so04p79q; is_login=1',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.sam.com/wap/store/index.html',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1',
+  'x-requested-with' => 'XMLHttpRequest',
+  'accept' => 'application/json, text/plain, */*',
+  'connection' => 'keep-alive',
+  'host' => 'www.sam.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'keyword' => '0',
+  'cId' => '0',
+  'sId' => '0',
+  'priceOrder' => '0',
+  'salesOrder' => '0',
+  'news' => '0',
+  'first' => '0',
+  'limit' => '20',
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010331s ] mysql:host=127.0.0.1;port=3306;dbname=tpshop2.0;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sm_store_product` [ RunTime:0.008134s ]
+[ sql ] [ SQL ] SELECT `id`,`store_name`,`image`,`sales`,`ficti`,`price`,`stock` FROM `sm_store_product` WHERE  `is_del` = 0  AND `is_show` = 1  AND `mer_id` = 0 ORDER BY `sort` DESC,`add_time` DESC LIMIT 0,20 [ RunTime:0.000891s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sm_store_visit` [ RunTime:0.003855s ]
+[ sql ] [ SQL ] SELECT `count`,`add_time`,`id` FROM `sm_store_visit` WHERE  `uid` IS NULL  AND `product_id` = 0  AND `product_type` = 'product' LIMIT 1 [ RunTime:0.000410s ]
+[ sql ] [ SQL ] INSERT INTO `sm_store_visit` (`id` , `add_time` , `count`) VALUES (NULL , 1576117191 , 1) [ RunTime:0.001140s ]
+---------------------------------------------------------------
+[2019-12-12T10:19:51+08:00] 127.0.0.1 GET www.sam.com/public/plugins/axios.min.map
+[运行时间：0.022845s] [吞吐率：43.77req/s] [内存消耗：1,886.67kb] [文件加载：82]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\thinkphp\lang\zh-cn.php
+---------------------------------------------------------------
+[2019-12-12T10:19:52+08:00] 127.0.0.1 GET www.sam.com/wap/index/index.html
+[运行时间：0.026701s] [吞吐率：37.45req/s] [内存消耗：2,635.03kb] [文件加载：103]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; PHPSESSID=il1g12aacshqdrckl1so04p79q; is_login=1',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.sam.com/wap/store/index.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => 'www.sam.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\application\wap\view\index\index.html [ array (
+  0 => 'banner',
+  1 => 'menus',
+  2 => 'roll_news',
+) ]
+---------------------------------------------------------------
+[2019-12-12T10:19:52+08:00] 127.0.0.1 GET www.sam.com/public/plugins/swiper/maps/swiper.jquery.min.js.map
+[运行时间：0.027189s] [吞吐率：36.78req/s] [内存消耗：1,887.21kb] [文件加载：82]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\thinkphp\lang\zh-cn.php
+---------------------------------------------------------------
+[2019-12-12T10:19:52+08:00] 127.0.0.1 GET www.sam.com/public/plugins/axios.min.map
+[运行时间：0.021993s] [吞吐率：45.47req/s] [内存消耗：1,886.67kb] [文件加载：82]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\thinkphp\lang\zh-cn.php
+---------------------------------------------------------------
+[2019-12-12T10:19:52+08:00] 127.0.0.1 GET www.sam.com/wap/public_api/get_category_product_list/limit/4
+[运行时间：0.036977s] [吞吐率：27.04req/s] [内存消耗：3,297.05kb] [文件加载：99]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=il1g12aacshqdrckl1so04p79q; is_login=1',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.sam.com/wap/index/index.html',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1',
+  'x-requested-with' => 'XMLHttpRequest',
+  'accept' => 'application/json, text/plain, */*',
+  'connection' => 'keep-alive',
+  'host' => 'www.sam.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'limit' => '4',
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000590s ] mysql:host=127.0.0.1;port=3306;dbname=tpshop2.0;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sm_store_category` [ RunTime:0.003059s ]
+[ sql ] [ SQL ] SELECT `id`,`cate_name`,`pic` FROM `sm_store_category` WHERE  `is_show` = 1  AND `pid` = 0 ORDER BY `sort` DESC [ RunTime:0.000387s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sm_store_product` [ RunTime:0.002995s ]
+[ sql ] [ SQL ] SELECT `A`.`id`,`A`.`image`,`A`.`store_name`,`A`.`sales`,`A`.`price`,`A`.`unit_name` FROM `sm_store_product` `A` INNER JOIN `sm_store_category` `B` ON `B`.`id`=`A`.`cate_id` WHERE  `A`.`is_del` = '0'  AND `A`.`is_show` = '1'  AND `A`.`mer_id` = '0'  AND `B`.`pid` = '32' ORDER BY `A`.`is_benefit` DESC,`A`.`sort` DESC,`A`.`add_time` DESC LIMIT 4 [ RunTime:0.000490s ]
+[ sql ] [ SQL ] SELECT `A`.`id`,`A`.`image`,`A`.`store_name`,`A`.`sales`,`A`.`price`,`A`.`unit_name` FROM `sm_store_product` `A` INNER JOIN `sm_store_category` `B` ON `B`.`id`=`A`.`cate_id` WHERE  `A`.`is_del` = '0'  AND `A`.`is_show` = '1'  AND `A`.`mer_id` = '0'  AND `B`.`pid` = '34' ORDER BY `A`.`is_benefit` DESC,`A`.`sort` DESC,`A`.`add_time` DESC LIMIT 4 [ RunTime:0.000430s ]
+[ sql ] [ SQL ] SELECT `A`.`id`,`A`.`image`,`A`.`store_name`,`A`.`sales`,`A`.`price`,`A`.`unit_name` FROM `sm_store_product` `A` INNER JOIN `sm_store_category` `B` ON `B`.`id`=`A`.`cate_id` WHERE  `A`.`is_del` = '0'  AND `A`.`is_show` = '1'  AND `A`.`mer_id` = '0'  AND `B`.`pid` = '35' ORDER BY `A`.`is_benefit` DESC,`A`.`sort` DESC,`A`.`add_time` DESC LIMIT 4 [ RunTime:0.000439s ]
+---------------------------------------------------------------
+[2019-12-12T10:19:52+08:00] 127.0.0.1 GET www.sam.com/wap/public_api/get_best_product_list/first/0/limit/10
+[运行时间：0.047468s] [吞吐率：21.07req/s] [内存消耗：3,279.33kb] [文件加载：98]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=il1g12aacshqdrckl1so04p79q; is_login=1',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.sam.com/wap/index/index.html',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1',
+  'x-requested-with' => 'XMLHttpRequest',
+  'accept' => 'application/json, text/plain, */*',
+  'connection' => 'keep-alive',
+  'host' => 'www.sam.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'first' => '0',
+  'limit' => '10',
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.011416s ] mysql:host=127.0.0.1;port=3306;dbname=tpshop2.0;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sm_store_product` [ RunTime:0.003732s ]
+[ sql ] [ SQL ] SELECT `id`,`image`,`store_name`,`sales`,`price`,`unit_name` FROM `sm_store_product` WHERE  `is_del` = 0  AND `is_show` = 1  AND `mer_id` = 0  AND `mer_id` = 0 ORDER BY `is_best` DESC,`sort` DESC,`add_time` DESC LIMIT 0,10 [ RunTime:0.000434s ]
+---------------------------------------------------------------
+[2019-12-12T10:19:53+08:00] 127.0.0.1 GET www.sam.com/wap/my/index.html
+[运行时间：0.024273s] [吞吐率：41.20req/s] [内存消耗：2,120.47kb] [文件加载：89]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=il1g12aacshqdrckl1so04p79q; is_login=1',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.sam.com/wap/index/index.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => 'www.sam.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+---------------------------------------------------------------
+[2019-12-12T10:19:58+08:00] 127.0.0.1 GET www.sam.com/wap/index/index.html
+[运行时间：0.026502s] [吞吐率：37.73req/s] [内存消耗：2,635.03kb] [文件加载：103]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; PHPSESSID=il1g12aacshqdrckl1so04p79q; is_login=1',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.sam.com/wap/store/index.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => 'www.sam.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\application\wap\view\index\index.html [ array (
+  0 => 'banner',
+  1 => 'menus',
+  2 => 'roll_news',
+) ]
+---------------------------------------------------------------
+[2019-12-12T10:19:58+08:00] 127.0.0.1 GET www.sam.com/public/plugins/swiper/maps/swiper.jquery.min.js.map
+[运行时间：0.028709s] [吞吐率：34.83req/s] [内存消耗：1,887.21kb] [文件加载：82]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\thinkphp\lang\zh-cn.php
+---------------------------------------------------------------
+[2019-12-12T10:19:58+08:00] 127.0.0.1 GET www.sam.com/public/plugins/axios.min.map
+[运行时间：0.022807s] [吞吐率：43.85req/s] [内存消耗：1,886.67kb] [文件加载：82]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\thinkphp\lang\zh-cn.php
+---------------------------------------------------------------
+[2019-12-12T10:19:58+08:00] 127.0.0.1 GET www.sam.com/wap/public_api/get_category_product_list/limit/4
+[运行时间：0.049664s] [吞吐率：20.14req/s] [内存消耗：3,297.05kb] [文件加载：99]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=il1g12aacshqdrckl1so04p79q; is_login=1',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.sam.com/wap/index/index.html',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1',
+  'x-requested-with' => 'XMLHttpRequest',
+  'accept' => 'application/json, text/plain, */*',
+  'connection' => 'keep-alive',
+  'host' => 'www.sam.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'limit' => '4',
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.011315s ] mysql:host=127.0.0.1;port=3306;dbname=tpshop2.0;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sm_store_category` [ RunTime:0.003561s ]
+[ sql ] [ SQL ] SELECT `id`,`cate_name`,`pic` FROM `sm_store_category` WHERE  `is_show` = 1  AND `pid` = 0 ORDER BY `sort` DESC [ RunTime:0.000347s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sm_store_product` [ RunTime:0.003432s ]
+[ sql ] [ SQL ] SELECT `A`.`id`,`A`.`image`,`A`.`store_name`,`A`.`sales`,`A`.`price`,`A`.`unit_name` FROM `sm_store_product` `A` INNER JOIN `sm_store_category` `B` ON `B`.`id`=`A`.`cate_id` WHERE  `A`.`is_del` = '0'  AND `A`.`is_show` = '1'  AND `A`.`mer_id` = '0'  AND `B`.`pid` = '32' ORDER BY `A`.`is_benefit` DESC,`A`.`sort` DESC,`A`.`add_time` DESC LIMIT 4 [ RunTime:0.000501s ]
+[ sql ] [ SQL ] SELECT `A`.`id`,`A`.`image`,`A`.`store_name`,`A`.`sales`,`A`.`price`,`A`.`unit_name` FROM `sm_store_product` `A` INNER JOIN `sm_store_category` `B` ON `B`.`id`=`A`.`cate_id` WHERE  `A`.`is_del` = '0'  AND `A`.`is_show` = '1'  AND `A`.`mer_id` = '0'  AND `B`.`pid` = '34' ORDER BY `A`.`is_benefit` DESC,`A`.`sort` DESC,`A`.`add_time` DESC LIMIT 4 [ RunTime:0.000521s ]
+[ sql ] [ SQL ] SELECT `A`.`id`,`A`.`image`,`A`.`store_name`,`A`.`sales`,`A`.`price`,`A`.`unit_name` FROM `sm_store_product` `A` INNER JOIN `sm_store_category` `B` ON `B`.`id`=`A`.`cate_id` WHERE  `A`.`is_del` = '0'  AND `A`.`is_show` = '1'  AND `A`.`mer_id` = '0'  AND `B`.`pid` = '35' ORDER BY `A`.`is_benefit` DESC,`A`.`sort` DESC,`A`.`add_time` DESC LIMIT 4 [ RunTime:0.000417s ]
+---------------------------------------------------------------
+[2019-12-12T10:19:58+08:00] 127.0.0.1 GET www.sam.com/wap/public_api/get_best_product_list/first/0/limit/10
+[运行时间：0.046951s] [吞吐率：21.30req/s] [内存消耗：3,279.33kb] [文件加载：98]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=il1g12aacshqdrckl1so04p79q; is_login=1',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.sam.com/wap/index/index.html',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1',
+  'x-requested-with' => 'XMLHttpRequest',
+  'accept' => 'application/json, text/plain, */*',
+  'connection' => 'keep-alive',
+  'host' => 'www.sam.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'first' => '0',
+  'limit' => '10',
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010972s ] mysql:host=127.0.0.1;port=3306;dbname=tpshop2.0;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sm_store_product` [ RunTime:0.003128s ]
+[ sql ] [ SQL ] SELECT `id`,`image`,`store_name`,`sales`,`price`,`unit_name` FROM `sm_store_product` WHERE  `is_del` = 0  AND `is_show` = 1  AND `mer_id` = 0  AND `mer_id` = 0 ORDER BY `is_best` DESC,`sort` DESC,`add_time` DESC LIMIT 0,10 [ RunTime:0.000366s ]
+---------------------------------------------------------------
+[2019-12-12T10:20:00+08:00] 127.0.0.1 GET www.sam.com/wap/store/index.html
+[运行时间：0.029300s] [吞吐率：34.13req/s] [内存消耗：2,542.44kb] [文件加载：103]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; PHPSESSID=il1g12aacshqdrckl1so04p79q; is_login=1',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.sam.com/wap/index/index.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => 'www.sam.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\application\wap\view\store\index.html [ array (
+  0 => 'keyword',
+  1 => 'cid',
+  2 => 'sid',
+  3 => 'category',
+) ]
+---------------------------------------------------------------
+[2019-12-12T10:20:00+08:00] 127.0.0.1 GET www.sam.com/wap/auth_api/get_product_list/keyword/0/cId/0/sId/0/priceOrder/0/salesOrder/0/news/0/first/0/limit/20
+[运行时间：0.037399s] [吞吐率：26.74req/s] [内存消耗：3,349.41kb] [文件加载：105]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=il1g12aacshqdrckl1so04p79q; is_login=1',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.sam.com/wap/store/index.html',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1',
+  'x-requested-with' => 'XMLHttpRequest',
+  'accept' => 'application/json, text/plain, */*',
+  'connection' => 'keep-alive',
+  'host' => 'www.sam.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'keyword' => '0',
+  'cId' => '0',
+  'sId' => '0',
+  'priceOrder' => '0',
+  'salesOrder' => '0',
+  'news' => '0',
+  'first' => '0',
+  'limit' => '20',
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000641s ] mysql:host=127.0.0.1;port=3306;dbname=tpshop2.0;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sm_store_product` [ RunTime:0.003489s ]
+[ sql ] [ SQL ] SELECT `id`,`store_name`,`image`,`sales`,`ficti`,`price`,`stock` FROM `sm_store_product` WHERE  `is_del` = 0  AND `is_show` = 1  AND `mer_id` = 0 ORDER BY `sort` DESC,`add_time` DESC LIMIT 0,20 [ RunTime:0.000381s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sm_store_visit` [ RunTime:0.002611s ]
+[ sql ] [ SQL ] SELECT `count`,`add_time`,`id` FROM `sm_store_visit` WHERE  `uid` IS NULL  AND `product_id` = 0  AND `product_type` = 'product' LIMIT 1 [ RunTime:0.000395s ]
+[ sql ] [ SQL ] INSERT INTO `sm_store_visit` (`id` , `add_time` , `count`) VALUES (NULL , 1576117200 , 1) [ RunTime:0.001026s ]
+---------------------------------------------------------------
+[2019-12-12T10:20:00+08:00] 127.0.0.1 GET www.sam.com/public/plugins/axios.min.map
+[运行时间：0.024353s] [吞吐率：41.06req/s] [内存消耗：1,886.67kb] [文件加载：82]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\thinkphp\lang\zh-cn.php
+---------------------------------------------------------------
+[2019-12-12T10:20:02+08:00] 127.0.0.1 GET www.sam.com/wap/store/detail/id/27
+[运行时间：0.027376s] [吞吐率：36.53req/s] [内存消耗：2,402.40kb] [文件加载：99]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; PHPSESSID=il1g12aacshqdrckl1so04p79q; is_login=1',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.sam.com/wap/store/index.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => 'www.sam.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'id' => '27',
+)
+---------------------------------------------------------------
+[2019-12-12T10:20:04+08:00] 127.0.0.1 GET www.sam.com/wap/store/index.html
+[运行时间：0.026104s] [吞吐率：38.31req/s] [内存消耗：2,542.44kb] [文件加载：103]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; PHPSESSID=il1g12aacshqdrckl1so04p79q; is_login=1',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.sam.com/wap/index/index.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => 'www.sam.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\application\wap\view\store\index.html [ array (
+  0 => 'keyword',
+  1 => 'cid',
+  2 => 'sid',
+  3 => 'category',
+) ]
+---------------------------------------------------------------
+[2019-12-12T10:20:04+08:00] 127.0.0.1 GET www.sam.com/wap/auth_api/get_product_list/keyword/0/cId/0/sId/0/priceOrder/0/salesOrder/0/news/0/first/0/limit/20
+[运行时间：0.041064s] [吞吐率：24.35req/s] [内存消耗：3,349.41kb] [文件加载：105]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=il1g12aacshqdrckl1so04p79q; is_login=1',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.sam.com/wap/store/index.html',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1',
+  'x-requested-with' => 'XMLHttpRequest',
+  'accept' => 'application/json, text/plain, */*',
+  'connection' => 'keep-alive',
+  'host' => 'www.sam.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'keyword' => '0',
+  'cId' => '0',
+  'sId' => '0',
+  'priceOrder' => '0',
+  'salesOrder' => '0',
+  'news' => '0',
+  'first' => '0',
+  'limit' => '20',
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000582s ] mysql:host=127.0.0.1;port=3306;dbname=tpshop2.0;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sm_store_product` [ RunTime:0.003101s ]
+[ sql ] [ SQL ] SELECT `id`,`store_name`,`image`,`sales`,`ficti`,`price`,`stock` FROM `sm_store_product` WHERE  `is_del` = 0  AND `is_show` = 1  AND `mer_id` = 0 ORDER BY `sort` DESC,`add_time` DESC LIMIT 0,20 [ RunTime:0.000451s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sm_store_visit` [ RunTime:0.003543s ]
+[ sql ] [ SQL ] SELECT `count`,`add_time`,`id` FROM `sm_store_visit` WHERE  `uid` IS NULL  AND `product_id` = 0  AND `product_type` = 'product' LIMIT 1 [ RunTime:0.000443s ]
+[ sql ] [ SQL ] INSERT INTO `sm_store_visit` (`id` , `add_time` , `count`) VALUES (NULL , 1576117204 , 1) [ RunTime:0.001131s ]
+---------------------------------------------------------------
+[2019-12-12T10:20:04+08:00] 127.0.0.1 GET www.sam.com/public/plugins/axios.min.map
+[运行时间：0.023452s] [吞吐率：42.64req/s] [内存消耗：1,886.67kb] [文件加载：82]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\thinkphp\lang\zh-cn.php
+---------------------------------------------------------------
+[2019-12-12T10:20:06+08:00] 127.0.0.1 GET www.sam.com/wap/index/index.html
+[运行时间：0.026234s] [吞吐率：38.12req/s] [内存消耗：2,635.03kb] [文件加载：103]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'thinkphp_show_page_trace=0|0; PHPSESSID=il1g12aacshqdrckl1so04p79q; is_login=1',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.sam.com/wap/store/index.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'keep-alive',
+  'host' => 'www.sam.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ VIEW ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\application\wap\view\index\index.html [ array (
+  0 => 'banner',
+  1 => 'menus',
+  2 => 'roll_news',
+) ]
+---------------------------------------------------------------
+[2019-12-12T10:20:06+08:00] 127.0.0.1 GET www.sam.com/public/plugins/swiper/maps/swiper.jquery.min.js.map
+[运行时间：0.028990s] [吞吐率：34.49req/s] [内存消耗：1,887.21kb] [文件加载：82]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\thinkphp\lang\zh-cn.php
+---------------------------------------------------------------
+[2019-12-12T10:20:06+08:00] 127.0.0.1 GET www.sam.com/public/plugins/axios.min.map
+[运行时间：0.021419s] [吞吐率：46.69req/s] [内存消耗：1,886.67kb] [文件加载：82]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\thinkphp\lang\zh-cn.php
+---------------------------------------------------------------
+[2019-12-12T10:20:06+08:00] 127.0.0.1 GET www.sam.com/wap/public_api/get_category_product_list/limit/4
+[运行时间：0.036867s] [吞吐率：27.12req/s] [内存消耗：3,297.05kb] [文件加载：99]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=il1g12aacshqdrckl1so04p79q; is_login=1',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.sam.com/wap/index/index.html',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1',
+  'x-requested-with' => 'XMLHttpRequest',
+  'accept' => 'application/json, text/plain, */*',
+  'connection' => 'keep-alive',
+  'host' => 'www.sam.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'limit' => '4',
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000618s ] mysql:host=127.0.0.1;port=3306;dbname=tpshop2.0;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sm_store_category` [ RunTime:0.002930s ]
+[ sql ] [ SQL ] SELECT `id`,`cate_name`,`pic` FROM `sm_store_category` WHERE  `is_show` = 1  AND `pid` = 0 ORDER BY `sort` DESC [ RunTime:0.000376s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sm_store_product` [ RunTime:0.003002s ]
+[ sql ] [ SQL ] SELECT `A`.`id`,`A`.`image`,`A`.`store_name`,`A`.`sales`,`A`.`price`,`A`.`unit_name` FROM `sm_store_product` `A` INNER JOIN `sm_store_category` `B` ON `B`.`id`=`A`.`cate_id` WHERE  `A`.`is_del` = '0'  AND `A`.`is_show` = '1'  AND `A`.`mer_id` = '0'  AND `B`.`pid` = '32' ORDER BY `A`.`is_benefit` DESC,`A`.`sort` DESC,`A`.`add_time` DESC LIMIT 4 [ RunTime:0.000468s ]
+[ sql ] [ SQL ] SELECT `A`.`id`,`A`.`image`,`A`.`store_name`,`A`.`sales`,`A`.`price`,`A`.`unit_name` FROM `sm_store_product` `A` INNER JOIN `sm_store_category` `B` ON `B`.`id`=`A`.`cate_id` WHERE  `A`.`is_del` = '0'  AND `A`.`is_show` = '1'  AND `A`.`mer_id` = '0'  AND `B`.`pid` = '34' ORDER BY `A`.`is_benefit` DESC,`A`.`sort` DESC,`A`.`add_time` DESC LIMIT 4 [ RunTime:0.000411s ]
+[ sql ] [ SQL ] SELECT `A`.`id`,`A`.`image`,`A`.`store_name`,`A`.`sales`,`A`.`price`,`A`.`unit_name` FROM `sm_store_product` `A` INNER JOIN `sm_store_category` `B` ON `B`.`id`=`A`.`cate_id` WHERE  `A`.`is_del` = '0'  AND `A`.`is_show` = '1'  AND `A`.`mer_id` = '0'  AND `B`.`pid` = '35' ORDER BY `A`.`is_benefit` DESC,`A`.`sort` DESC,`A`.`add_time` DESC LIMIT 4 [ RunTime:0.000440s ]
+---------------------------------------------------------------
+[2019-12-12T10:20:07+08:00] 127.0.0.1 GET www.sam.com/wap/public_api/get_best_product_list/first/0/limit/10
+[运行时间：0.039064s] [吞吐率：25.60req/s] [内存消耗：3,279.33kb] [文件加载：98]
+[ info ] [ LANG ] D:\phpstudy\PHPTutorial\WWW\SamAdmin\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'PHPSESSID=il1g12aacshqdrckl1so04p79q; is_login=1',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://www.sam.com/wap/index/index.html',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1',
+  'x-requested-with' => 'XMLHttpRequest',
+  'accept' => 'application/json, text/plain, */*',
+  'connection' => 'keep-alive',
+  'host' => 'www.sam.com',
+  'content-length' => '',
+  'content-type' => '',
+)
+[ info ] [ PARAM ] array (
+  'first' => '0',
+  'limit' => '10',
+)
+[ info ] [ DB ] INIT mysql
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000485s ] mysql:host=127.0.0.1;port=3306;dbname=tpshop2.0;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `sm_store_product` [ RunTime:0.003609s ]
+[ sql ] [ SQL ] SELECT `id`,`image`,`store_name`,`sales`,`price`,`unit_name` FROM `sm_store_product` WHERE  `is_del` = 0  AND `is_show` = 1  AND `mer_id` = 0  AND `mer_id` = 0 ORDER BY `is_best` DESC,`sort` DESC,`add_time` DESC LIMIT 0,10 [ RunTime:0.000613s ]

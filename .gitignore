@@ -1,3 +1,8 @@
+/.idea
+/.vscode
 runtime/
 *.log
+.env
+.DS_Store
+
 
