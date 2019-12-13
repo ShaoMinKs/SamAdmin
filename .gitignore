@@ -1,12 +1,6 @@
-<<<<<<< HEAD
-
-*.log
-
-=======
 /.idea
 /.vscode
 /runtime
 *.log
 .env
 .DS_Store
->>>>>>> f1529cdc88b80f4492c067f61a3eb0387dae6473
