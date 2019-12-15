@@ -1,4 +1,4 @@
-<?php /*a:7:{s:75:"D:\phpstudy\PHPTutorial\WWW\SamAdmin\application\wap\view\store\detail.html";i:1576250953;s:79:"D:\phpstudy\PHPTutorial\WWW\SamAdmin\application\wap\view\public\container.html";i:1575641667;s:74:"D:\phpstudy\PHPTutorial\WWW\SamAdmin\application\wap\view\public\head.html";i:1575473732;s:75:"D:\phpstudy\PHPTutorial\WWW\SamAdmin\application\wap\view\public\style.html";i:1575641146;s:79:"D:\phpstudy\PHPTutorial\WWW\SamAdmin\application\wap\view\public\requirejs.html";i:1575644772;s:74:"D:\phpstudy\PHPTutorial\WWW\SamAdmin\application\wap\view\public\foot.html";i:1575638673;s:79:"D:\phpstudy\PHPTutorial\WWW\SamAdmin\application\wap\view\public\right_nav.html";i:1575641808;}*/ ?>
+<?php /*a:7:{s:75:"D:\phpstudy\PHPTutorial\WWW\SamAdmin\application\wap\view\store\detail.html";i:1576416657;s:79:"D:\phpstudy\PHPTutorial\WWW\SamAdmin\application\wap\view\public\container.html";i:1575641667;s:74:"D:\phpstudy\PHPTutorial\WWW\SamAdmin\application\wap\view\public\head.html";i:1575473732;s:75:"D:\phpstudy\PHPTutorial\WWW\SamAdmin\application\wap\view\public\style.html";i:1575641146;s:79:"D:\phpstudy\PHPTutorial\WWW\SamAdmin\application\wap\view\public\requirejs.html";i:1575644772;s:74:"D:\phpstudy\PHPTutorial\WWW\SamAdmin\application\wap\view\public\foot.html";i:1575638673;s:79:"D:\phpstudy\PHPTutorial\WWW\SamAdmin\application\wap\view\public\right_nav.html";i:1575641808;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -103,6 +103,9 @@
                 <div class="integral">积分:<?php echo htmlentities(floatval($storeInfo['give_integral'])); ?> <span>赠送</span></div>
                 <?php endif; ?>
         </div>
+        <div class="like-it" v-cloak=""><i class="zan-btn iconfont icon-thumbsup" :class="{'icon-thumbsup110':product.userLike == true}" @click="like"></i> 点赞
+            <span v-text="product.like_num"></span>次
+        </div>
         <?php if(!(empty($reply) || (($reply instanceof \think\Collection || $reply instanceof \think\Paginator ) && $reply->isEmpty()))): ?>
         <div class="item-box">
             <div class="item-tit"><i class="line"></i><i class="iconfont icon-pinglun1"></i><span>评价</span><i
@@ -169,12 +172,13 @@
                 }, cardUp: function () {
                     this.cardShow = true;
                 }, goCart: function (values, cartNum) {
-                    var checkedAttr = this.productValue[values.sort().join(',')], that = this;
+                    // var checkedAttr = this.productValue[values.sort().join(',')], that = this;
 //                    console.log(values);
 //                    console.log(checkedAttr);
+                    var that = this;
                     storeApi.setCart({
                         cartNum: cartNum,
-                        uniqueId: checkedAttr === undefined ? 0 : checkedAttr.unique,
+                        uniqueId: 0,
                         productId: this.product.id
                     }, function () {
                         that.getCartNum();
@@ -215,6 +219,32 @@
                             }, 300);
                         }, function (err) {
                             that.status.collect = false;
+                        });
+                    }
+                },
+                like: function () {
+                    var that = this;
+                    if (that.status.like) return false;
+                    that.status.like = true;
+                    if (this.product.userLike) {
+                        storeApi.unlikeProduct(this.product.id, 'product', function () {
+                            setTimeout(function () {
+                                that.product.like_num -= 1;
+                                that.product.userLike = false;
+                                that.status.like = false;
+                            }, 300);
+                        }, function (err) {
+                            that.status.like = false;
+                        });
+                    } else {
+                        storeApi.likeProduct(this.product.id, 'product', function () {
+                            setTimeout(function () {
+                                that.product.like_num += 1;
+                                that.product.userLike = true;
+                                that.status.like = false;
+                            }, 300);
+                        }, function (err) {
+                            that.status.like = false;
                         });
                     }
                 },

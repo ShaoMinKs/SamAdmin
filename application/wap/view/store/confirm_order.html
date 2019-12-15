@@ -1,0 +1,171 @@
+{extend name="public/container"}
+{block name="title"}提交订单{/block}
+{block name="content"}
+<div id="order-confirm" class="order-confirm">
+    <section>
+        <div class="user-address">
+            <i class="icon add"></i>
+            <div class="txt-box" v-if="address !== null" v-cloak>
+                <p class="name"><span v-text="address.real_name"></span> <span class="tel" v-text="address.phone"></span></p>
+                <p v-text="addressDetail"></p>
+            </div>
+            <div class="txt-box" v-if="address === null">
+                <p class="name"><span>请选择联系方式</span></p>
+            </div>
+        </div>
+        <div class="integ-order-info">
+            <div class="titles">商品信息</div>
+            <div class="integ-order-pro">
+                <?php $goodsNum = 0; ?>
+                {volist name="cartInfo" id="vo"}
+                <?php $goodsNum += $vo['cart_num']; ?>
+                <div class="item clearfix">
+                    <div class="img fl"><img src="{$vo.productInfo.image}"></div>
+                    <div class="infos fr">
+                        <p class="name" style="font-size: 16px">{$vo.productInfo.store_name}</p>
+                        <p class="shux"><span>
+                                <?php if(isset($vo['productInfo']['attrInfo'])){ echo $vo['productInfo']['attrInfo']['suk'];} ?></span></p>
+                        <p class="count">
+
+                        <span class="fr">X{$vo.cart_num}</span>
+                        </p>
+                        
+                    </div>
+                </div>
+                {/volist}
+            </div>
+
+            <ul class="parameter">
+              
+              
+                <li class="flex">
+                    <div class="txt">
+                        桌号/卡座
+                    </div>
+                    <input type="text" v-model="payMark" placeholder="请填写自己位置信息..."/>
+                </li>
+                <li class="flex">
+                    <div class="txt">
+                       <span style="color:red">*</span> 联系电话
+                    </div>
+                    <input type="number" v-model="user_phone" placeholder="请填写联系电话"/>
+                </li>
+                <li class="flex">
+                    <div class="txt">
+                       <span style="color:red">*</span> 联系人
+                    </div>
+                    <input type="text" v-model="real_name" placeholder="请填写联系人"/>
+                </li>
+            </ul>
+           
+            <div class="integ-order-pro">               
+                <div class="titles">搭配优惠</div>
+                <div class="item clearfix" v-for="(product,index) in recProduct">
+                    <div class="img fl"><img :src="product.image"></div>
+                    <a class="infos fr" :href ="'/wap/store/detail/id/'+product.id">
+                        <p class="name">{{product.store_name}}</p> 
+                        <p v-if="product.compose_price>0"><span class="count">￥{{product.compose_price}}</span><s>￥{{product.price}}</s></p>
+                        <p v-else><span class="count">￥{{product.price}}</span></p>
+                        <span class="amount_wrap fr">
+                            <div class="amount">
+                            <div class="count fr"><div @click=changeProductNum(product,index,-1)>-</div><input type=number v-model=product.product_num readonly><div @click=changeProductNum(product,index,1)>+</div></div>
+                            </div>
+                        </span>
+                    </a>
+                </div>
+                
+            </div>
+           
+
+            <div class="all-price">共<sapn v-text="totalNum">{$goodsNum}</sapn>件商品  小计: <span v-text="parseInt(priceGroup.totalPrice)">计算中</span>元</div>
+        </div>
+        <div class="comfirm-wrapper">
+            <p class="Recharge-top">支付方式</p>
+            <div class="Refund-list">
+                <input type="radio" name="pay_type" v-model="payType" value="weixin" class="regular-checkbox">
+                <label for="checkbox-1-1" class="skin-lable" @click="payType = 'weixin'"></label>
+                <div class="passenger-list no-bbm">
+                    <p class="p-name"><i class="bank-icon icon-weixin"></i>微信支付</p>
+                </div>
+            </div>
+            <div class="Refund-list">
+                <input type="radio" name="pay_type" v-model="payType" value="yue" class="regular-checkbox">
+                <label for="checkbox-1-1" class="skin-lable" @click="payType = 'yue'"></label>
+                <div class="passenger-list no-bbm">
+                    <p class="p-name"><i class="bank-icon" style="background-image: url(__WAP_PATH__/images/yue02.png);"></i>余额支付<em>可用余额{$userInfo.user_money|floatval}</em></p>
+                </div>
+            </div>
+            <?php /*  <div class="Refund-list">
+                  <input type="radio" name="pay_type" v-model="payType" value="offline" class="regular-checkbox">
+                  <label for="checkbox-1-1" class="skin-lable" @click="payType = 'offline'"></label>
+                  <div class="passenger-list no-bbm">
+                      <p class="p-name"><i class="bank-icon" style="background-image: url(__WAP_PATH__/images/xianxia02.png);"></i>线下付款</p>
+                  </div>
+              </div>  */ ?>
+        </div>
+        <div style="height: 1rem;"></div>
+        <div class="cart-calc02"><div class="select-all">应付:<span>￥<span id="jprice" v-text="totalPrice">计算中</span></span></div> <a id="jsubmit" href="javascript:void(0);">订单结算</a></div>
+    </section>
+</div>
+<script>
+    (function(){
+        var $cartInfo = <?php echo json_encode($cartInfo); ?>;
+        var $priceGroup = <?php echo json_encode($priceGroup); ?>;
+        var $recProduct = <?php echo json_encode($recProduct); ?>;
+        var $totalNum = <?php echo $goodsNum; ?>;
+        var $key = '<?=$orderKey?>';
+
+
+        requirejs(['vue','store','helper','__WAP_PATH__/module/store/use-coupon.js'
+            ,'__WAP_PATH__/module/store/use-address.js','layer'],function(Vue,storeApi,$h,useCoupon,useAddress,layer){
+            Vue.use(useCoupon);
+            Vue.use(useAddress);
+            new Vue({
+                el:"#order-confirm",
+                data:{
+                    cartInfo:$cartInfo,
+                    priceGroup:$priceGroup,
+                    recProduct:$recProduct,
+                    coupon:null,
+                    useCoupon:null,
+                    useIntegral:false,
+                    payType:'weixin',
+                    payMark:'',
+                    address:null,
+                    orderId:null,
+
+                    cartNum:0,
+                    totalNum:$totalNum,
+                    recPrice:0,
+                    user_phone:'',
+                    real_name:''
+                },
+                computed:{
+                    totalPrice:function(){
+                        var totalPrice = this.priceGroup.totalPrice;
+                        if(this.coupon!==null) totalPrice = $h.Sub(totalPrice,this.coupon.coupon_price);
+                        if(totalPrice<0) totalPrice = 0;
+                        return this.payType == 'offline' && this.offlinePostage == 1 ? totalPrice : $h.Add(totalPrice,this.priceGroup.storePostage);
+                    }
+                },
+                watch:{
+                    cartNum:function(v){
+
+                         if(v < 0) this.cartNum = 0;
+                    },                  
+                },
+                methods:{
+                   
+                },
+                mounted:function(){
+                    var that = this;
+                 
+                    storeApi.getUserDefaultAddress(function(res){
+                        if(res.data.msg == 'ok') that.$set(that,'address',res.data.data);
+                    });
+                }
+            });
+        });
+    })();
+</script>
+{/block}

@@ -26,7 +26,7 @@ class Users  extends ModelBasic{
      * @return array $userinfo;
      */
     public static function  getUserInfo($uid){
-        $userinfo = self::where('uid',$uid)->find();
+        $userinfo = self::where('user_id',$uid)->find();
         if(!$userinfo) exception('无此用户信息');
         return $userinfo->toArray();
     }

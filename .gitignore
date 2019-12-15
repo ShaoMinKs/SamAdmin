@@ -1,7 +1,9 @@
 /.idea
 /.vscode
-runtime/
 *.log
-.env
-.DS_Store
-.gitignore
+/.env
+**/*.pid
+runtime/
+install.lock
+public/uploads
+remarks.txt
