@@ -3,7 +3,7 @@
 {block name="content"}
 <div id="order-confirm" class="order-confirm">
     <section>
-        <div class="user-address">
+        <div class="user-address" @click="showAddressList">
             <i class="icon add"></i>
             <div class="txt-box" v-if="address !== null" v-cloak>
                 <p class="name"><span v-text="address.real_name"></span> <span class="tel" v-text="address.phone"></span></p>
@@ -25,9 +25,7 @@
                         <p class="name" style="font-size: 16px">{$vo.productInfo.store_name}</p>
                         <p class="shux"><span>
                                 <?php if(isset($vo['productInfo']['attrInfo'])){ echo $vo['productInfo']['attrInfo']['suk'];} ?></span></p>
-                        <p class="count">
-
-                        <span class="fr">X{$vo.cart_num}</span>
+                                <p class="count">￥{$vo.truePrice}<span class="fr">X{$vo.cart_num}</span></p>
                         </p>
                         
                     </div>
@@ -62,7 +60,7 @@
                 <div class="titles">搭配优惠</div>
                 <div class="item clearfix" v-for="(product,index) in recProduct">
                     <div class="img fl"><img :src="product.image"></div>
-                    <a class="infos fr" :href ="'/wap/store/detail/id/'+product.id">
+                    <a class="infos fr">
                         <p class="name">{{product.store_name}}</p> 
                         <p v-if="product.compose_price>0"><span class="count">￥{{product.compose_price}}</span><s>￥{{product.price}}</s></p>
                         <p v-else><span class="count">￥{{product.price}}</span></p>
@@ -104,7 +102,7 @@
               </div>  */ ?>
         </div>
         <div style="height: 1rem;"></div>
-        <div class="cart-calc02"><div class="select-all">应付:<span>￥<span id="jprice" v-text="totalPrice">计算中</span></span></div> <a id="jsubmit" href="javascript:void(0);">订单结算</a></div>
+        <div class="cart-calc02"><div class="select-all">应付:<span>￥<span id="jprice" v-text="totalPrice">计算中</span></span></div> <a id="jsubmit" href="javascript:void(0);"  @click="submit">订单结算</a></div>
     </section>
 </div>
 <script>
@@ -114,7 +112,8 @@
         var $recProduct = <?php echo json_encode($recProduct); ?>;
         var $totalNum = <?php echo $goodsNum; ?>;
         var $key = '<?=$orderKey?>';
-
+        var $seckill_id = 0;
+        var $bargain_id = 0;
 
         requirejs(['vue','store','helper','__WAP_PATH__/module/store/use-coupon.js'
             ,'__WAP_PATH__/module/store/use-address.js','layer'],function(Vue,storeApi,$h,useCoupon,useAddress,layer){
@@ -146,7 +145,13 @@
                         if(this.coupon!==null) totalPrice = $h.Sub(totalPrice,this.coupon.coupon_price);
                         if(totalPrice<0) totalPrice = 0;
                         return this.payType == 'offline' && this.offlinePostage == 1 ? totalPrice : $h.Add(totalPrice,this.priceGroup.storePostage);
-                    }
+                    },
+                    addressDetail:function(){
+                        if(this.address == null)
+                            return '';
+                        else
+                            return this.address.province +' '+this.address.city+' '+this.address.district +' '+this.address.detail
+                    },
                 },
                 watch:{
                     cartNum:function(v){
@@ -155,7 +160,75 @@
                     },                  
                 },
                 methods:{
-                   
+                    showAddressList:function(){
+                        var that = this;
+                        this.$useAddress({
+                            onSelect:function(id,address){
+                                that.address = address;
+                            },
+                            checked:that.address != null && that.address.id
+                        })
+                    },
+                    submit:function(){
+                        // if(this.address == null)
+                        //     return $h.returnErrorMsg('请选择收货地址!');
+                        if(this.payType == 'yue')
+                            layer.confirm('确定使用余额支付?',{icon:3},this.goPay);
+                        else if(this.payType == 'offline')
+                            layer.confirm('确定使用线下付款方式支付?',{icon:3},this.goPay);
+                        else
+                            this.goPay();
+                    },
+                    goPay:function(){
+                        var that = this;
+                        $h.load();
+                        storeApi.submitOrder($key,{
+                            addressId:this.address.id,
+                            couponId:this.coupon == null ? '' : this.coupon.id,
+                            mark:this.payMark,
+                            payType:this.payType,
+                            seckill_id:$seckill_id,
+                            bargainId:$bargain_id,
+                            useIntegral:this.useIntegral
+                        },function(res){
+                            that.$set(that,'orderId',res.data.data.result.orderId);
+                            $h.loadClear();
+                            if(res.data.data.status == 'WECHAT_PAY'){
+                                that.wechatPay(res.data.data.result.jsConfig);
+                            }else if(res.data.data.status == 'SUCCESS'){
+                                $h.pushMsgOnce(res.data.msg,function(){
+                                    that.successOrder();
+                                });
+                            }else{
+                                $h.pushMsgOnce(res.data.msg,function(){
+                                    that.extendOrder();
+                                });
+                            }
+                        });
+                    },
+                    changeProductNum:function(product,index,changeNum){
+                        var num = +product.product_num + changeNum;
+                        var price = product.compose_price > 0 ? parseInt(product.compose_price) : parseInt(product.price)
+                        if(num < 0) num = 0;
+                        if(num > product.stock){
+                            $h.pushMsgOnce('该商品库存不足'+num);
+                            num = product.stock;
+                        }
+                        if(product.product_num != num){
+                            var opt = [];
+                            opt.productId = product.id;
+                            opt.cartNum = num;
+                            storeApi.goBuy(opt);
+
+                            this.recPrice += price * changeNum;
+                            this.totalNum += changeNum;
+
+                            // console.log(this.recPrice);
+                            // storeApi.changeCartNum(cart.id,num);
+                            product.product_num = num;
+                            this.$set(this.recProduct,index,product);
+                        }
+                    },
                 },
                 mounted:function(){
                     var that = this;

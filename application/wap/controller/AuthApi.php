@@ -6,6 +6,9 @@ use app\wap\model\store\StoreCategory;
 use app\wap\model\store\StoreCart;
 use app\wap\model\store\StoreProductRelation;
 use app\wap\model\user\UserAddress;
+use think\facade\Request;
+use service\UtilService;
+use app\wap\model\store\StoreOrder;
 
 class AuthApi extends AuthWap {
 
@@ -145,6 +148,49 @@ class AuthApi extends AuthWap {
         return JsonService::successful($list);
     }
 
+/**
+ * 编辑收获地址提交
+ */
+    public function edit_user_address()
+    {
+        $request = Request::instance();
+        if(!$request->isPost()) return JsonService::fail('参数错误!');
+        $addressInfo = UtilService::postMore([
+            ['address',[]],
+            ['is_default',false],
+            ['real_name',''],
+            ['post_code',''],
+            ['phone',''],
+            ['detail',''],
+            ['id',0]
+        ],$request);
+        $addressInfo['province'] = $addressInfo['address']['province'];
+        $addressInfo['city'] = $addressInfo['address']['city'];
+        $addressInfo['district'] = $addressInfo['address']['district'];
+        $addressInfo['is_default'] = $addressInfo['is_default'] == true ? 1 : 0;
+        $addressInfo['uid'] = $this->userInfo['user_id'];
+        unset($addressInfo['address']);
+
+        if($addressInfo['id'] && UserAddress::be(['id'=>$addressInfo['id'],'uid'=>$this->userInfo['user_id'],'is_del'=>0])){
+            $id = $addressInfo['id'];
+            unset($addressInfo['id']);
+            if(UserAddress::edit($addressInfo,$id,'id')){
+                if($addressInfo['is_default'])
+                    UserAddress::setDefaultAddress($id,$this->userInfo['user_id']);
+                return JsonService::successful();
+            }else
+                return JsonService::fail('编辑收货地址失败!');
+        }else{
+            if($address = UserAddress::set($addressInfo)){
+                if($addressInfo['is_default'])
+                    UserAddress::setDefaultAddress($address->id,$this->userInfo['user_id']);
+                return JsonService::successful();
+            }else
+                return JsonService::fail('添加收货地址失败!');
+        }
+
+
+    }
     /**
      * 设置默认地址
      */
@@ -167,5 +213,55 @@ class AuthApi extends AuthWap {
             return JsonService::successful('ok',$defaultAddress);
         else
             return JsonService::successful('empty',[]);
+    }
+
+        /**
+     * 创建订单
+     * @param string $key
+     * @return \think\response\Json
+     */
+    public function create_order($key = '')
+    {
+        if(!$key) return JsonService::fail('参数错误!');
+        if(StoreOrder::be(['order_id|unique'=>$key,'uid'=>$this->userInfo['user_id'],'is_del'=>0]))
+            return JsonService::status('extend_order','订单已生成',['orderId'=>$key,'key'=>$key]);
+        list($addressId,$couponId,$payType,$useIntegral,$mark,$combinationId,$pinkId,$seckill_id,$bargainId) = UtilService::postMore([
+            'addressId','couponId','payType','useIntegral','mark',['combinationId',0],['pinkId',0],['seckill_id',0],['bargainId',0]
+        ],Request::instance(),true);
+        $payType = strtolower($payType);
+        $order = StoreOrder::cacheKeyCreateOrder($this->userInfo['user_id'],$key,$addressId,$payType,$useIntegral,$couponId,$mark,$combinationId,$pinkId,$seckill_id,$bargainId);
+        $orderId = $order['order_id'];
+        $info = compact('orderId','key');
+        if($orderId){
+            if($payType == 'weixin'){
+                $orderInfo = StoreOrder::where('order_id',$orderId)->find();
+                if(!$orderInfo || !isset($orderInfo['paid'])) exception('支付订单不存在!');
+                if($orderInfo['paid']) exception('支付已支付!');
+                if(bcsub((float)$orderInfo['pay_price'],0,2) <= 0){
+                    if(StoreOrder::jsPayPrice($orderId,$this->userInfo['uid']))
+                        return JsonService::status('success','微信支付成功',$info);
+                    else
+                        return JsonService::status('pay_error',StoreOrder::getErrorInfo());
+                }else{
+                    try{
+                        $jsConfig = StoreOrder::jsPay($orderId);
+                    }catch (\Exception $e){
+                        return JsonService::status('pay_error',$e->getMessage(),$info);
+                    }
+                    $info['jsConfig'] = $jsConfig;
+                    return JsonService::status('wechat_pay','订单创建成功',$info);
+                }
+            }else if($payType == 'yue'){
+                if(StoreOrder::yuePay($orderId,$this->userInfo['uid']))
+                    return JsonService::status('success','余额支付成功',$info);
+                else
+                    return JsonService::status('pay_error',StoreOrder::getErrorInfo());
+            }else if($payType == 'offline'){
+                StoreOrder::createOrderTemplate($order);
+                return JsonService::status('success','订单创建成功',$info);
+            }
+        }else{
+            return JsonService::fail(StoreOrder::getErrorInfo('订单生成失败!'));
+        }
     }
 }

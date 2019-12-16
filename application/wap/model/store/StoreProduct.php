@@ -71,4 +71,16 @@ class StoreProduct extends ModelBasic {
         return self::where('is_del',0)->where('is_show',1)->where('id',$productId)->field($field)->find();
     }
 
+    /**
+     * 减库存
+     */
+    public static function decProductStock($num,$productId,$unique = '')
+    {
+        if($unique){
+            $res = self::where('id',$productId)->setInc('sales',$num);
+        }else{
+            $res = false !== self::where('id',$productId)->dec('stock',$num)->inc('sales',$num)->update();
+        }
+        return $res;
+    }
 }
