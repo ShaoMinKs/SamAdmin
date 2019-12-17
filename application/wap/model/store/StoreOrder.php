@@ -6,6 +6,13 @@ use think\facade\Cache;
 use app\wap\model\user\Users;
 use app\wap\model\user\UserAddress;
 use app\wap\model\store\StoreOrderStatus;
+use app\wap\model\user\WechatFans;
+use app\core\util\WechatService;
+use app\wap\model\user\UserBill;
+use behavior\wechat\PaymentBehavior;
+use service\HookService;
+use think\Loader;
+use think\facade\Hook;
 
 class StoreOrder  extends ModelBasic {
 
@@ -215,6 +222,23 @@ class StoreOrder  extends ModelBasic {
         return $order;
     }
 
+
+    /**
+     * 微信支付
+     * @param string $orderId 订单ID
+     */
+    public static function jsPay($orderId,$field = 'order_id')
+    {
+        if(is_string($orderId))
+            $orderInfo = self::where($field,$orderId)->find();
+        else
+            $orderInfo = $orderId;
+        if(!$orderInfo || !isset($orderInfo['paid'])) exception('支付订单不存在!');
+        if($orderInfo['paid']) exception('支付已支付!');
+        if($orderInfo['pay_price'] <= 0) exception('该支付无需支付!');
+        $openid = WechatFans::uidToOpenid($orderInfo['uid']);
+        return WechatService::jsPay($openid,$orderInfo['order_id'],$orderInfo['pay_price'],'product',SystemConfigService::get('site_name'));
+    }
     
     /**
      * 生成订单号
@@ -223,5 +247,62 @@ class StoreOrder  extends ModelBasic {
     {
         $count = (int) self::where('add_time',['>=',strtotime(date("Y-m-d"))],['<',strtotime(date("Y-m-d",strtotime('+1 day')))])->count();
         return 'wx'.date('YmdHis',time()).(10000+$count+1);
+    }
+
+    /**
+     * 余额支付
+     */
+    public static function yuePay($order_id,$uid)
+    {
+        $orderInfo = self::where('uid',$uid)->where('order_id',$order_id)->where('is_del',0)->find();
+        if(!$orderInfo) return self::setErrorInfo('订单不存在!');
+        if($orderInfo['paid']) return self::setErrorInfo('该订单已支付!');
+        if($orderInfo['pay_type'] != 'yue') return self::setErrorInfo('该订单不能使用余额支付!');
+        $userInfo = Users::getUserInfo($uid);
+        if($userInfo['user_money'] < $orderInfo['pay_price'])
+            return self::setErrorInfo('余额不足'.floatval($orderInfo['pay_price']));
+        try{
+            self::beginTrans();
+            $res1 = false !== Users::bcDec($uid,'user_money',$orderInfo['pay_price'],'user_id');
+            $res2 = UserBill::expend('购买商品',$uid,'user_money','pay_product',$orderInfo['pay_price'],$orderInfo['id'],bcsub($userInfo['user_money'],$orderInfo['pay_price'],2),'余额支付'.floatval($orderInfo['pay_price']).'元购买商品');
+            $res3 = self::paySuccess($order_id);
+             HookService::listen('yue_pay_product',$orderInfo,false,PaymentBehavior::class);
+            self::commitTrans();
+        }catch (\Exception $e){
+            self::rollbackTrans();
+            return self::setErrorInfo($e->getMessage());
+        }
+        return true;
+    }
+
+        /**
+     * //TODO 支付成功后
+     * @param $orderId
+     * @param $notify
+     * @return bool
+     */
+    public static function paySuccess($orderId)
+    {
+        $order = self::where('order_id',$orderId)->find();
+        $resPink = true;
+        Users::bcInc($order['uid'],'pay_count',1,'user_id');
+        $res1 = self::where('order_id',$orderId)->update(['paid'=>1,'pay_time'=>time()]);
+        $oid = self::where('order_id',$orderId)->value('id');
+        StoreOrderStatus::status($oid,'pay_success','用户付款成功');
+        // WechatTemplateService::sendTemplate(WechatFans::uidToOpenid($order['uid']),WechatTemplateService::ORDER_PAY_SUCCESS, [
+        //     'first'=>'亲，您购买的商品已支付成功',
+        //     'keyword1'=>$orderId,
+        //     'keyword2'=>$order['pay_price'],
+        //     'remark'=>'点击查看订单详情'
+        // ],Url::build('wap/My/order',['uni'=>$orderId],true,true));
+        // WechatTemplateService::sendAdminNoticeTemplate([
+        //     'first'=>"亲,您有一个新订单 \n订单号:{$order['order_id']}",
+        //     'keyword1'=>'新订单',
+        //     'keyword2'=>'已支付',
+        //     'keyword3'=>date('Y/m/d H:i',time()),
+        //     'remark'=>'请及时处理'
+        // ]);
+        $res = $res1;
+        return false !== $res;
     }
 }

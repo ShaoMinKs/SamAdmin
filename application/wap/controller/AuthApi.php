@@ -252,7 +252,7 @@ class AuthApi extends AuthWap {
                     return JsonService::status('wechat_pay','订单创建成功',$info);
                 }
             }else if($payType == 'yue'){
-                if(StoreOrder::yuePay($orderId,$this->userInfo['uid']))
+                if(StoreOrder::yuePay($orderId,$this->userInfo['user_id']))
                     return JsonService::status('success','余额支付成功',$info);
                 else
                     return JsonService::status('pay_error',StoreOrder::getErrorInfo());

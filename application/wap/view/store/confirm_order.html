@@ -36,12 +36,7 @@
             <ul class="parameter">
               
               
-                <li class="flex">
-                    <div class="txt">
-                        桌号/卡座
-                    </div>
-                    <input type="text" v-model="payMark" placeholder="请填写自己位置信息..."/>
-                </li>
+          
                 <li class="flex">
                     <div class="txt">
                        <span style="color:red">*</span> 联系电话
@@ -179,6 +174,20 @@
                         else
                             this.goPay();
                     },
+                    extendOrder:function(){
+                        location.replace($h.U({
+                            c:'my',
+                            a:'order',
+                            p:{uni:this.orderId == null ? $key : this.orderId}
+                        }));
+                    },
+                    successOrder:function(){
+                        location.replace($h.U({
+                            c:'my',
+                            a:'order',
+                            p:{uni:this.orderId == null ? $key : this.orderId}
+                        }));
+                    },
                     goPay:function(){
                         var that = this;
                         $h.load();
@@ -191,6 +200,7 @@
                             bargainId:$bargain_id,
                             useIntegral:this.useIntegral
                         },function(res){
+                        
                             that.$set(that,'orderId',res.data.data.result.orderId);
                             $h.loadClear();
                             if(res.data.data.status == 'WECHAT_PAY'){
