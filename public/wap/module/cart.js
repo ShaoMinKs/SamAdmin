@@ -61,6 +61,7 @@ requirejs(['vue','store','helper'],function(Vue,storeApi,$h){
             getCartList:function(){
                 var that = this;
                 storeApi.getCartList(function(cartGroup){
+                    console.log(cartGroup);return false;
                     cartGroup.valid.map(function(cart){
                         cart.checked = true;
                         cart.is_del = false;

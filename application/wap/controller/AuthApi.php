@@ -264,4 +264,35 @@ class AuthApi extends AuthWap {
             return JsonService::fail(StoreOrder::getErrorInfo('订单生成失败!'));
         }
     }
+
+    /**
+     * 获取购物车列表
+     */
+    public function get_cart_list()
+    {
+        return JsonService::successful('ok',StoreCart::getUserProductCartList($this->userInfo['user_id']));
+    }
+
+
+    /**
+     * 更改购物车商品数量
+     */
+    public function change_cart_num($cartId = '',$cartNum = '')
+    {
+        if(!$cartId || !$cartNum || !is_numeric($cartId) || !is_numeric($cartNum)) return JsonService::fail('参数错误!');
+        StoreCart::changeUserCartNum($cartId,$cartNum,$this->userInfo['user_id']);
+        return JsonService::successful();
+    }
+
+    /**
+     * 移除购物车
+     */
+    public function remove_cart($ids='')
+    {
+        if(!$ids) return JsonService::fail('参数错误!');
+        StoreCart::removeUserCart($this->userInfo['user_id'],$ids);
+        return JsonService::successful();
+    }
+
+
 }

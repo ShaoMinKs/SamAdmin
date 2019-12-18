@@ -136,6 +136,21 @@ public static function getUserProductCartList($uid,$cartIds='',$status=0)
     return compact('valid','invalid');
 }
 
+/**
+ * 改变购物车商品数量
+ */
+public static function changeUserCartNum($cartId,$cartNum,$uid)
+{
+    return self::where('uid',$uid)->where('id',$cartId)->update(['cart_num'=>$cartNum]);
+}
+
+/**
+ * 移除购物车
+ */
+public static function removeUserCart($uid,$ids)
+{
+    return self::where('uid',$uid)->where('id','IN',$ids)->update(['is_del'=>1]);
+}
 
 
 }

@@ -69,4 +69,11 @@ class Store extends AuthWap {
         ]);
         return $this->fetch();
     }
+
+    /**
+     * 购物车
+     */
+    public function cart(){
+        return $this->fetch();
+    }
 }
