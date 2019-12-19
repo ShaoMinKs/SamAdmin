@@ -1,6 +1,8 @@
 <?php
 
 namespace app\core\util;
+use service\HookService;
+use behavior\wechat\PaymentBehavior;
 
 class WechatService {
 
@@ -130,4 +132,12 @@ class WechatService {
         return self::templateService()->send($data);
     }
     
+
+        /**
+     * 微信支付成功回调接口
+     */
+    public static function handleNotify()
+    {
+        return HookService::listen('wechat_pay_success',$notify,null,true,PaymentBehavior::class);
+    }
 }

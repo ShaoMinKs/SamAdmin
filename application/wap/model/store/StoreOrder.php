@@ -305,4 +305,18 @@ class StoreOrder  extends ModelBasic {
         $res = $res1;
         return false !== $res;
     }
+
+
+    /**
+     * 获取订单各状态数量
+     */
+    public static function getOrderStatusNum($uid)
+    {
+        $noBuy = self::where('uid',$uid)->where('paid',0)->where('is_del',0)->where('pay_type','<>','offline')->where('refund_status',0)->count();
+     
+        $noTake = self::where('uid',$uid)->where('paid',1)->where('is_del',0)->where('status',1)->where('pay_type','<>','offline')->where('refund_status',0)->count();
+        $noReply = self::where('uid',$uid)->where('paid',1)->where('is_del',0)->where('status',2)->where('refund_status',0)->count();
+      
+        return compact('noBuy','noPostage','noTake','noReply','noPink');
+    }
 }

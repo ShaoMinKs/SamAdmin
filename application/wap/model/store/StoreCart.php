@@ -41,6 +41,7 @@ public static function setCart($uid,$product_id,$cart_num = 1,$product_attr_uniq
  */
 public static function getUserProductCartList($uid,$cartIds='',$status=0)
 {
+ 
     $productInfoField = 'id,image,slider_image,price,cost,ot_price,vip_price,postage,mer_id,give_integral,cate_id,sales,stock,store_name,unit_name,is_show,is_del,is_postage';
     $model = new self();
     $valid = $invalid = [];

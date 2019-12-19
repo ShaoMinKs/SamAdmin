@@ -9,6 +9,7 @@ use app\wap\model\user\UserAddress;
 use think\facade\Request;
 use service\UtilService;
 use app\wap\model\store\StoreOrder;
+use app\wap\model\user\UserBill;
 
 class AuthApi extends AuthWap {
 
@@ -294,5 +295,37 @@ class AuthApi extends AuthWap {
         return JsonService::successful();
     }
 
+    /**
+     * 收藏的商品
+     */
+    public function get_user_collect_product($first = 0,$limit = 8)
+    {
+        $list = StoreProductRelation::where('A.uid',$this->userInfo['user_id'])
+            ->field('B.id pid,B.store_name,B.price,B.ot_price,B.sales,B.image,B.is_del,B.is_show')->alias('A')
+            ->where('A.type','collect')->where('A.category','product')
+            ->order('A.add_time DESC')->join('__STORE_PRODUCT__ B','A.product_id = B.id')
+            ->limit($first,$limit)->select()->toArray();
+        foreach ($list as $k=>$product){
+            if($product['pid']){
+                $list[$k]['is_fail'] = $product['is_del'] && $product['is_show'];
+            }else{
+                unset($list[$k]);
+            }
+        }
+        return JsonService::successful($list);
+    }
 
+    /**
+     * 余额明细
+     */
+    public function user_balance_list($first = 0,$limit = 8)
+    {
+        $list = UserBill::where('uid',$this->userInfo['user_id'])->where('category','now_money')
+            ->field('mark,pm,number,add_time')
+            ->where('status',1)->order('add_time DESC')->limit($first,$limit)->select()->toArray();
+        foreach ($list as &$v){
+            $v['add_time'] = date('Y/m/d H:i',$v['add_time']);
+        }
+        return JsonService::successful($list);
+    }
 }
