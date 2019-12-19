@@ -4,6 +4,7 @@ use basic\ModelBasic;
 use traits\ModelTrait;
 use think\facade\Request;
 use think\facade\Session;
+use app\wap\user\WechatFans;
 
 class Users  extends ModelBasic{
 
@@ -40,7 +41,7 @@ class Users  extends ModelBasic{
             $uid = Session::get('login_uid','wap');
         }
         if(!$uid && Session::has('login_openid','wap') && ($openid = Session::get('login_openid','wap'))){
-          
+            $uid = WechatFans::openidToUid($openid);
         }
         if(!$uid) exit(exception('请登录'));
         return $uid;

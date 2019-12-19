@@ -3,6 +3,7 @@
 namespace app\core\util;
 use service\HookService;
 use behavior\wechat\PaymentBehavior;
+use think\facade\Request;
 
 class WechatService {
 
@@ -41,17 +42,56 @@ class WechatService {
      * 支付
      */
     public static function payService(){
-        return new \Wechat\Pay(self::options());
+        return new \WeChat\Pay(self::options());
     }
 
+
+    public static function userService(){
+        return new \WeChat\User(self::options());
+    }
 
         /**
-     * 支付
+     * 模板消息
      */
     public static function templateService(){
-        return new \Wechat\Template(self::options());
+        return new \WeChat\Template(self::options());
     }
 
+    /**
+     * 微信网页授权接口
+     */
+    public static function  wechatOauth(){
+        return new \WeChat\Oauth(self::options());
+    }
+
+    /**
+     * 授权获取用户信息
+     */
+    public static function getOriginal(){
+        
+        $result = self::wechatOauth()->getOauthAccessToken();
+        if(Request::get('state') != 'base'){
+           return self::wechatOauth()->getUserInfo($result['access_token'],$result['openid']);
+        }else{
+            return $result;
+        }
+    }
+
+    /**
+     * 获取用户信息
+     * @param string $openid 用户openid
+     * @return array
+     */
+    public function getUserInfo($openid){
+        return self::userService()->getUserInfo($openid);
+    }
+
+    /**
+     * 获取授权地址
+     */
+    public function getOauthRedirect($redirect_url, $state = '', $scope = 'snsapi_base'){
+        return self::wechatOauth()->getOauthRedirect($redirect_url, $state = '', $scope = 'snsapi_base');
+    }
         /**
      * 获得jsSdk支付参数
      * @param $openid

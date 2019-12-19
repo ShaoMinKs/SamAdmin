@@ -1,4 +1,4 @@
-<?php /*a:2:{s:74:"D:\phpstudy\PHPTutorial\WWW\SamAdmin\application\wap\view\login\index.html";i:1575912553;s:79:"D:\phpstudy\PHPTutorial\WWW\SamAdmin\application\wap\view\public\requirejs.html";i:1575644772;}*/ ?>
+<?php /*a:2:{s:74:"D:\phpstudy\PHPTutorial\WWW\SamAdmin\application\wap\view\login\index.html";i:1576763597;s:79:"D:\phpstudy\PHPTutorial\WWW\SamAdmin\application\wap\view\public\requirejs.html";i:1575644772;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -103,7 +103,7 @@
             <div class="line_04"><b></b><span>其他登录方式</span><b></b></div>
         </form>
         <!-- <p class="sign">建立新账号? <a href="#"> 注册</a></p> -->
-        <a href="">
+        <a href="<?php echo url('BaseWap/wechatOauth'); ?>">
                 <img src="/public/wap/images/weixin.png" style="border-radius: 50%;margin: 0 auto;width: 45px;;" alt="">
         </a>
     </div>
