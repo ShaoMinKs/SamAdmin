@@ -34,10 +34,10 @@ return [
     'taglib_end'   => '}',
     //模板替换
     'tpl_replace_string'  =>  [
-        '__STATIC__'=>'/public/static',
-        '__PUBLIC__'=>'/public',
-        '__WAP_PATH__' => '/public/wap',
-        '__PLUG_PATH__' => '/public/plugins'
+        '__STATIC__'=>'/static',
+        '__PUBLIC__'=>'',
+        '__WAP_PATH__' => '/wap',
+        '__PLUG_PATH__' => '/plugins'
     ],
 
 ];

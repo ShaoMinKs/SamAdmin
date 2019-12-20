@@ -1,4 +1,4 @@
-<?php /*a:8:{s:74:"D:\phpstudy\PHPTutorial\WWW\SamAdmin\application\wap\view\store\index.html";i:1575956882;s:79:"D:\phpstudy\PHPTutorial\WWW\SamAdmin\application\wap\view\public\container.html";i:1575641667;s:74:"D:\phpstudy\PHPTutorial\WWW\SamAdmin\application\wap\view\public\head.html";i:1575473732;s:75:"D:\phpstudy\PHPTutorial\WWW\SamAdmin\application\wap\view\public\style.html";i:1575641146;s:79:"D:\phpstudy\PHPTutorial\WWW\SamAdmin\application\wap\view\public\requirejs.html";i:1575644772;s:80:"D:\phpstudy\PHPTutorial\WWW\SamAdmin\application\wap\view\public\store_menu.html";i:1575954032;s:74:"D:\phpstudy\PHPTutorial\WWW\SamAdmin\application\wap\view\public\foot.html";i:1575638673;s:79:"D:\phpstudy\PHPTutorial\WWW\SamAdmin\application\wap\view\public\right_nav.html";i:1575641808;}*/ ?>
+<?php /*a:8:{s:74:"D:\phpstudy\PHPTutorial\WWW\SamAdmin\application\wap\view\store\index.html";i:1575956882;s:79:"D:\phpstudy\PHPTutorial\WWW\SamAdmin\application\wap\view\public\container.html";i:1575641667;s:74:"D:\phpstudy\PHPTutorial\WWW\SamAdmin\application\wap\view\public\head.html";i:1575473732;s:75:"D:\phpstudy\PHPTutorial\WWW\SamAdmin\application\wap\view\public\style.html";i:1576851498;s:79:"D:\phpstudy\PHPTutorial\WWW\SamAdmin\application\wap\view\public\requirejs.html";i:1575644772;s:80:"D:\phpstudy\PHPTutorial\WWW\SamAdmin\application\wap\view\public\store_menu.html";i:1575954032;s:74:"D:\phpstudy\PHPTutorial\WWW\SamAdmin\application\wap\view\public\foot.html";i:1575638673;s:79:"D:\phpstudy\PHPTutorial\WWW\SamAdmin\application\wap\view\public\right_nav.html";i:1575641808;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,22 +14,22 @@
 <!-- QQ强制竖屏 -->
 <meta name="x5-orientation" content="portrait">
     <title><?php echo !empty($category) ? htmlentities($category['cate_name']) :  '全部产品'; ?></title>
-    <link rel="stylesheet" type="text/css" href="/public/static/css/reset.css"/>
-<link rel="stylesheet" type="text/css" href="/public/wap/font/iconfont.css"/>
-<link rel="stylesheet" type="text/css" href="/public/wap/css/style.css"/>
-<script type="text/javascript" src="/public/static/js/media.js"></script>
-<script type="text/javascript" src="/public/plugins/jquery-1.10.2.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/static/css/reset.css"/>
+<link rel="stylesheet" type="text/css" href="/wap/font/iconfont.css"/>
+<link rel="stylesheet" type="text/css" href="/wap/css/style.css"/>
+<script type="text/javascript" src="/static/js/media.js"></script>
+<script type="text/javascript" src="/plugins/jquery-1.10.2.min.js"></script>
 
     
-<script type="text/javascript" src="/public/wap/js/base.js"></script>
+<script type="text/javascript" src="/wap/js/base.js"></script>
 
-    <script type="text/javascript" src="/public/plugins/requirejs/require.js"></script>
+    <script type="text/javascript" src="/plugins/requirejs/require.js"></script>
 <script>
         requirejs.config({
             urlArgs: "v=15615616515616556",
             map: {
                 '*': {
-                    'css': '/public/plugins/requirejs/require-css.js'
+                    'css': '/plugins/requirejs/require-css.js'
                 }
             },
             shim: {
@@ -49,7 +49,7 @@
                     deps: ['css!yduicss']
                 }
             },
-            baseUrl: '//' + location.hostname + '/public',
+            baseUrl: '//' + location.hostname + '',
             paths: {
                 'static': 'static',
                 'vue': 'plugins/vue/dist/vue.min',
@@ -75,7 +75,7 @@
         });
     </script>
     
-    <script type="text/javascript" src="/public/wap/js/common.js"></script>
+    <script type="text/javascript" src="/wap/js/common.js"></script>
 </head>
 <body>
 
@@ -148,7 +148,7 @@ $menu = [
     </div>
 <script>
         var base = new Base64();
-         requirejs(['vue','store','better-scroll','helper','/public/wap/module/store/shop-card.js'],function(Vue,storeApi,BScroll,$h,shopCard){
+         requirejs(['vue','store','better-scroll','helper','/wap/module/store/shop-card.js'],function(Vue,storeApi,BScroll,$h,shopCard){
              shopCard.install(Vue);
              var cid = "<?php echo htmlentities($cid); ?>";
              new Vue({

@@ -10,7 +10,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="format-detection" content="telephone=no">
     <meta name="format-detection" content="address=no">
-    <script type="text/javascript" src="/public/plugins/sweetalert2/sweetalert2.all.min.js"></script>
+    <script type="text/javascript" src="/plugins/sweetalert2/sweetalert2.all.min.js"></script>
     <style>
         .swal2-container.swal2-shown {  background-color: rgba(255, 255, 255, 0.4);  }
     </style>

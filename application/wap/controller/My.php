@@ -36,6 +36,12 @@ class My extends AuthWap {
         return $this->fetch();
     }
 
+/**
+ * 订单列表
+ */
+    public function order_list(){
+        return $this->fetch();
+    }
     /**
      * 收藏的商品
      */

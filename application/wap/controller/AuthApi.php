@@ -47,6 +47,32 @@ class AuthApi extends AuthWap {
         return JsonService::successful($list);
     }
 
+
+    /**
+     * 获取用户订单
+     */
+    public function get_user_order_list($type = '',$first = 0, $limit = 8,$search = '')
+    {
+//        StoreOrder::delCombination();//删除拼团未支付订单
+        $type=='null' && $type='';
+        if($search){
+            $order = StoreOrder::searchUserOrder($this->userInfo['user_id'],$search)?:[];
+            $list = $order == false ? [] : [$order];
+        }else{
+            if(!is_numeric($type)) $type = '';
+            $list = StoreOrder::getUserOrderList($this->userInfo['user_id'],$type,$first,$limit);
+        }
+        foreach ($list as $k=>$order){
+            $list[$k] = StoreOrder::tidyOrder($order,true);
+            if($list[$k]['_status']['_type'] == 3){
+                foreach ($order['cartInfo']?:[] as $key=>$product){
+                    $list[$k]['cartInfo'][$key]['is_reply'] = StoreProductReply::isReply($product['unique'],'product');
+                }
+            }
+        }
+        return JsonService::successful($list);
+    }
+
     /**
      * 获取用户购物车商品数量
      */

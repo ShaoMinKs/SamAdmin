@@ -1,4 +1,4 @@
-<?php /*a:8:{s:74:"D:\phpstudy\PHPTutorial\WWW\SamAdmin\application\wap\view\index\index.html";i:1575953124;s:79:"D:\phpstudy\PHPTutorial\WWW\SamAdmin\application\wap\view\public\container.html";i:1575641667;s:74:"D:\phpstudy\PHPTutorial\WWW\SamAdmin\application\wap\view\public\head.html";i:1575473732;s:75:"D:\phpstudy\PHPTutorial\WWW\SamAdmin\application\wap\view\public\style.html";i:1575641146;s:79:"D:\phpstudy\PHPTutorial\WWW\SamAdmin\application\wap\view\public\requirejs.html";i:1575644772;s:80:"D:\phpstudy\PHPTutorial\WWW\SamAdmin\application\wap\view\public\store_menu.html";i:1575954032;s:74:"D:\phpstudy\PHPTutorial\WWW\SamAdmin\application\wap\view\public\foot.html";i:1575638673;s:79:"D:\phpstudy\PHPTutorial\WWW\SamAdmin\application\wap\view\public\right_nav.html";i:1575641808;}*/ ?>
+<?php /*a:8:{s:74:"D:\phpstudy\PHPTutorial\WWW\SamAdmin\application\wap\view\index\index.html";i:1575953124;s:79:"D:\phpstudy\PHPTutorial\WWW\SamAdmin\application\wap\view\public\container.html";i:1575641667;s:74:"D:\phpstudy\PHPTutorial\WWW\SamAdmin\application\wap\view\public\head.html";i:1575473732;s:75:"D:\phpstudy\PHPTutorial\WWW\SamAdmin\application\wap\view\public\style.html";i:1576851498;s:79:"D:\phpstudy\PHPTutorial\WWW\SamAdmin\application\wap\view\public\requirejs.html";i:1575644772;s:80:"D:\phpstudy\PHPTutorial\WWW\SamAdmin\application\wap\view\public\store_menu.html";i:1575954032;s:74:"D:\phpstudy\PHPTutorial\WWW\SamAdmin\application\wap\view\public\foot.html";i:1575638673;s:79:"D:\phpstudy\PHPTutorial\WWW\SamAdmin\application\wap\view\public\right_nav.html";i:1575641808;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,28 +16,28 @@
     <title>
 首页
 </title>
-    <link rel="stylesheet" type="text/css" href="/public/static/css/reset.css"/>
-<link rel="stylesheet" type="text/css" href="/public/wap/font/iconfont.css"/>
-<link rel="stylesheet" type="text/css" href="/public/wap/css/style.css"/>
-<script type="text/javascript" src="/public/static/js/media.js"></script>
-<script type="text/javascript" src="/public/plugins/jquery-1.10.2.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/static/css/reset.css"/>
+<link rel="stylesheet" type="text/css" href="/wap/font/iconfont.css"/>
+<link rel="stylesheet" type="text/css" href="/wap/css/style.css"/>
+<script type="text/javascript" src="/static/js/media.js"></script>
+<script type="text/javascript" src="/plugins/jquery-1.10.2.min.js"></script>
 
     
-<link rel="stylesheet" href="/public/plugins/swiper/swiper-3.4.1.min.css">
-<script type="text/javascript" src="/public/plugins/swiper/swiper-3.4.1.jquery.min.js"></script>
-<script type="text/javascript" src="/public/plugins/jquery-slide-up.js"></script>
-<script type="text/javascript" src="/public/wap/js/jquery.downCount.js"></script>
-<script type="text/javascript" src="/public/wap/js/car-model.js"></script>
-<script type="text/javascript" src="/public/wap/js/base.js"></script>
-<script type="text/javascript" src="/public/wap/js/lottie.min.js"></script>
+<link rel="stylesheet" href="/plugins/swiper/swiper-3.4.1.min.css">
+<script type="text/javascript" src="/plugins/swiper/swiper-3.4.1.jquery.min.js"></script>
+<script type="text/javascript" src="/plugins/jquery-slide-up.js"></script>
+<script type="text/javascript" src="/wap/js/jquery.downCount.js"></script>
+<script type="text/javascript" src="/wap/js/car-model.js"></script>
+<script type="text/javascript" src="/wap/js/base.js"></script>
+<script type="text/javascript" src="/wap/js/lottie.min.js"></script>
 
-    <script type="text/javascript" src="/public/plugins/requirejs/require.js"></script>
+    <script type="text/javascript" src="/plugins/requirejs/require.js"></script>
 <script>
         requirejs.config({
             urlArgs: "v=15615616515616556",
             map: {
                 '*': {
-                    'css': '/public/plugins/requirejs/require-css.js'
+                    'css': '/plugins/requirejs/require-css.js'
                 }
             },
             shim: {
@@ -57,7 +57,7 @@
                     deps: ['css!yduicss']
                 }
             },
-            baseUrl: '//' + location.hostname + '/public',
+            baseUrl: '//' + location.hostname + '',
             paths: {
                 'static': 'static',
                 'vue': 'plugins/vue/dist/vue.min',
@@ -83,7 +83,7 @@
         });
     </script>
     
-    <script type="text/javascript" src="/public/wap/js/common.js"></script>
+    <script type="text/javascript" src="/wap/js/common.js"></script>
 </head>
 <body>
 
@@ -116,7 +116,7 @@
         <!-- 新闻 -->
         <?php if(!(empty($roll_news) || (($roll_news instanceof \think\Collection || $roll_news instanceof \think\Paginator ) && $roll_news->isEmpty()))): ?>
         <div class="hot-txt-roll border-1px flex">
-            <div class="hot-icon"><img src="/public/wap/images/hot-icon.png"></div>
+            <div class="hot-icon"><img src="/wap/images/hot-icon.png"></div>
             <div class="txt-list">
                 <ul class="line"> <?php if(is_array($roll_news) || $roll_news instanceof \think\Collection || $roll_news instanceof \think\Paginator): $i = 0; $__LIST__ = $roll_news;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
                     <li style="overflow: hidden;white-space: nowrap;text-overflow: ellipsis;"><a
